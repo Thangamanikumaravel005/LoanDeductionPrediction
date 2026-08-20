@@ -1,0 +1,6 @@
+@LoanDeductionPrediction.API_HostAddress = http://localhost:5082
+
+GET {{LoanDeductionPrediction.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

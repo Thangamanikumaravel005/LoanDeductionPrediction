@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "kXA2Stk/DE0=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\thang\\OneDrive\\Documents\\React Projects\\LoanDeductionPrediction\\PasswordHashGenerator\\PasswordHashGenerator.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\thang\\.nuget\\packages\\bcrypt.net-next\\4.2.0\\bcrypt.net-next.4.2.0.nupkg.sha512"
+  ],
+  "logs": []
+}

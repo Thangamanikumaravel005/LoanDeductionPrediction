@@ -1,0 +1,360 @@
+using System.Text;
+
+using LoanDeductionPrediction.API.Middleware;
+using LoanDeductionPrediction.Repositories.UnitOfWork;
+
+using LoanDeductionPrediction.Repositories.Entities;
+using LoanDeductionPrediction.Repositories.Implementations;
+using LoanDeductionPrediction.Repositories.Interfaces;
+
+using LoanDeductionPrediction.Services.BackgroundServices;
+using LoanDeductionPrediction.Services.Implementations;
+using LoanDeductionPrediction.Services.Interfaces;
+
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi;
+
+var builder = WebApplication.CreateBuilder(args);
+
+ 
+// CONTROLLERS
+ 
+
+builder.Services.AddControllers();
+
+ 
+// DATABASE
+ 
+
+builder.Services.AddDbContext<LoanDeductionDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString(
+            "DefaultConnection"),
+        sqlOptions =>
+        {
+            sqlOptions.EnableRetryOnFailure(
+                maxRetryCount: 5,
+                maxRetryDelay: TimeSpan.FromSeconds(10),
+                errorNumbersToAdd: null);
+        }));
+
+ 
+// AUTOMAPPER
+ 
+
+builder.Services.AddAutoMapper(
+    cfg => { },
+    AppDomain.CurrentDomain.GetAssemblies());
+
+ 
+// REPOSITORIES
+ 
+
+builder.Services.AddScoped<
+    IUserRepository,
+    UserRepository>();
+
+builder.Services.AddScoped<
+    ILoanRepository,
+    LoanRepository>();
+
+builder.Services.AddScoped<
+    IRepaymentScheduleRepository,
+    RepaymentScheduleRepository>();
+
+builder.Services.AddScoped<
+    IPaymentBehaviorRepository,
+    PaymentBehaviorRepository>();
+
+builder.Services.AddScoped<
+    IRiskPredictionRepository,
+    RiskPredictionRepository>();
+
+builder.Services.AddScoped<
+    IAlertRepository,
+    AlertRepository>();
+
+builder.Services.AddScoped<
+    IDashboardRepository,
+    DashboardRepository>();
+
+builder.Services.AddScoped<
+    IRefreshTokenRepository,
+    RefreshTokenRepository>();
+
+builder.Services.AddScoped<
+    ILoanDeductionUnitOfWork,
+    LoanDeductionUnitOfWork>();
+
+ 
+// SERVICES
+ 
+
+builder.Services.AddScoped<
+    IUserService,
+    UserService>();
+
+builder.Services.AddScoped<
+    ILoanService,
+    LoanService>();
+
+builder.Services.AddScoped<
+    IRepaymentScheduleService,
+    RepaymentScheduleService>();
+
+builder.Services.AddScoped<
+    IPaymentBehaviorService,
+    PaymentBehaviorService>();
+
+builder.Services.AddScoped<
+    IRiskPredictionService,
+    RiskPredictionService>();
+
+builder.Services.AddScoped<
+    IAlertService,
+    AlertService>();
+
+builder.Services.AddScoped<
+    IDashboardService,
+    DashboardService>();
+
+builder.Services.AddScoped<
+    IRefreshTokenService,
+    RefreshTokenService>();
+
+ 
+// BACKGROUND SERVICES
+ 
+//
+// Automatically checks overdue repayment schedules
+// and records MISSED payment behavior.
+//
+// The background service creates its own dependency scope,
+// so it can safely use scoped services such as
+// IPaymentBehaviorService and Entity Framework DbContext.
+//
+
+builder.Services.AddHostedService<
+    PaymentBehaviorBackgroundService>();
+
+ 
+// JWT AUTHENTICATION
+ 
+
+var jwtKey =
+    builder.Configuration["Jwt:Key"];
+
+var jwtIssuer =
+    builder.Configuration["Jwt:Issuer"];
+
+var jwtAudience =
+    builder.Configuration["Jwt:Audience"];
+
+if (string.IsNullOrWhiteSpace(jwtKey))
+{
+    throw new InvalidOperationException(
+        "JWT key is missing from configuration.");
+}
+
+if (string.IsNullOrWhiteSpace(jwtIssuer))
+{
+    throw new InvalidOperationException(
+        "JWT issuer is missing from configuration.");
+}
+
+if (string.IsNullOrWhiteSpace(jwtAudience))
+{
+    throw new InvalidOperationException(
+        "JWT audience is missing from configuration.");
+}
+
+builder.Services
+    .AddAuthentication(
+        JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters =
+            new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+
+                IssuerSigningKey =
+                    new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(jwtKey)),
+
+                ValidateIssuer = true,
+
+                ValidIssuer =
+                    jwtIssuer,
+
+                ValidateAudience = true,
+
+                ValidAudience =
+                    jwtAudience,
+
+                ValidateLifetime = true,
+
+                ClockSkew =
+                    TimeSpan.Zero
+            };
+    });
+
+ 
+// AUTHORIZATION
+ 
+
+builder.Services.AddAuthorization();
+
+ 
+// CORS
+ 
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(
+        "AllowFrontend",
+        policy =>
+        {
+            policy
+                .AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
+
+ 
+// SWAGGER / OPENAPI
+ 
+
+builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc(
+        "v1",
+        new OpenApiInfo
+        {
+            Title =
+                "Loan Deduction Prediction API",
+
+            Version =
+                "v1",
+
+            Description =
+                "Loan Deduction Prediction System with Behavioral Analytics"
+        });
+
+     
+    // JWT Bearer Security Definition
+     
+
+    options.AddSecurityDefinition(
+        "Bearer",
+        new OpenApiSecurityScheme
+        {
+            Name =
+                "Authorization",
+
+            Type =
+                SecuritySchemeType.Http,
+
+            Scheme =
+                "bearer",
+
+            BearerFormat =
+                "JWT",
+
+            In =
+                ParameterLocation.Header,
+
+            Description =
+                "Enter: Bearer {your JWT token}"
+        });
+
+     
+    // JWT Security Requirement
+     
+
+    options.AddSecurityRequirement(
+        document =>
+            new OpenApiSecurityRequirement
+            {
+                [
+                    new OpenApiSecuritySchemeReference(
+                        "Bearer",
+                        document)
+                ] =
+                    new List<string>()
+            });
+});
+
+ 
+// BUILD APPLICATION
+ 
+
+var app = builder.Build();
+
+ 
+// GLOBAL EXCEPTION HANDLING
+ 
+
+app.UseMiddleware<
+    GlobalExceptionMiddleware>();
+
+ 
+// SWAGGER
+ 
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint(
+            "/swagger/v1/swagger.json",
+            "Loan Deduction Prediction API v1");
+
+        options.RoutePrefix =
+            "swagger";
+    });
+}
+
+ 
+// HTTPS
+ 
+
+app.UseHttpsRedirection();
+
+ 
+// CORS
+ 
+
+app.UseCors(
+    "AllowFrontend");
+
+ 
+// AUTHENTICATION
+ 
+
+app.UseAuthentication();
+
+ 
+// AUTHORIZATION
+ 
+
+app.UseAuthorization();
+
+ 
+// CONTROLLERS
+ 
+
+app.MapControllers();
+
+ 
+// RUN APPLICATION
+ 
+
+app.Run();

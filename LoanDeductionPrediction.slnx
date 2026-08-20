@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="LoanDeductionPrediction.API/LoanDeductionPrediction.API.csproj" />
+  <Project Path="LoanDeductionPrediction.Models/LoanDeductionPrediction.Models.csproj" />
+  <Project Path="LoanDeductionPrediction.Repositories/LoanDeductionPrediction.Repositories.csproj" />
+  <Project Path="LoanDeductionPrediction.Services/LoanDeductionPrediction.Services.csproj" />
+</Solution>
