@@ -177,3 +177,12 @@ C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDed
 C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API\obj\Debug\net10.0\LoanDeductionPrediction.API.pdb
 C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API\obj\Debug\net10.0\LoanDeductionPrediction.API.genruntimeconfig.cache
 C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API\obj\Debug\net10.0\ref\LoanDeductionPrediction.API.dll
+C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API\bin\Debug\net10.0\Serilog.dll
+C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API\bin\Debug\net10.0\Serilog.AspNetCore.dll
+C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API\bin\Debug\net10.0\Serilog.Extensions.Hosting.dll
+C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API\bin\Debug\net10.0\Serilog.Extensions.Logging.dll
+C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API\bin\Debug\net10.0\Serilog.Formatting.Compact.dll
+C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API\bin\Debug\net10.0\Serilog.Settings.Configuration.dll
+C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API\bin\Debug\net10.0\Serilog.Sinks.Console.dll
+C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API\bin\Debug\net10.0\Serilog.Sinks.Debug.dll
+C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API\bin\Debug\net10.0\Serilog.Sinks.File.dll

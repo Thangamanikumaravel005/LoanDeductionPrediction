@@ -1,0 +1,24 @@
+2026-08-24 10:25:12.821 +05:30 [INF] Payment Behavior Background Service started.
+2026-08-24 10:25:44.793 +05:30 [INF] HTTP GET /swagger/index.html responded 304 in 358.6186 ms
+2026-08-24 10:25:44.883 +05:30 [INF] HTTP GET /swagger/index.js responded 304 in 3.1319 ms
+2026-08-24 10:25:44.918 +05:30 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 40.9400 ms
+2026-08-24 10:25:44.918 +05:30 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 40.8873 ms
+2026-08-24 10:25:44.918 +05:30 [INF] HTTP GET /swagger/index.css responded 304 in 40.7451 ms
+2026-08-24 10:25:44.940 +05:30 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 62.8552 ms
+2026-08-24 10:25:45.591 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 382.3148 ms
+2026-08-24 10:26:35.398 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-08-24 10:26:37.049 +05:30 [WRN] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2026-08-24 10:26:39.021 +05:30 [INF] HTTP POST /api/Auth/login responded 200 in 3648.5922 ms
+2026-08-24 10:27:03.178 +05:30 [INF] HTTP GET /api/Loan responded 200 in 558.8939 ms
+2026-08-24 10:30:23.133 +05:30 [INF] HTTP GET /api/User responded 200 in 259.3696 ms
+2026-08-24 10:30:56.115 +05:30 [INF] HTTP POST /api/Auth/login responded 200 in 724.9960 ms
+2026-08-24 10:31:30.026 +05:30 [INF] HTTP GET /api/PaymentBehavior/borrower/2 responded 200 in 987.0190 ms
+2026-08-24 10:33:52.436 +05:30 [INF] HTTP POST /api/Auth/login responded 200 in 617.1940 ms
+2026-08-24 10:34:57.993 +05:30 [INF] HTTP POST /api/User responded 201 in 578.7935 ms
+2026-08-24 10:36:13.970 +05:30 [INF] HTTP POST /api/Loan responded 201 in 244.0074 ms
+2026-08-24 10:36:55.511 +05:30 [INF] HTTP POST /api/RepaymentSchedule/generate/9 responded 200 in 306.9673 ms
+2026-08-24 10:38:02.675 +05:30 [INF] HTTP POST /api/Auth/login responded 200 in 387.3132 ms
+2026-08-24 10:39:14.797 +05:30 [INF] HTTP PUT /api/RepaymentSchedule/145/payment responded 403 in 50.5221 ms
+2026-08-24 10:40:33.661 +05:30 [INF] HTTP POST /api/Auth/login responded 200 in 449.1104 ms
+2026-08-24 10:40:54.576 +05:30 [WRN] Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+2026-08-24 10:40:54.666 +05:30 [INF] HTTP PUT /api/RepaymentSchedule/145/payment responded 200 in 313.8804 ms

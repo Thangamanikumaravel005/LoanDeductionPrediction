@@ -225,7 +225,7 @@ namespace LoanDeductionPrediction.API.Controllers
  
 
 [HttpPut("{id:int}/payment")]
-[Authorize(Roles = "Admin,LoanOfficer")]
+[Authorize(Roles = "Admin,LoanOfficer,Borrower")]
 public async Task<IActionResult> RecordPayment(
     int id,
     [FromBody] RecordPaymentRequest request)

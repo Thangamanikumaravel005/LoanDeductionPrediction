@@ -1,4 +1,6 @@
 using System.Text;
+using Serilog;
+using Serilog.Events;
 
 using LoanDeductionPrediction.API.Middleware;
 using LoanDeductionPrediction.Repositories.UnitOfWork;
@@ -15,8 +17,19 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+    .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+    .WriteTo.Console()
+    .WriteTo.File(
+        "Logs/app-.log",
+        rollingInterval: RollingInterval.Day,
+        retainedFileCountLimit: 7)
+    .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Host.UseSerilog();
 
  
 // CONTROLLERS(it will receive and process HTTP requests and return HTTP responses) 
@@ -302,6 +315,7 @@ builder.Services.AddSwaggerGen(options =>
  
 
 var app = builder.Build();
+app.UseSerilogRequestLogging();
 
  
 // GLOBAL EXCEPTION HANDLING
