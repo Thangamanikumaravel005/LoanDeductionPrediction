@@ -19,8 +19,7 @@ using Microsoft.OpenApi;
 var builder = WebApplication.CreateBuilder(args);
 
  
-// CONTROLLERS
- 
+// CONTROLLERS(it will receive and process HTTP requests and return HTTP responses) 
 
 builder.Services.AddControllers();
 
@@ -30,15 +29,9 @@ builder.Services.AddControllers();
 
 builder.Services.AddDbContext<LoanDeductionDbContext>(options =>
     options.UseSqlServer(
-        builder.Configuration.GetConnectionString(
-            "DefaultConnection"),
-        sqlOptions =>
-        {
-            sqlOptions.EnableRetryOnFailure(
-                maxRetryCount: 5,
-                maxRetryDelay: TimeSpan.FromSeconds(10),
-                errorNumbersToAdd: null);
-        }));
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        sqlOptions => sqlOptions.EnableRetryOnFailure()
+    ));
 
  
 // AUTOMAPPER
@@ -88,7 +81,29 @@ builder.Services.AddScoped<
     ILoanDeductionUnitOfWork,
     LoanDeductionUnitOfWork>();
 
- 
+    // CLOCK SERVICE
+
+var useTestClock =
+    builder.Configuration.GetValue<bool>(
+        "Clock:UseTestClock");
+
+if (useTestClock)
+{
+    builder.Services.AddSingleton<IClock>(
+        new TestClock
+        {
+            Today =
+                builder.Configuration.GetValue<DateOnly>(
+                    "Clock:TestDate")
+        });
+}
+else
+{
+    builder.Services.AddSingleton<
+        IClock,
+        SystemClock>();
+}
+
 // SERVICES
  
 
@@ -123,18 +138,10 @@ builder.Services.AddScoped<
 builder.Services.AddScoped<
     IRefreshTokenService,
     RefreshTokenService>();
-
  
-// BACKGROUND SERVICES
- 
-//
-// Automatically checks overdue repayment schedules
-// and records MISSED payment behavior.
-//
-// The background service creates its own dependency scope,
-// so it can safely use scoped services such as
+// BACKGROUND SERVICES Automatically checks overdue repayment schedules and records MISSED payment behavior.
+//  The background service creates its own dependency scope,so it can safely use scoped services such as
 // IPaymentBehaviorService and Entity Framework DbContext.
-//
 
 builder.Services.AddHostedService<
     PaymentBehaviorBackgroundService>();

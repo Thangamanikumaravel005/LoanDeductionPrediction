@@ -13,7 +13,6 @@ namespace LoanDeductionPrediction.Repositories.Entities
          
         // DbSets
          
-
         public virtual DbSet<User> Users { get; set; }
 
         public virtual DbSet<LoanAccount> LoanAccounts { get; set; }
@@ -319,6 +318,7 @@ namespace LoanDeductionPrediction.Repositories.Entities
 
     entity.HasIndex(e => e.UserId);
 });
+ 
         }
     }
 }

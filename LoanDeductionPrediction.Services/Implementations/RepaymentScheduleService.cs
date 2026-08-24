@@ -28,33 +28,39 @@ namespace LoanDeductionPrediction.Services.Implementations
         private readonly IPaymentBehaviorService
             _paymentBehaviorService;
 
+        private readonly IRiskPredictionService
+    _riskPredictionService;
+
          
         // CONSTRUCTOR
          
 
         public RepaymentScheduleService(
-            IRepaymentScheduleRepository scheduleRepository,
-            ILoanRepository loanRepository,
-            IMapper mapper,
-            ILoanDeductionUnitOfWork unitOfWork,
-            IPaymentBehaviorService paymentBehaviorService)
-        {
-            _scheduleRepository =
-                scheduleRepository;
+    IRepaymentScheduleRepository scheduleRepository,
+    ILoanRepository loanRepository,
+    IMapper mapper,
+    ILoanDeductionUnitOfWork unitOfWork,
+    IPaymentBehaviorService paymentBehaviorService,
+    IRiskPredictionService riskPredictionService)
+{
+    _scheduleRepository =
+        scheduleRepository;
 
-            _loanRepository =
-                loanRepository;
+    _loanRepository =
+        loanRepository;
 
-            _mapper =
-                mapper;
+    _mapper =
+        mapper;
 
-            _unitOfWork =
-                unitOfWork;
+    _unitOfWork =
+        unitOfWork;
 
-            _paymentBehaviorService =
-                paymentBehaviorService;
-        }
+    _paymentBehaviorService =
+        paymentBehaviorService;
 
+    _riskPredictionService =
+        riskPredictionService;
+}
          
         // GET REPAYMENT SCHEDULE BY LOAN ID
          

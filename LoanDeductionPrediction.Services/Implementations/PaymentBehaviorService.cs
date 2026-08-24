@@ -13,24 +13,29 @@ namespace LoanDeductionPrediction.Services.Implementations
         private readonly IRepaymentScheduleRepository
             _scheduleRepository;
 
-        private readonly ILoanRepository
-            _loanRepository;
+       private readonly ILoanRepository
+    _loanRepository;
 
+private readonly IClock
+    _clock;
         public PaymentBehaviorService(
-            IPaymentBehaviorRepository behaviorRepository,
-            IRepaymentScheduleRepository scheduleRepository,
-            ILoanRepository loanRepository)
-        {
-            _behaviorRepository =
-                behaviorRepository;
+    IPaymentBehaviorRepository behaviorRepository,
+    IRepaymentScheduleRepository scheduleRepository,
+    ILoanRepository loanRepository,
+    IClock clock)
+{
+    _behaviorRepository =
+        behaviorRepository;
 
-            _scheduleRepository =
-                scheduleRepository;
+    _scheduleRepository =
+        scheduleRepository;
 
-            _loanRepository =
-                loanRepository;
-        }
+    _loanRepository =
+        loanRepository;
 
+    _clock =
+        clock;
+}
          
         // GET BY BORROWER
          
@@ -233,8 +238,7 @@ namespace LoanDeductionPrediction.Services.Implementations
             else
             {
                 var today =
-                    DateOnly.FromDateTime(
-                        DateTime.Today);
+    _clock.Today;
 
                 if (today >
                     schedule.DueDate)
@@ -403,8 +407,7 @@ namespace LoanDeductionPrediction.Services.Implementations
             else
             {
                 var today =
-                    DateOnly.FromDateTime(
-                        DateTime.Today);
+    _clock.Today;
 
                 if (today >
                     schedule.DueDate)

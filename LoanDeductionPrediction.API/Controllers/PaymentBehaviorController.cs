@@ -25,7 +25,7 @@ namespace LoanDeductionPrediction.API.Controllers
         }
 
         
-        // GET: api/PaymentBehavior/borrower/{borrowerId}
+        // GET: api/PaymentBehavior/borrower/{borrowerId}(borrower can only see their own behavior)
         
 
         [HttpGet("borrower/{borrowerId:int}")]

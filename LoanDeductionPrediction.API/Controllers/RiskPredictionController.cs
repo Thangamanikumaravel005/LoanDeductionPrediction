@@ -26,7 +26,7 @@ namespace LoanDeductionPrediction.API.Controllers
         }
 
          
-        // POST: api/RiskPrediction/generate/{loanId}
+        // POST: api/RiskPrediction/generate/{loanId} (admin or loan officer can generate a risk prediction for a specific loan)
          
 
         [HttpPost("generate/{loanId:int}")]
@@ -96,7 +96,7 @@ namespace LoanDeductionPrediction.API.Controllers
         }
 
          
-        // GET: api/RiskPrediction/{id}
+        // GET: api/RiskPrediction/{id}(admin, loan officer, or borrower can get a specific risk prediction by its ID)
          
 
         [HttpGet("{id:int}")]
@@ -146,7 +146,7 @@ namespace LoanDeductionPrediction.API.Controllers
 
          
         // GET:
-        // api/RiskPrediction/loan/{loanId}
+        // api/RiskPrediction/loan/{loanId}(admin, loan officer, or borrower can get all risk predictions for a specific loan)
          
 
         [HttpGet("loan/{loanId:int}")]
@@ -189,7 +189,7 @@ namespace LoanDeductionPrediction.API.Controllers
 
          
         // GET:
-        // api/RiskPrediction/borrower/{borrowerId}
+        // api/RiskPrediction/borrower/{borrowerId}(admin, loan officer, or borrower can get all risk predictions for a specific borrower)
          
 
         [HttpGet("borrower/{borrowerId:int}")]
@@ -223,9 +223,9 @@ namespace LoanDeductionPrediction.API.Controllers
                     .GetByBorrowerIdAsync(
                         borrowerId);
 
-            // -----------------------------------------------------
+             
             // Borrower
-            // -----------------------------------------------------
+             
 
             if (role == "Borrower")
             {
@@ -242,9 +242,9 @@ namespace LoanDeductionPrediction.API.Controllers
                     }));
             }
 
-            // -----------------------------------------------------
+             
             // Admin
-            // -----------------------------------------------------
+             
 
             if (role == "Admin")
             {
@@ -261,12 +261,12 @@ namespace LoanDeductionPrediction.API.Controllers
                     }));
             }
 
-            // -----------------------------------------------------
+             
             // Loan Officer
             //
             // Only return predictions belonging to loans
             // assigned to this officer.
-            // -----------------------------------------------------
+             
 
             var officerPredictions =
                 new List<object>();
