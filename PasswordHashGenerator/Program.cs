@@ -7,6 +7,7 @@ conn.Open();
 string adminEmail = "admin@example.com";
 string adminPass = "Admin@123";
 string adminHash = BCrypt.Net.BCrypt.HashPassword(adminPass);
+Console.WriteLine(adminHash);
 
 string officerEmail = "officer@example.com";
 string officerPass = "Officer@123";

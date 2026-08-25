@@ -35,7 +35,18 @@ namespace LoanDeductionPrediction.Repositories.Entities
 
              
             // USER
-             
+            modelBuilder.Entity<User>().HasData(
+    new User
+    {
+        UserId = 12,
+        FullName = "System Administrator",
+        Email = "systemadmin@loan.com",
+        PasswordHash = "PASTE_YOUR_BCRYPT_HASH_HERE",
+        Role = "Admin",
+        IsActive = true,
+        CreatedAt = new DateTime(2026, 8, 25)
+    }
+);
 
             modelBuilder.Entity<User>(entity =>
             {

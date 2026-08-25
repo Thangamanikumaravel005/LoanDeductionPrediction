@@ -1,11 +1,12 @@
 using System.Text;
 using Serilog;
 using Serilog.Events;
+using LoanDeductionPrediction.Repositories.Entities;
+using LoanDeductionPrediction.Repositories.Seed;
 
 using LoanDeductionPrediction.API.Middleware;
 using LoanDeductionPrediction.Repositories.UnitOfWork;
 
-using LoanDeductionPrediction.Repositories.Entities;
 using LoanDeductionPrediction.Repositories.Implementations;
 using LoanDeductionPrediction.Repositories.Interfaces;
 
@@ -19,8 +20,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Information()
-    .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
-    .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+  .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+.MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Information)
     .WriteTo.Console()
     .WriteTo.File(
         "Logs/app-.log",
@@ -47,7 +48,7 @@ builder.Services.AddDbContext<LoanDeductionDbContext>(options =>
     ));
 
  
-// AUTOMAPPER
+// AUTOMAPPER(it automatically maps data from one object to another, between DTOs and entities)
  
 
 builder.Services.AddAutoMapper(
@@ -315,6 +316,14 @@ builder.Services.AddSwaggerGen(options =>
  
 
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    var context =
+        scope.ServiceProvider
+            .GetRequiredService<LoanDeductionDbContext>();
+
+    DatabaseSeeder.Seed(context);
+}
 app.UseSerilogRequestLogging();
 
  

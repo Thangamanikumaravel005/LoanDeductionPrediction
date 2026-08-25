@@ -1012,6 +1012,7 @@
       },
       "LoanDeductionPrediction.Repositories/1.0.0": {
         "dependencies": {
+          "BCrypt.Net-Next": "4.2.0",
           "LoanDeductionPrediction.Models": "1.0.0",
           "Microsoft.EntityFrameworkCore": "10.0.11",
           "Microsoft.EntityFrameworkCore.SqlServer": "10.0.11"
