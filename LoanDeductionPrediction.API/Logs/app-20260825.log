@@ -1694,3 +1694,34 @@ WHERE [l].[LoanId] = @loanId
 2026-08-25 12:12:49.122 +05:30 [INF] HTTP GET /api/Loan/11 responded 200 in 79.9388 ms
 2026-08-25 12:12:49.127 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/api/Loan/11 - 200 null application/json; charset=utf-8 136.3533ms
 2026-08-25 12:15:32.214 +05:30 [INF] Application is shutting down...
+2026-08-25 14:40:13.561 +05:30 [INF] Executed DbCommand (51ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]
+        WHERE [u].[Role] = N'Admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-08-25 14:40:13.739 +05:30 [INF] User profile is available. Using 'C:\Users\thang\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-08-25 14:40:13.749 +05:30 [INF] Payment Behavior Background Service started.
+2026-08-25 14:40:13.858 +05:30 [INF] Now listening on: http://localhost:5082
+2026-08-25 14:40:13.858 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-08-25 14:40:13.858 +05:30 [INF] Hosting environment: Development
+2026-08-25 14:40:13.859 +05:30 [INF] Content root path: C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API
+2026-08-25 14:40:13.984 +05:30 [INF] Executed DbCommand (69ms) [Parameters=[@today='?' (DbType = Date)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ScheduleId], [r].[DueDate], [r].[EMIAmount], [r].[InstallmentNumber], [r].[InterestAmount], [r].[LoanId], [r].[PaidAmount], [r].[PaidDate], [r].[PrincipalAmount], [r].[Status]
+FROM [RepaymentSchedules] AS [r]
+WHERE [r].[DueDate] < @today AND [r].[PaidAmount] < [r].[EMIAmount] AND [r].[Status] <> N'PAID'
+ORDER BY [r].[DueDate]
+2026-08-25 14:40:14.088 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@scheduleId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[BehaviorLogId], [p].[BorrowerId], [p].[DaysLate], [p].[DueDate], [p].[LoanId], [p].[PaymentDate], [p].[PaymentStatus], [p].[RecordedAt], [p].[ScheduleId]
+FROM [PaymentBehaviorLogs] AS [p]
+WHERE [p].[ScheduleId] = @scheduleId
+2026-08-25 14:40:14.130 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@scheduleId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[BehaviorLogId], [p].[BorrowerId], [p].[DaysLate], [p].[DueDate], [p].[LoanId], [p].[PaymentDate], [p].[PaymentStatus], [p].[RecordedAt], [p].[ScheduleId]
+FROM [PaymentBehaviorLogs] AS [p]
+WHERE [p].[ScheduleId] = @scheduleId
+2026-08-25 14:40:14.134 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@scheduleId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[BehaviorLogId], [p].[BorrowerId], [p].[DaysLate], [p].[DueDate], [p].[LoanId], [p].[PaymentDate], [p].[PaymentStatus], [p].[RecordedAt], [p].[ScheduleId]
+FROM [PaymentBehaviorLogs] AS [p]
+WHERE [p].[ScheduleId] = @scheduleId
