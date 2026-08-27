@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace LoanDeductionPrediction.Repositories.Entities;
@@ -37,4 +37,7 @@ public virtual ICollection<RiskPrediction> RiskPredictions { get; set; }
 
 public virtual ICollection<RefreshToken> RefreshTokens { get; set; }
     = new List<RefreshToken>();
+
+public virtual ICollection<BorrowerLoanApplication> ReviewedBorrowerApplications { get; set; }
+    = new List<BorrowerLoanApplication>();
 }

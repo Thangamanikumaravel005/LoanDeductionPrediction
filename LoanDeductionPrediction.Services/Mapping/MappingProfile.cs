@@ -23,6 +23,8 @@ namespace LoanDeductionPrediction.Services.Mapping
             CreateMap<PaymentBehaviorLog, PaymentBehaviorDto>();
 
             CreateMap<RiskPrediction, RiskPredictionDto>();
+
+            CreateMap<BorrowerLoanApplication, BorrowerLoanApplicationDto>();
         }
     }
 }

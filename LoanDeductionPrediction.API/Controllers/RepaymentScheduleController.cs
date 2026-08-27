@@ -1,5 +1,4 @@
 using LoanDeductionPrediction.Models.DTOs;
-using LoanDeductionPrediction.Repositories.Entities;
 using LoanDeductionPrediction.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -225,7 +224,7 @@ namespace LoanDeductionPrediction.API.Controllers
  
 
 [HttpPut("{id:int}/payment")]
-[Authorize(Roles = "Admin,LoanOfficer,Borrower")]
+[Authorize(Roles = "LoanOfficer,Borrower")]
 public async Task<IActionResult> RecordPayment(
     int id,
     [FromBody] RecordPaymentRequest request)

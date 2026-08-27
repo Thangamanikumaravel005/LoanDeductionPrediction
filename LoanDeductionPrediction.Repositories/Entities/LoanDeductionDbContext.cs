@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace LoanDeductionPrediction.Repositories.Entities
 {
@@ -15,6 +15,8 @@ namespace LoanDeductionPrediction.Repositories.Entities
          
         public virtual DbSet<User> Users { get; set; }
 
+        public virtual DbSet<LoanRequest> LoanRequests { get; set; }
+
         public virtual DbSet<LoanAccount> LoanAccounts { get; set; }
 
         public virtual DbSet<RepaymentSchedule> RepaymentSchedules { get; set; }
@@ -24,6 +26,8 @@ namespace LoanDeductionPrediction.Repositories.Entities
         public virtual DbSet<RiskPrediction> RiskPredictions { get; set; }
 
         public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
+ 
+        public virtual DbSet<BorrowerLoanApplication> BorrowerLoanApplications { get; set; }
 
          
         // Model Configuration
@@ -33,20 +37,21 @@ namespace LoanDeductionPrediction.Repositories.Entities
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<LoanRequest>()
+    .HasOne(x => x.Borrower)
+    .WithMany()
+    .HasForeignKey(x => x.BorrowerId)
+    .OnDelete(DeleteBehavior.Restrict);
+
+modelBuilder.Entity<LoanRequest>()
+    .HasOne(x => x.LoanOfficer)
+    .WithMany()
+    .HasForeignKey(x => x.ReviewedByLoanOfficerId)
+    .OnDelete(DeleteBehavior.Restrict);
+
              
             // USER
-            modelBuilder.Entity<User>().HasData(
-    new User
-    {
-        UserId = 12,
-        FullName = "System Administrator",
-        Email = "systemadmin@loan.com",
-        PasswordHash = "PASTE_YOUR_BCRYPT_HASH_HERE",
-        Role = "Admin",
-        IsActive = true,
-        CreatedAt = new DateTime(2026, 8, 25)
-    }
-);
+
 
             modelBuilder.Entity<User>(entity =>
             {
@@ -329,7 +334,78 @@ namespace LoanDeductionPrediction.Repositories.Entities
 
     entity.HasIndex(e => e.UserId);
 });
- 
+
+            // BORROWER LOAN APPLICATION
+            modelBuilder.Entity<BorrowerLoanApplication>(entity =>
+            {
+                entity.HasKey(e => e.ApplicationId);
+
+                entity.ToTable("BorrowerLoanApplications");
+
+                entity.Property(e => e.ApplicationId)
+                    .ValueGeneratedOnAdd();
+
+                entity.Property(e => e.FullName)
+                    .HasMaxLength(100)
+                    .IsRequired();
+
+                entity.Property(e => e.DateOfBirth)
+                    .IsRequired();
+
+                entity.Property(e => e.Email)
+                    .HasMaxLength(150)
+                    .IsRequired();
+
+                entity.Property(e => e.PasswordHash)
+                    .HasMaxLength(255)
+                    .IsRequired();
+
+                entity.Property(e => e.MonthlySalary)
+                    .HasColumnType("decimal(18,2)")
+                    .IsRequired(false);
+
+                entity.Property(e => e.CollateralDetails)
+                    .HasMaxLength(500)
+                    .IsRequired(false);
+
+                entity.Property(e => e.LoanType)
+                    .HasMaxLength(50)
+                    .IsRequired();
+
+                entity.Property(e => e.RequestedAmount)
+                    .HasColumnType("decimal(18,2)")
+                    .IsRequired();
+
+                entity.Property(e => e.Status)
+                    .HasMaxLength(30)
+                    .IsRequired();
+
+                entity.Property(e => e.InterestRate)
+                    .HasColumnType("decimal(5,2)")
+                    .IsRequired(false);
+
+                entity.Property(e => e.TenureMonths)
+                    .IsRequired(false);
+
+                entity.Property(e => e.Remarks)
+                    .HasMaxLength(500)
+                    .IsRequired(false);
+
+                entity.Property(e => e.CreatedAt)
+                    .HasDefaultValueSql("(getdate())")
+                    .IsRequired();
+
+                entity.Property(e => e.ReviewedAt)
+                    .IsRequired(false);
+
+                entity.HasOne(e => e.ReviewedByLoanOfficer)
+                    .WithMany(u => u.ReviewedBorrowerApplications)
+                    .HasForeignKey(e => e.ReviewedByLoanOfficerId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasIndex(e => e.Email);
+                entity.HasIndex(e => e.Status);
+            });
         }
     }
 }

@@ -1,7 +1,7 @@
+using System.Security.Claims;
 using LoanDeductionPrediction.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 
 namespace LoanDeductionPrediction.API.Controllers
 {
@@ -18,9 +18,12 @@ namespace LoanDeductionPrediction.API.Controllers
             _dashboardService = dashboardService;
         }
 
-        
+
+        // =========================================================
         // LOAN OFFICER DASHBOARD
-       
+        // =========================================================
+
+        // GET: api/Dashboard/loan-officer
 
         [HttpGet("loan-officer")]
         [Authorize(Roles = "LoanOfficer")]
@@ -37,8 +40,7 @@ namespace LoanDeductionPrediction.API.Controllers
             {
                 return Unauthorized(new
                 {
-                    message =
-                        "Invalid user identity."
+                    message = "Invalid user identity."
                 });
             }
 
@@ -50,9 +52,13 @@ namespace LoanDeductionPrediction.API.Controllers
             return Ok(dashboard);
         }
 
-        
+
+        // =========================================================
         // ADMIN DASHBOARD
-        
+        // =========================================================
+
+        // GET: api/Dashboard/admin
+
         [HttpGet("admin")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult>
@@ -61,6 +67,40 @@ namespace LoanDeductionPrediction.API.Controllers
             var dashboard =
                 await _dashboardService
                     .GetAdminDashboardAsync();
+
+            return Ok(dashboard);
+        }
+
+
+        // =========================================================
+        // BORROWER DASHBOARD
+        // =========================================================
+
+        // GET: api/Dashboard/borrower
+
+        [HttpGet("borrower")]
+        [Authorize(Roles = "Borrower")]
+        public async Task<IActionResult>
+            GetBorrowerDashboard()
+        {
+            var userIdClaim =
+                User.FindFirstValue(
+                    ClaimTypes.NameIdentifier);
+
+            if (!int.TryParse(
+                userIdClaim,
+                out int borrowerId))
+            {
+                return Unauthorized(new
+                {
+                    message = "Invalid user identity."
+                });
+            }
+
+            var dashboard =
+                await _dashboardService
+                    .GetBorrowerDashboardAsync(
+                        borrowerId);
 
             return Ok(dashboard);
         }

@@ -6,5 +6,8 @@ namespace LoanDeductionPrediction.Services.Interfaces
             int loanOfficerId);
 
         Task<object> GetAdminDashboardAsync();
+
+        Task<object> GetBorrowerDashboardAsync(
+    int borrowerId);
     }
 }

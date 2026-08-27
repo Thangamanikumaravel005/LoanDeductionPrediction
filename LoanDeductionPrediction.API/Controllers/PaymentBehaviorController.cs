@@ -1,4 +1,3 @@
-using LoanDeductionPrediction.Repositories.Entities;
 using LoanDeductionPrediction.Services.Interfaces;
 using LoanDeductionPrediction.Models.DTOs;
 using Microsoft.AspNetCore.Authorization;
@@ -200,7 +199,7 @@ namespace LoanDeductionPrediction.API.Controllers
        
 
         [HttpPost("record/{scheduleId:int}")]
-        [Authorize(Roles = "Admin,LoanOfficer")]
+        [Authorize(Roles = "Admin,Borrower")]
         public async Task<IActionResult> RecordBehavior(
             int scheduleId)
         {

@@ -18,6 +18,11 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
+
+// LOGGING(Serilog is a logging library for .NET applications that provides structured logging capabilities. 
+// It allows developers to log messages with various levels of severity (e.g., Information, Warning, Error).
+
+
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Information()
   .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
@@ -56,7 +61,7 @@ builder.Services.AddAutoMapper(
     AppDomain.CurrentDomain.GetAssemblies());
 
  
-// REPOSITORIES
+// REPOSITORIES REGISTRATION(AddScope create a new instance for each HTTP request)
  
 
 builder.Services.AddScoped<
@@ -95,6 +100,14 @@ builder.Services.AddScoped<
     ILoanDeductionUnitOfWork,
     LoanDeductionUnitOfWork>();
 
+builder.Services.AddScoped<
+    ILoanRequestRepository,
+    LoanRequestRepository>();
+
+builder.Services.AddScoped<
+    IBorrowerLoanApplicationRepository,
+    BorrowerLoanApplicationRepository>();
+
     // CLOCK SERVICE
 
 var useTestClock =
@@ -114,11 +127,12 @@ if (useTestClock)
 else
 {
     builder.Services.AddSingleton<
+//Singleton handles whole application with one instance of the service.
         IClock,
         SystemClock>();
 }
 
-// SERVICES
+// SERVICES REGISTRATION(AddScope create a new instance for each HTTP request.)
  
 
 builder.Services.AddScoped<
@@ -152,10 +166,16 @@ builder.Services.AddScoped<
 builder.Services.AddScoped<
     IRefreshTokenService,
     RefreshTokenService>();
+
+builder.Services.AddScoped<
+    ILoanRequestService,
+    LoanRequestService>();
+
+builder.Services.AddScoped<
+    IBorrowerLoanApplicationService,
+    BorrowerLoanApplicationService>();
  
-// BACKGROUND SERVICES Automatically checks overdue repayment schedules and records MISSED payment behavior.
-//  The background service creates its own dependency scope,so it can safely use scoped services such as
-// IPaymentBehaviorService and Entity Framework DbContext.
+// BACKGROUND SERVICES (Automatically checks overdue repayment schedules and records MISSED payment behavior.)
 
 builder.Services.AddHostedService<
     PaymentBehaviorBackgroundService>();
@@ -223,13 +243,13 @@ builder.Services
     });
 
  
-// AUTHORIZATION
+// AUTHORIZATION (It defines the access and rules for users to perform defined actions within the application.)
  
 
 builder.Services.AddAuthorization();
 
  
-// CORS
+// CORS(Cross Origin Resource Sharing. It aloows frotend to access backend API from different port.)
  
 
 builder.Services.AddCors(options =>
@@ -321,6 +341,8 @@ using (var scope = app.Services.CreateScope())
     var context =
         scope.ServiceProvider
             .GetRequiredService<LoanDeductionDbContext>();
+
+    context.Database.Migrate();
 
     DatabaseSeeder.Seed(context);
 }
