@@ -8,6 +8,7 @@ namespace LoanDeductionPrediction.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles = "Admin")]
     public class UserController : ControllerBase
     {
         private readonly LoanDeductionDbContext _context;
@@ -17,16 +18,16 @@ namespace LoanDeductionPrediction.API.Controllers
             _context = context;
         }
 
-        // =========================================================
+        // ============================================================
         // GET: api/User
-        // Only Admin can view all users
-        // =========================================================
+        // Admin can view all users
+        // ============================================================
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetUsers()
         {
             var users = await _context.Users
+                .AsNoTracking()
                 .Select(u => new
                 {
                     u.UserId,
@@ -42,17 +43,16 @@ namespace LoanDeductionPrediction.API.Controllers
             return Ok(users);
         }
 
-
-        // =========================================================
-        // GET: api/User/1
-        // Only Admin can view one user
-        // =========================================================
+        // ============================================================
+        // GET: api/User/{id}
+        // Admin can view one user
+        // ============================================================
 
         [HttpGet("{id:int}")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetUser(int id)
         {
             var user = await _context.Users
+                .AsNoTracking()
                 .Where(u => u.UserId == id)
                 .Select(u => new
                 {
@@ -76,18 +76,16 @@ namespace LoanDeductionPrediction.API.Controllers
             return Ok(user);
         }
 
+        // ============================================================
+        // POST: api/User
+        // Admin can create ONLY Loan Officer
+        // ============================================================
 
-        // =========================================================
-        // POST: api/User/loan-officer
-        // Only Admin can create a Loan Officer
-        // =========================================================
-
-        [HttpPost("loan-officer")]
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> CreateLoanOfficer(
+        [HttpPost]
+        public async Task<IActionResult> CreateUser(
             CreateUserRequest request)
         {
-            // Validate full name
+            // Full name validation
             if (string.IsNullOrWhiteSpace(request.FullName))
             {
                 return BadRequest(new
@@ -96,7 +94,7 @@ namespace LoanDeductionPrediction.API.Controllers
                 });
             }
 
-            // Validate email
+            // Email validation
             if (string.IsNullOrWhiteSpace(request.Email))
             {
                 return BadRequest(new
@@ -105,7 +103,7 @@ namespace LoanDeductionPrediction.API.Controllers
                 });
             }
 
-            // Validate password
+            // Password validation
             if (string.IsNullOrWhiteSpace(request.Password))
             {
                 return BadRequest(new
@@ -114,7 +112,6 @@ namespace LoanDeductionPrediction.API.Controllers
                 });
             }
 
-            // Validate password length
             if (request.Password.Length < 8)
             {
                 return BadRequest(new
@@ -123,8 +120,28 @@ namespace LoanDeductionPrediction.API.Controllers
                 });
             }
 
-            // Clean email
-            var email = request.Email.Trim().ToLower();
+            // --------------------------------------------------------
+            // IMPORTANT:
+            // Admin can create ONLY Loan Officer.
+            // Admin cannot create Borrower through this endpoint.
+            // Admin cannot create another Admin through this endpoint.
+            // --------------------------------------------------------
+
+            if (!string.Equals(
+                    request.Role?.Trim(),
+                    "LoanOfficer",
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                return BadRequest(new
+                {
+                    message =
+                        "Admin can create only a LoanOfficer account."
+                });
+            }
+
+            var email = request.Email
+                .Trim()
+                .ToLowerInvariant();
 
             // Check duplicate email
             var existingUser = await _context.Users
@@ -134,13 +151,15 @@ namespace LoanDeductionPrediction.API.Controllers
             {
                 return Conflict(new
                 {
-                    message = "A user with this email already exists."
+                    message =
+                        "A user with this email already exists."
                 });
             }
 
             // Hash password
-            var passwordHash = BCrypt.Net.BCrypt.HashPassword(
-                request.Password);
+            var passwordHash =
+                BCrypt.Net.BCrypt.HashPassword(
+                    request.Password);
 
             // Create Loan Officer
             var user = new User
@@ -148,10 +167,7 @@ namespace LoanDeductionPrediction.API.Controllers
                 FullName = request.FullName.Trim(),
                 Email = email,
                 PasswordHash = passwordHash,
-
-                // Role is assigned by the server
                 Role = "LoanOfficer",
-
                 IsActive = true,
                 CreatedAt = DateTime.UtcNow
             };
@@ -165,7 +181,9 @@ namespace LoanDeductionPrediction.API.Controllers
                 new { id = user.UserId },
                 new
                 {
-                    message = "Loan Officer created successfully.",
+                    message =
+                        "Loan Officer created successfully.",
+
                     user = new
                     {
                         user.UserId,
@@ -178,116 +196,12 @@ namespace LoanDeductionPrediction.API.Controllers
                 });
         }
 
-
-        // =========================================================
-        // POST: api/User/borrower
-        // Only Loan Officer can create a Borrower
-        // =========================================================
-
-        [HttpPost("borrower")]
-        [Authorize(Roles = "LoanOfficer")]
-        public async Task<IActionResult> CreateBorrower(
-            CreateUserRequest request)
-        {
-            // Validate full name
-            if (string.IsNullOrWhiteSpace(request.FullName))
-            {
-                return BadRequest(new
-                {
-                    message = "Full name is required."
-                });
-            }
-
-            // Validate email
-            if (string.IsNullOrWhiteSpace(request.Email))
-            {
-                return BadRequest(new
-                {
-                    message = "Email is required."
-                });
-            }
-
-            // Validate password
-            if (string.IsNullOrWhiteSpace(request.Password))
-            {
-                return BadRequest(new
-                {
-                    message = "Password is required."
-                });
-            }
-
-            // Validate password length
-            if (request.Password.Length < 8)
-            {
-                return BadRequest(new
-                {
-                    message = "Password must contain at least 8 characters."
-                });
-            }
-
-            // Clean email
-            var email = request.Email.Trim().ToLower();
-
-            // Check duplicate email
-            var existingUser = await _context.Users
-                .FirstOrDefaultAsync(u => u.Email == email);
-
-            if (existingUser != null)
-            {
-                return Conflict(new
-                {
-                    message = "A user with this email already exists."
-                });
-            }
-
-            // Hash password
-            var passwordHash = BCrypt.Net.BCrypt.HashPassword(
-                request.Password);
-
-            // Create Borrower
-            var user = new User
-            {
-                FullName = request.FullName.Trim(),
-                Email = email,
-                PasswordHash = passwordHash,
-
-                // Role is assigned by the server
-                Role = "Borrower",
-
-                IsActive = true,
-                CreatedAt = DateTime.UtcNow
-            };
-
-            _context.Users.Add(user);
-
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction(
-                nameof(GetUser),
-                new { id = user.UserId },
-                new
-                {
-                    message = "Borrower created successfully.",
-                    user = new
-                    {
-                        user.UserId,
-                        user.FullName,
-                        user.Email,
-                        user.Role,
-                        user.IsActive,
-                        user.CreatedAt
-                    }
-                });
-        }
-
-
-        // =========================================================
-        // PUT: api/User/1
-        // Only Admin can update a user
-        // =========================================================
+        // ============================================================
+        // PUT: api/User/{id}
+        // Admin can update a user
+        // ============================================================
 
         [HttpPut("{id:int}")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateUser(
             int id,
             UpdateUserRequest request)
@@ -303,10 +217,15 @@ namespace LoanDeductionPrediction.API.Controllers
                 });
             }
 
-            // Update email
+            // --------------------------------------------------------
+            // Update Email
+            // --------------------------------------------------------
+
             if (!string.IsNullOrWhiteSpace(request.Email))
             {
-                var email = request.Email.Trim().ToLower();
+                var email = request.Email
+                    .Trim()
+                    .ToLowerInvariant();
 
                 var emailExists = await _context.Users
                     .AnyAsync(u =>
@@ -325,13 +244,47 @@ namespace LoanDeductionPrediction.API.Controllers
                 user.Email = email;
             }
 
-            // Update full name
+            // --------------------------------------------------------
+            // Update Full Name
+            // --------------------------------------------------------
+
             if (!string.IsNullOrWhiteSpace(request.FullName))
             {
-                user.FullName = request.FullName.Trim();
+                user.FullName =
+                    request.FullName.Trim();
             }
 
-            // Update password
+            // --------------------------------------------------------
+            // Update Role
+            //
+            // Do NOT allow changing a user to Admin or Borrower
+            // through this endpoint.
+            // --------------------------------------------------------
+
+            if (!string.IsNullOrWhiteSpace(request.Role))
+            {
+                var role =
+                    request.Role.Trim();
+
+                if (!string.Equals(
+                        role,
+                        "LoanOfficer",
+                        StringComparison.OrdinalIgnoreCase))
+                {
+                    return BadRequest(new
+                    {
+                        message =
+                            "The role can only be LoanOfficer."
+                    });
+                }
+
+                user.Role = "LoanOfficer";
+            }
+
+            // --------------------------------------------------------
+            // Update Password
+            // --------------------------------------------------------
+
             if (!string.IsNullOrWhiteSpace(request.Password))
             {
                 if (request.Password.Length < 8)
@@ -348,17 +301,23 @@ namespace LoanDeductionPrediction.API.Controllers
                         request.Password);
             }
 
-            // Update active status
+            // --------------------------------------------------------
+            // Update Active Status
+            // --------------------------------------------------------
+
             if (request.IsActive.HasValue)
             {
-                user.IsActive = request.IsActive.Value;
+                user.IsActive =
+                    request.IsActive.Value;
             }
 
             await _context.SaveChangesAsync();
 
             return Ok(new
             {
-                message = "User updated successfully.",
+                message =
+                    "User updated successfully.",
+
                 user = new
                 {
                     user.UserId,
@@ -371,14 +330,12 @@ namespace LoanDeductionPrediction.API.Controllers
             });
         }
 
-
-        // =========================================================
-        // DELETE: api/User/1
-        // Only Admin can deactivate a user
-        // =========================================================
+        // ============================================================
+        // DELETE: api/User/{id}
+        // Admin can deactivate a user
+        // ============================================================
 
         [HttpDelete("{id:int}")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteUser(int id)
         {
             var user = await _context.Users
@@ -392,22 +349,40 @@ namespace LoanDeductionPrediction.API.Controllers
                 });
             }
 
-            // Soft delete
+            // Prevent Admin from deactivating themselves
+            var currentAdminIdClaim =
+                User.FindFirst(
+                    System.Security.Claims.ClaimTypes.NameIdentifier);
+
+            if (int.TryParse(
+                    currentAdminIdClaim?.Value,
+                    out int currentAdminId))
+            {
+                if (user.UserId == currentAdminId)
+                {
+                    return BadRequest(new
+                    {
+                        message =
+                            "Admin cannot deactivate their own account."
+                    });
+                }
+            }
+
             user.IsActive = false;
 
             await _context.SaveChangesAsync();
 
             return Ok(new
             {
-                message = "User deactivated successfully."
+                message =
+                    "User deactivated successfully."
             });
         }
     }
 
-
-     
+    // ================================================================
     // REQUEST MODELS
-     
+    // ================================================================
 
     public class CreateUserRequest
     {
@@ -416,8 +391,9 @@ namespace LoanDeductionPrediction.API.Controllers
         public string Email { get; set; } = string.Empty;
 
         public string Password { get; set; } = string.Empty;
-    }
 
+        public string Role { get; set; } = string.Empty;
+    }
 
     public class UpdateUserRequest
     {
@@ -426,6 +402,8 @@ namespace LoanDeductionPrediction.API.Controllers
         public string? Email { get; set; }
 
         public string? Password { get; set; }
+
+        public string? Role { get; set; }
 
         public bool? IsActive { get; set; }
     }

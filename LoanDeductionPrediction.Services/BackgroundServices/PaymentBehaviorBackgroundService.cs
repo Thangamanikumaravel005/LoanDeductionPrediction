@@ -1,4 +1,5 @@
 using LoanDeductionPrediction.Services.Interfaces;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -10,18 +11,44 @@ namespace LoanDeductionPrediction.Services.BackgroundServices
     {
         private readonly IServiceScopeFactory _scopeFactory;
         private readonly ILogger<PaymentBehaviorBackgroundService> _logger;
+        private readonly IConfiguration _configuration;
 
         public PaymentBehaviorBackgroundService(
             IServiceScopeFactory scopeFactory,
-            ILogger<PaymentBehaviorBackgroundService> logger)
+            ILogger<PaymentBehaviorBackgroundService> logger,
+            IConfiguration configuration)
         {
             _scopeFactory = scopeFactory;
             _logger = logger;
+            _configuration = configuration;
         }
 
         protected override async Task ExecuteAsync(
             CancellationToken stoppingToken)
         {
+            // Allow the hourly job to be disabled.
+            //
+            //   "BackgroundServices": {
+            //     "MissedEmiProcessingEnabled": false
+            //   }
+            //
+            // Set to false during manual Swagger testing so the hourly run
+            // cannot mark future EMIs as MISSED unexpectedly. Defaults to true
+            // (enabled) so production behaviour is unchanged.
+            var enabled =
+                _configuration.GetValue<bool>(
+                    "BackgroundServices:MissedEmiProcessingEnabled",
+                    defaultValue: true);
+
+            if (!enabled)
+            {
+                _logger.LogInformation(
+                    "Payment Behavior Background Service is disabled via " +
+                    "configuration. Skipping hourly overdue EMI processing.");
+
+                return;
+            }
+
             _logger.LogInformation(
                 "Payment Behavior Background Service started.");
 

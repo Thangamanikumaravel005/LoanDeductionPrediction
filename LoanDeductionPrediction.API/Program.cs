@@ -109,28 +109,24 @@ builder.Services.AddScoped<
     BorrowerLoanApplicationRepository>();
 
     // CLOCK SERVICE
+//
+    // A single clock instance drives the whole application.
+//
+    // SystemClock reads the test date from configuration:
+    //
+    //   "TestSettings": {
+    //     "UseTestDate": true,
+    //     "TestDate": "2027-07-01"
+    //   }
+//
+    // When UseTestDate is true  -> IClock.Today returns TestDate.
+    // When UseTestDate is false -> IClock.Today returns the real date.
+//
 
-var useTestClock =
-    builder.Configuration.GetValue<bool>(
-        "Clock:UseTestClock");
-
-if (useTestClock)
-{
-    builder.Services.AddSingleton<IClock>(
-        new TestClock
-        {
-            Today =
-                builder.Configuration.GetValue<DateOnly>(
-                    "Clock:TestDate")
-        });
-}
-else
-{
-    builder.Services.AddSingleton<
-//Singleton handles whole application with one instance of the service.
-        IClock,
-        SystemClock>();
-}
+builder.Services.AddSingleton<
+    // Singleton handles whole application with one instance of the service.
+    IClock,
+    SystemClock>();
 
 // SERVICES REGISTRATION(AddScope create a new instance for each HTTP request.)
  

@@ -24,8 +24,8 @@ namespace LoanDeductionPrediction.API.Controllers
         // BORROWER - SUBMIT LOAN APPLICATION
         // POST: api/BorrowerLoanApplication
         // =========================================================
-        [HttpPost]
-        [Authorize(Roles = "Borrower")]
+        [AllowAnonymous]
+[HttpPost]
         public async Task<IActionResult> SubmitApplication(
             [FromBody] CreateBorrowerLoanApplicationRequest request)
         {
