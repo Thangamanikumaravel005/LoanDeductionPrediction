@@ -17,10 +17,11 @@ namespace LoanDeductionPrediction.Services.Interfaces
         Task<LoanRequest?> GetByIdAsync(
             int loanRequestId);
 
-        Task<bool> ApproveRequestAsync(
-            int loanRequestId,
-            int loanOfficerId,
-            decimal interestRate);
+       Task<bool> ApproveRequestAsync(
+    int loanRequestId,
+    int loanOfficerId,
+    decimal interestRate,
+    int tenureMonths);
 
         Task<bool> RejectRequestAsync(
             int loanRequestId,

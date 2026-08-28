@@ -20,12 +20,12 @@ namespace LoanDeductionPrediction.API.Controllers
             _applicationService = applicationService;
         }
 
-        // =========================================================
+        
         // BORROWER - SUBMIT LOAN APPLICATION
         // POST: api/BorrowerLoanApplication
-        // =========================================================
+        
         [AllowAnonymous]
-[HttpPost]
+        [HttpPost]
         public async Task<IActionResult> SubmitApplication(
             [FromBody] CreateBorrowerLoanApplicationRequest request)
         {
@@ -53,10 +53,10 @@ namespace LoanDeductionPrediction.API.Controllers
             }
         }
 
-        // =========================================================
+        
         // LOAN OFFICER - VIEW PENDING APPLICATIONS
         // GET: api/BorrowerLoanApplication/pending
-        // =========================================================
+        
         [HttpGet("pending")]
         [Authorize(Roles = "LoanOfficer")]
         public async Task<IActionResult> GetPendingApplications()
@@ -65,10 +65,10 @@ namespace LoanDeductionPrediction.API.Controllers
             return Ok(applications);
         }
 
-        // =========================================================
+        
         // LOAN OFFICER - VIEW ONE APPLICATION
         // GET: api/BorrowerLoanApplication/{id}
-        // =========================================================
+        
         [HttpGet("{id:int}")]
         [Authorize(Roles = "LoanOfficer")]
         public async Task<IActionResult> GetById(int id)
@@ -86,10 +86,10 @@ namespace LoanDeductionPrediction.API.Controllers
             return Ok(application);
         }
 
-        // =========================================================
+        
         // BORROWER - VIEW MY APPLICATIONS
         // GET: api/BorrowerLoanApplication/my
-        // =========================================================
+        
         [HttpGet("my")]
         [Authorize(Roles = "Borrower")]
         public async Task<IActionResult> GetMyApplications()
@@ -115,10 +115,10 @@ namespace LoanDeductionPrediction.API.Controllers
             }
         }
 
-        // =========================================================
+        
         // LOAN OFFICER - ACCEPT APPLICATION
         // POST: api/BorrowerLoanApplication/{id}/accept
-        // =========================================================
+        
         [HttpPost("{id:int}/accept")]
         [Authorize(Roles = "LoanOfficer")]
         public async Task<IActionResult> AcceptApplication(
@@ -159,10 +159,10 @@ namespace LoanDeductionPrediction.API.Controllers
             }
         }
 
-        // =========================================================
+        
         // LOAN OFFICER - REJECT APPLICATION
         // POST: api/BorrowerLoanApplication/{id}/reject
-        // =========================================================
+        
         [HttpPost("{id:int}/reject")]
         [Authorize(Roles = "LoanOfficer")]
         public async Task<IActionResult> RejectApplication(

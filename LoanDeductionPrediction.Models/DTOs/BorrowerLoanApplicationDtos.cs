@@ -27,6 +27,8 @@ namespace LoanDeductionPrediction.Models.DTOs
         [StringLength(500, ErrorMessage = "Collateral details cannot exceed 500 characters.")]
         public string? CollateralDetails { get; set; }
 
+        public decimal? CollateralValue { get; set; }
+
         [Required(ErrorMessage = "Loan type is required.")]
         [StringLength(50, ErrorMessage = "Loan type cannot exceed 50 characters.")]
         public string LoanType { get; set; } = string.Empty;
@@ -38,6 +40,8 @@ namespace LoanDeductionPrediction.Models.DTOs
             "999999999999999999",
             ErrorMessage = "Requested amount must be greater than zero.")]
         public decimal RequestedAmount { get; set; }
+
+        public string? Remarks { get; set; }
     }
 
     public class BorrowerLoanApplicationDto

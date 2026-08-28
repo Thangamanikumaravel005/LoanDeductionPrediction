@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LoanDeductionPrediction.Models")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b248e04061002f6973cb05a065ba9de2642680c1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4c4b75a2bc9ecf2e178e94e578056f4fc82cf421")]
 [assembly: System.Reflection.AssemblyProductAttribute("LoanDeductionPrediction.Models")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LoanDeductionPrediction.Models")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

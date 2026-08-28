@@ -19,9 +19,9 @@ namespace LoanDeductionPrediction.API.Controllers
         }
 
 
-        // =========================================================
+        
         // LOAN OFFICER DASHBOARD
-        // =========================================================
+        
 
         // GET: api/Dashboard/loan-officer
 
@@ -53,9 +53,9 @@ namespace LoanDeductionPrediction.API.Controllers
         }
 
 
-        // =========================================================
+        
         // ADMIN DASHBOARD
-        // =========================================================
+        
 
         // GET: api/Dashboard/admin
 
@@ -72,9 +72,9 @@ namespace LoanDeductionPrediction.API.Controllers
         }
 
 
-        // =========================================================
+        
         // BORROWER DASHBOARD
-        // =========================================================
+        
 
         // GET: api/Dashboard/borrower
 

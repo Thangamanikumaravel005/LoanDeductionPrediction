@@ -205,8 +205,8 @@ public async Task<IActionResult> ApproveRequest(
         .ApproveRequestAsync(
             id,
             loanOfficerId,
-            request.InterestRate);
-
+            request.InterestRate,
+            request.TenureMonths);
                 if (!result)
                 {
                     return NotFound(new

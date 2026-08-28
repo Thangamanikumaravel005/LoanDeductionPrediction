@@ -7,28 +7,66 @@ namespace LoanDeductionPrediction.Services.Implementations
 {
     public class LoanRequestService : ILoanRequestService
     {
-        private readonly ILoanRequestRepository
-            _loanRequestRepository;
+        private readonly ILoanRequestRepository _loanRequestRepository;
+
+        
+        // LOAN ELIGIBILITY RULES
+        
+
+        // Salary based:
+        // Maximum eligible loan = 20 × monthly salary
+        private const decimal SalaryMultiplier = 20m;
+
+        // Collateral based:
+        // Maximum eligible loan = 70% of collateral value
+        private const decimal CollateralPercentage = 0.70m;
+
+
+        
+        // CONSTRUCTOR
+        
 
         public LoanRequestService(
             ILoanRequestRepository loanRequestRepository)
         {
-            _loanRequestRepository =
-                loanRequestRepository;
+            _loanRequestRepository = loanRequestRepository;
         }
 
 
-            
+        
         // CREATE LOAN REQUEST
-        // Borrower submits a loan request
+        // BORROWER
+        
+
+        public async Task<LoanRequest> CreateRequestAsync(
+            int borrowerId,
+            CreateLoanRequestDto request)
+        {
+            
+            // Validate borrower
             
 
-        public async Task<LoanRequest>
-            CreateRequestAsync(
-                int borrowerId,
-                CreateLoanRequestDto request)
-        {
+            if (borrowerId <= 0)
+            {
+                throw new ArgumentException(
+                    "Invalid borrower ID.");
+            }
+
+
+            
+            // Validate request
+            
+
+            if (request == null)
+            {
+                throw new ArgumentNullException(
+                    nameof(request));
+            }
+
+
+            
             // Validate requested amount
+            
 
             if (request.RequestedAmount <= 0)
             {
@@ -37,16 +75,101 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            // Validate tenure
+            
+            // Validate loan type
+            
 
-            if (request.TenureMonths <= 0)
+            if (string.IsNullOrWhiteSpace(request.LoanType))
             {
                 throw new ArgumentException(
-                    "Tenure must be greater than zero.");
+                    "Loan type is required.");
             }
 
 
-            // Create loan request
+            
+            // DETERMINE FINANCIAL BASIS
+            
+
+            bool hasSalary =
+                request.MonthlySalary.HasValue &&
+                request.MonthlySalary.Value > 0;
+
+            bool hasCollateral =
+                request.CollateralValue.HasValue &&
+                request.CollateralValue.Value > 0;
+
+
+            
+            // Must provide one financial basis
+            
+
+            if (!hasSalary && !hasCollateral)
+            {
+                throw new ArgumentException(
+                    "Either monthly salary or collateral value must be provided.");
+            }
+
+
+            
+            // Cannot use both
+            
+
+            if (hasSalary && hasCollateral)
+            {
+                throw new ArgumentException(
+                    "Provide either monthly salary or collateral value, not both.");
+            }
+
+
+            decimal maximumEligibleAmount;
+
+
+            
+            // SALARY BASED LOAN
+            
+
+            if (hasSalary)
+            {
+                maximumEligibleAmount =
+                    request.MonthlySalary!.Value *
+                    SalaryMultiplier;
+            }
+
+
+            
+            // COLLATERAL BASED LOAN
+            
+
+            else
+            {
+                if (string.IsNullOrWhiteSpace(
+                    request.CollateralDetails))
+                {
+                    throw new ArgumentException(
+                        "Collateral details are required when applying using collateral.");
+                }
+
+                maximumEligibleAmount =
+                    request.CollateralValue!.Value *
+                    CollateralPercentage;
+            }
+
+
+            
+            // CHECK REQUESTED AMOUNT
+            
+
+            if (request.RequestedAmount >
+                maximumEligibleAmount)
+            {
+                throw new ArgumentException(
+                    $"Requested amount exceeds the maximum eligible loan amount of {maximumEligibleAmount:0.00}.");
+            }
+
+
+            
+            // CREATE LOAN REQUEST
+            
 
             var loanRequest = new LoanRequest
             {
@@ -55,22 +178,49 @@ namespace LoanDeductionPrediction.Services.Implementations
                 RequestedAmount =
                     request.RequestedAmount,
 
-                TenureMonths =
-                    request.TenureMonths,
+                // Salary is stored only for salary-based request
+                MonthlySalary =
+                    hasSalary
+                        ? request.MonthlySalary
+                        : null,
 
+                // Collateral is stored only for
+                // collateral-based request
+                CollateralDetails =
+                    hasCollateral
+                        ? request.CollateralDetails!.Trim()
+                        : null,
+
+                CollateralValue =
+                    hasCollateral
+                        ? request.CollateralValue
+                        : null,
+
+                LoanType =
+                    request.LoanType.Trim(),
+
+                // Loan Officer decides these values
+                InterestRate = null,
+
+                TenureMonths = null,
+
+                // New request starts as PENDING
                 Status = "PENDING",
 
                 RequestedAt =
                     DateTime.UtcNow,
 
                 Remarks =
-                    string.IsNullOrWhiteSpace(request.Remarks)
+                    string.IsNullOrWhiteSpace(
+                        request.Remarks)
                         ? null
                         : request.Remarks.Trim()
             };
 
 
-            // Save request
+            
+            // SAVE
+            
 
             await _loanRequestRepository
                 .AddAsync(loanRequest);
@@ -83,24 +233,31 @@ namespace LoanDeductionPrediction.Services.Implementations
         }
 
 
-            
+        
         // GET MY REQUESTS
-        // Borrower can view their own loan requests
-            
+        // BORROWER
+        
 
         public async Task<List<LoanRequest>>
             GetMyRequestsAsync(
                 int borrowerId)
         {
+            if (borrowerId <= 0)
+            {
+                throw new ArgumentException(
+                    "Invalid borrower ID.");
+            }
+
             return await _loanRequestRepository
-                .GetByBorrowerIdAsync(borrowerId);
+                .GetByBorrowerIdAsync(
+                    borrowerId);
         }
 
 
-            
+        
         // GET PENDING REQUESTS
-        // Loan Officer can view pending requests
-            
+        // LOAN OFFICER
+        
 
         public async Task<List<LoanRequest>>
             GetPendingRequestsAsync()
@@ -110,38 +267,54 @@ namespace LoanDeductionPrediction.Services.Implementations
         }
 
 
-            
+        
         // GET REQUEST BY ID
-            
+        
 
         public async Task<LoanRequest?>
             GetByIdAsync(
                 int loanRequestId)
         {
+            if (loanRequestId <= 0)
+            {
+                return null;
+            }
+
             return await _loanRequestRepository
-                .GetByIdAsync(loanRequestId);
+                .GetByIdAsync(
+                    loanRequestId);
         }
 
 
-            
+        
         // APPROVE LOAN REQUEST
-        // Loan Officer determines the interest rate
-            
+        // LOAN OFFICER
+        //
+        // Loan Officer decides:
+        // - Interest rate
+        // - Tenure
+        
 
         public async Task<bool>
             ApproveRequestAsync(
                 int loanRequestId,
                 int loanOfficerId,
-                decimal interestRate)
+                decimal interestRate,
+                int tenureMonths)
         {
-            // Get loan request
+            
+            // Get request
+            
 
             var request =
                 await _loanRequestRepository
-                    .GetByIdAsync(loanRequestId);
+                    .GetByIdAsync(
+                        loanRequestId);
 
 
-            // Request doesn't exist
+            
+            // Request not found
+            
 
             if (request == null)
             {
@@ -149,50 +322,78 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
+            
             // Only PENDING requests can be approved
+            
 
-            if (request.Status != "PENDING")
+            if (!string.Equals(
+                request.Status,
+                "PENDING",
+                StringComparison.OrdinalIgnoreCase))
             {
                 throw new InvalidOperationException(
                     "Only pending loan requests can be approved.");
             }
 
 
-            // Validate interest rate
+            
+            // Validate Loan Officer
+            
 
-            if (interestRate < 0 ||
-                interestRate > 100)
+            if (loanOfficerId <= 0)
             {
                 throw new ArgumentException(
-                    "Interest rate must be between 0 and 100.");
+                    "Invalid loan officer ID.");
             }
 
 
-            // Loan Officer determines the interest rate
+            
+            // Validate interest rate
+            
+
+            if (interestRate <= 0 ||
+                interestRate > 100)
+            {
+                throw new ArgumentException(
+                    "Interest rate must be greater than 0 and not more than 100.");
+            }
+
+
+            
+            // Validate tenure
+            
+
+            if (tenureMonths <= 0 ||
+                tenureMonths > 360)
+            {
+                throw new ArgumentException(
+                    "Tenure must be between 1 and 360 months.");
+            }
+
+
+            
+            // Store approval information
+            
 
             request.InterestRate =
                 interestRate;
 
-
-            // Change status
+            request.TenureMonths =
+                tenureMonths;
 
             request.Status =
                 "APPROVED";
 
-
-            // Store the Loan Officer who approved it
-
             request.ReviewedByLoanOfficerId =
                 loanOfficerId;
-
-
-            // Store approval date
 
             request.ReviewedAt =
                 DateTime.UtcNow;
 
 
-            // Save changes
+            
+            // Save
+            
 
             await _loanRequestRepository
                 .SaveChangesAsync();
@@ -202,10 +403,10 @@ namespace LoanDeductionPrediction.Services.Implementations
         }
 
 
-            
+        
         // REJECT LOAN REQUEST
-        // Loan Officer rejects the request
-            
+        // LOAN OFFICER
+        
 
         public async Task<bool>
             RejectRequestAsync(
@@ -213,14 +414,19 @@ namespace LoanDeductionPrediction.Services.Implementations
                 int loanOfficerId,
                 string? remarks)
         {
-            // Get loan request
+            
+            // Get request
+            
 
             var request =
                 await _loanRequestRepository
-                    .GetByIdAsync(loanRequestId);
+                    .GetByIdAsync(
+                        loanRequestId);
 
 
-            // Request doesn't exist
+            
+            // Request not found
+            
 
             if (request == null)
             {
@@ -228,43 +434,58 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
+            
             // Only PENDING requests can be rejected
+            
 
-            if (request.Status != "PENDING")
+            if (!string.Equals(
+                request.Status,
+                "PENDING",
+                StringComparison.OrdinalIgnoreCase))
             {
                 throw new InvalidOperationException(
                     "Only pending loan requests can be rejected.");
             }
 
 
-            // Change status
+            
+            // Validate Loan Officer
+            
+
+            if (loanOfficerId <= 0)
+            {
+                throw new ArgumentException(
+                    "Invalid loan officer ID.");
+            }
+
+
+            
+            // Reject request
+            
 
             request.Status =
                 "REJECTED";
 
-
-            // Store Loan Officer ID
-
             request.ReviewedByLoanOfficerId =
                 loanOfficerId;
-
-
-            // Store rejection date
 
             request.ReviewedAt =
                 DateTime.UtcNow;
 
 
-            // Store rejection remarks
+            
+            // Save rejection remarks
+            
 
-            if (!string.IsNullOrWhiteSpace(remarks))
-            {
-                request.Remarks =
-                    remarks.Trim();
-            }
+            request.Remarks =
+                string.IsNullOrWhiteSpace(remarks)
+                    ? "Loan request rejected."
+                    : remarks.Trim();
 
 
-            // Save changes
+            
+            // Save
+            
 
             await _loanRequestRepository
                 .SaveChangesAsync();
