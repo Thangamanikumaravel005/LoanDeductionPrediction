@@ -25,7 +25,8 @@ namespace LoanDeductionPrediction.Repositories.Implementations
             return await _context.LoanAccounts
                 .AsNoTracking()
                 .FirstOrDefaultAsync(l =>
-                    l.LoanId == loanId);
+                    l.LoanId == loanId &&
+                    l.Status != "DELETED");
         }
 
 
@@ -37,6 +38,8 @@ namespace LoanDeductionPrediction.Repositories.Implementations
         {
             return await _context.LoanAccounts
                 .AsNoTracking()
+                .Where(l =>
+                    l.Status != "DELETED")
                 .OrderByDescending(l => l.LoanId)
                 .ToListAsync();
         }
@@ -52,7 +55,8 @@ namespace LoanDeductionPrediction.Repositories.Implementations
             return await _context.LoanAccounts
                 .AsNoTracking()
                 .Where(l =>
-                    l.BorrowerId == borrowerId)
+                    l.BorrowerId == borrowerId &&
+                    l.Status != "DELETED")
                 .OrderByDescending(l => l.LoanId)
                 .ToListAsync();
         }
@@ -63,12 +67,14 @@ namespace LoanDeductionPrediction.Repositories.Implementations
         // =========================================================
 
         public async Task<List<LoanAccount>>
-            GetByLoanOfficerIdAsync(int loanOfficerId)
+            GetByLoanOfficerIdAsync(
+                int loanOfficerId)
         {
             return await _context.LoanAccounts
                 .AsNoTracking()
                 .Where(l =>
-                    l.LoanOfficerId == loanOfficerId)
+                    l.LoanOfficerId == loanOfficerId &&
+                    l.Status != "DELETED")
                 .OrderByDescending(l => l.LoanId)
                 .ToListAsync();
         }
@@ -98,97 +104,7 @@ namespace LoanDeductionPrediction.Repositories.Implementations
         {
             _context.LoanAccounts.Update(loan);
 
-            await Task.CompletedTask;
-        }
-
-
-        // =========================================================
-        // DELETE LOAN + STORE HISTORY
-        // =========================================================
-
-        public async Task<bool> DeleteAsync(
-            int loanId)
-        {
-            // Find the loan
-            var loan = await _context.LoanAccounts
-                .FirstOrDefaultAsync(l =>
-                    l.LoanId == loanId);
-
-            // Loan does not exist
-            if (loan == null)
-            {
-                return false;
-            }
-
-
-            // =====================================================
-            // CREATE LOAN HISTORY BEFORE DELETE
-            // =====================================================
-
-            var history = new LoanHistory
-            {
-                OriginalLoanId =
-                    loan.LoanId,
-
-                BorrowerId =
-                    loan.BorrowerId,
-
-                LoanOfficerId =
-                    loan.LoanOfficerId,
-
-                PrincipalAmount =
-                    loan.PrincipalAmount,
-
-                InterestRate =
-                    loan.InterestRate,
-
-                TenureMonths =
-                    loan.TenureMonths,
-
-                StartDate =
-                    loan.StartDate,
-
-                EndDate =
-                    loan.EndDate,
-
-                OutstandingAmount =
-                    loan.OutstandingAmount,
-
-                Status =
-                    loan.Status,
-
-                CreatedAt =
-                    loan.CreatedAt,
-
-                DeletedAt =
-                    DateTime.UtcNow
-            };
-
-
-            // =====================================================
-            // ADD HISTORY
-            // =====================================================
-
-            await _context.LoanHistories
-                .AddAsync(history);
-
-
-            // =====================================================
-            // DELETE ORIGINAL LOAN
-            // =====================================================
-
-            _context.LoanAccounts
-                .Remove(loan);
-
-
-            // =====================================================
-            // SAVE BOTH OPERATIONS
-            // =====================================================
-
             await _context.SaveChangesAsync();
-
-
-            return true;
         }
     }
 }

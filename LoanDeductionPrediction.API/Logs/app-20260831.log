@@ -8859,3 +8859,475 @@ END
 2026-08-31 13:53:16.316 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 335.7577 ms
 2026-08-31 13:53:16.347 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 506.4229ms
 2026-08-31 14:07:07.979 +05:30 [INF] Application is shutting down...
+2026-08-31 14:07:57.383 +05:30 [WRN] No store type was specified for the decimal property 'CollateralValue' on entity type 'BorrowerLoanApplication'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-08-31 14:07:57.782 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-08-31 14:07:57.795 +05:30 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2026-08-31 14:07:57.839 +05:30 [INF] Executed DbCommand (40ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2026-08-31 14:07:57.922 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2026-08-31 14:07:57.934 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-08-31 14:07:57.938 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-08-31 14:07:57.966 +05:30 [INF] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-08-31 14:07:57.973 +05:30 [INF] No migrations were applied. The database is already up to date.
+2026-08-31 14:07:58.004 +05:30 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2026-08-31 14:07:58.268 +05:30 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]
+        WHERE [u].[Role] = N'Admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-08-31 14:07:58.370 +05:30 [INF] User profile is available. Using 'C:\Users\thang\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-08-31 14:07:58.383 +05:30 [INF] Payment Behavior Background Service is disabled via configuration. Skipping hourly overdue EMI processing.
+2026-08-31 14:07:58.452 +05:30 [INF] Now listening on: http://localhost:5082
+2026-08-31 14:07:58.454 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-08-31 14:07:58.455 +05:30 [INF] Hosting environment: Development
+2026-08-31 14:07:58.456 +05:30 [INF] Content root path: C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API
+2026-08-31 14:08:06.218 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/v1/swagger.json - null null
+2026-08-31 14:08:06.700 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 387.5111 ms
+2026-08-31 14:08:06.753 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 537.8653ms
+2026-08-31 14:08:09.396 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.html - null null
+2026-08-31 14:08:09.585 +05:30 [INF] HTTP GET /swagger/index.html responded 304 in 170.2945 ms
+2026-08-31 14:08:09.603 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.html - 304 null null 206.8239ms
+2026-08-31 14:08:09.640 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.css - null null
+2026-08-31 14:08:09.640 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui.css - null null
+2026-08-31 14:08:09.647 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-bundle.js - null null
+2026-08-31 14:08:09.647 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.js - null null
+2026-08-31 14:08:09.649 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-standalone-preset.js - null null
+2026-08-31 14:08:09.700 +05:30 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 16.4679 ms
+2026-08-31 14:08:09.700 +05:30 [INF] HTTP GET /swagger/index.css responded 304 in 36.4537 ms
+2026-08-31 14:08:09.712 +05:30 [INF] HTTP GET /swagger/index.js responded 304 in 1.0156 ms
+2026-08-31 14:08:09.736 +05:30 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 37.3444 ms
+2026-08-31 14:08:09.750 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui.css - 304 null null 109.992ms
+2026-08-31 14:08:09.758 +05:30 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 37.3456 ms
+2026-08-31 14:08:09.766 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.css - 304 null null 125.4724ms
+2026-08-31 14:08:09.770 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.js - 304 null null 122.745ms
+2026-08-31 14:08:09.785 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-bundle.js - 304 null null 138.5084ms
+2026-08-31 14:08:09.836 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-standalone-preset.js - 304 null null 186.7198ms
+2026-08-31 14:08:10.372 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/v1/swagger.json - null null
+2026-08-31 14:08:10.451 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 55.9177 ms
+2026-08-31 14:08:10.606 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 233.7877ms
+2026-08-31 14:13:59.867 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/Auth/login - application/json 64
+2026-08-31 14:13:59.914 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-08-31 14:13:59.942 +05:30 [INF] CORS policy execution successful.
+2026-08-31 14:14:00.085 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-08-31 14:14:00.137 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoanDeductionPrediction.Models.DTOs.LoginRequest) on controller LoanDeductionPrediction.API.Controllers.AuthController (LoanDeductionPrediction.API).
+2026-08-31 14:14:00.526 +05:30 [WRN] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2026-08-31 14:14:00.984 +05:30 [INF] Executed DbCommand (114ms) [Parameters=[@email='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @email
+2026-08-31 14:14:02.202 +05:30 [INF] Executed DbCommand (106ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime2), @p4='?' (Size = 500), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([CreatedAt], [ExpiresAt], [IsRevoked], [RevokedAt], [Token], [UserId])
+OUTPUT INSERTED.[RefreshTokenId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2026-08-31 14:14:02.353 +05:30 [INF] Executing OkObjectResult, writing value of type 'LoanDeductionPrediction.Models.DTOs.LoginResponse'.
+2026-08-31 14:14:02.405 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API) in 2252.2324ms
+2026-08-31 14:14:02.423 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-08-31 14:14:02.447 +05:30 [INF] HTTP POST /api/Auth/login responded 200 in 2534.2056 ms
+2026-08-31 14:14:02.481 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/Auth/login - 200 null application/json; charset=utf-8 2614.0491ms
+2026-08-31 14:14:23.904 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/api/User - null null
+2026-08-31 14:14:24.078 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.UserController.GetUsers (LoanDeductionPrediction.API)'
+2026-08-31 14:14:24.100 +05:30 [INF] Route matched with {action = "GetUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUsers() on controller LoanDeductionPrediction.API.Controllers.UserController (LoanDeductionPrediction.API).
+2026-08-31 14:14:24.431 +05:30 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserId], [u].[FullName], [u].[Email], [u].[Role], [u].[IsActive], [u].[CreatedAt]
+FROM [Users] AS [u]
+ORDER BY [u].[UserId]
+2026-08-31 14:14:24.464 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType13`6[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], LoanDeductionPrediction.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-08-31 14:14:24.503 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.UserController.GetUsers (LoanDeductionPrediction.API) in 388.2718ms
+2026-08-31 14:14:24.509 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.UserController.GetUsers (LoanDeductionPrediction.API)'
+2026-08-31 14:14:24.514 +05:30 [INF] HTTP GET /api/User responded 200 in 540.8152 ms
+2026-08-31 14:14:24.519 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/api/User - 200 null application/json; charset=utf-8 614.2438ms
+2026-08-31 14:14:39.469 +05:30 [INF] Request starting HTTP/1.1 DELETE http://localhost:5082/api/User/8 - null null
+2026-08-31 14:14:39.511 +05:30 [INF] CORS policy execution successful.
+2026-08-31 14:14:39.546 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.UserController.DeleteUser (LoanDeductionPrediction.API)'
+2026-08-31 14:14:39.576 +05:30 [INF] Route matched with {action = "DeleteUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteUser(Int32) on controller LoanDeductionPrediction.API.Controllers.UserController (LoanDeductionPrediction.API).
+2026-08-31 14:14:39.759 +05:30 [INF] Executed DbCommand (76ms) [Parameters=[@id='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[UserId] = @id
+2026-08-31 14:14:39.834 +05:30 [INF] Executed DbCommand (28ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [IsActive] = @p0
+OUTPUT 1
+WHERE [UserId] = @p1;
+2026-08-31 14:14:39.861 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-08-31 14:14:39.934 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.UserController.DeleteUser (LoanDeductionPrediction.API) in 350.9783ms
+2026-08-31 14:14:39.952 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.UserController.DeleteUser (LoanDeductionPrediction.API)'
+2026-08-31 14:14:39.964 +05:30 [INF] HTTP DELETE /api/User/8 responded 200 in 454.7590 ms
+2026-08-31 14:14:39.978 +05:30 [INF] Request finished HTTP/1.1 DELETE http://localhost:5082/api/User/8 - 200 null application/json; charset=utf-8 508.5061ms
+2026-08-31 14:14:53.271 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/api/User - null null
+2026-08-31 14:14:53.280 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.UserController.GetUsers (LoanDeductionPrediction.API)'
+2026-08-31 14:14:53.283 +05:30 [INF] Route matched with {action = "GetUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUsers() on controller LoanDeductionPrediction.API.Controllers.UserController (LoanDeductionPrediction.API).
+2026-08-31 14:14:53.367 +05:30 [INF] Executed DbCommand (37ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserId], [u].[FullName], [u].[Email], [u].[Role], [u].[IsActive], [u].[CreatedAt]
+FROM [Users] AS [u]
+ORDER BY [u].[UserId]
+2026-08-31 14:14:53.403 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType13`6[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], LoanDeductionPrediction.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-08-31 14:14:53.416 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.UserController.GetUsers (LoanDeductionPrediction.API) in 106.2684ms
+2026-08-31 14:14:53.432 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.UserController.GetUsers (LoanDeductionPrediction.API)'
+2026-08-31 14:14:53.439 +05:30 [INF] HTTP GET /api/User responded 200 in 163.0685 ms
+2026-08-31 14:14:53.456 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/api/User - 200 null application/json; charset=utf-8 185.7181ms
+2026-08-31 14:16:09.997 +05:30 [INF] Request starting HTTP/1.1 DELETE http://localhost:5082/api/Loan/6 - null null
+2026-08-31 14:16:10.155 +05:30 [INF] CORS policy execution successful.
+2026-08-31 14:16:10.166 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.LoanController.DeleteLoan (LoanDeductionPrediction.API)'
+2026-08-31 14:16:10.189 +05:30 [INF] Route matched with {action = "DeleteLoan", controller = "Loan"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteLoan(Int32) on controller LoanDeductionPrediction.API.Controllers.LoanController (LoanDeductionPrediction.API).
+2026-08-31 14:16:10.265 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@loanId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LoanId], [l].[BorrowerId], [l].[CreatedAt], [l].[EMIAmount], [l].[EndDate], [l].[InterestRate], [l].[LoanOfficerId], [l].[OutstandingAmount], [l].[PrincipalAmount], [l].[StartDate], [l].[Status], [l].[TenureMonths]
+FROM [LoanAccounts] AS [l]
+WHERE [l].[LoanId] = @loanId
+2026-08-31 14:16:10.322 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@loanId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LoanId], [l].[BorrowerId], [l].[CreatedAt], [l].[EMIAmount], [l].[EndDate], [l].[InterestRate], [l].[LoanOfficerId], [l].[OutstandingAmount], [l].[PrincipalAmount], [l].[StartDate], [l].[Status], [l].[TenureMonths]
+FROM [LoanAccounts] AS [l]
+WHERE [l].[LoanId] = @loanId
+2026-08-31 14:16:10.657 +05:30 [INF] Executed DbCommand (115ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime2), @p3='?' (DbType = DateTime2), @p4='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p5='?' (DbType = Date), @p6='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p7='?' (DbType = Int32), @p8='?' (DbType = Int32), @p9='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p10='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p11='?' (DbType = Date), @p12='?' (Size = 50), @p13='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DELETE FROM [LoanAccounts]
+OUTPUT 1
+WHERE [LoanId] = @p0;
+INSERT INTO [LoanHistories] ([BorrowerId], [CreatedAt], [DeletedAt], [EmiAmount], [EndDate], [InterestRate], [LoanOfficerId], [OriginalLoanId], [OutstandingAmount], [PrincipalAmount], [StartDate], [Status], [TenureMonths])
+OUTPUT INSERTED.[LoanHistoryId]
+VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13);
+2026-08-31 14:16:10.793 +05:30 [ERR] An exception occurred in the database while saving changes for context type 'LoanDeductionPrediction.Repositories.Entities.LoanDeductionDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The DELETE statement conflicted with the REFERENCE constraint "FK_PaymentBehaviorLogs_RepaymentSchedules_ScheduleId". The conflict occurred in database "LoanDeductionPredictionDb", table "dbo.PaymentBehaviorLogs", column 'ScheduleId'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetWithRowsAffectedOnlyAsync(Int32 commandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:7deee918-8a1a-46ef-b231-8b5ca6bd742e
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The DELETE statement conflicted with the REFERENCE constraint "FK_PaymentBehaviorLogs_RepaymentSchedules_ScheduleId". The conflict occurred in database "LoanDeductionPredictionDb", table "dbo.PaymentBehaviorLogs", column 'ScheduleId'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetWithRowsAffectedOnlyAsync(Int32 commandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:7deee918-8a1a-46ef-b231-8b5ca6bd742e
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2026-08-31 14:16:10.826 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.LoanController.DeleteLoan (LoanDeductionPrediction.API) in 624.4292ms
+2026-08-31 14:16:10.833 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.LoanController.DeleteLoan (LoanDeductionPrediction.API)'
+2026-08-31 14:16:10.916 +05:30 [ERR] Unhandled exception occurred.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The DELETE statement conflicted with the REFERENCE constraint "FK_PaymentBehaviorLogs_RepaymentSchedules_ScheduleId". The conflict occurred in database "LoanDeductionPredictionDb", table "dbo.PaymentBehaviorLogs", column 'ScheduleId'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetWithRowsAffectedOnlyAsync(Int32 commandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:7deee918-8a1a-46ef-b231-8b5ca6bd742e
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at LoanDeductionPrediction.Repositories.Implementations.LoanRepository.DeleteAsync(Int32 loanId) in C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Repositories\Implementations\LoanRepository.cs:line 188
+   at LoanDeductionPrediction.Services.Implementations.LoanService.DeleteAsync(Int32 loanId) in C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Services\Implementations\LoanService.cs:line 352
+   at LoanDeductionPrediction.API.Controllers.LoanController.DeleteLoan(Int32 id) in C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API\Controllers\LoanController.cs:line 100
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at LoanDeductionPrediction.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API\Middleware\GlobalExceptionMiddleware.cs:line 23
+2026-08-31 14:16:11.235 +05:30 [ERR] HTTP DELETE /api/Loan/6 responded 500 in 1080.5631 ms
+2026-08-31 14:16:11.254 +05:30 [INF] Request finished HTTP/1.1 DELETE http://localhost:5082/api/Loan/6 - 500 null application/json 1258.8368ms
+2026-08-31 14:24:25.648 +05:30 [INF] Application is shutting down...
+2026-08-31 14:24:50.412 +05:30 [WRN] No store type was specified for the decimal property 'CollateralValue' on entity type 'BorrowerLoanApplication'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-08-31 14:24:50.938 +05:30 [INF] Executed DbCommand (28ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-08-31 14:24:50.972 +05:30 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2026-08-31 14:24:51.020 +05:30 [INF] Executed DbCommand (43ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2026-08-31 14:24:51.114 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2026-08-31 14:24:51.127 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-08-31 14:24:51.136 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-08-31 14:24:51.165 +05:30 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-08-31 14:24:51.176 +05:30 [INF] No migrations were applied. The database is already up to date.
+2026-08-31 14:24:51.195 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2026-08-31 14:24:51.497 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]
+        WHERE [u].[Role] = N'Admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-08-31 14:24:51.603 +05:30 [INF] User profile is available. Using 'C:\Users\thang\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-08-31 14:24:51.618 +05:30 [INF] Payment Behavior Background Service is disabled via configuration. Skipping hourly overdue EMI processing.
+2026-08-31 14:24:51.696 +05:30 [INF] Now listening on: http://localhost:5082
+2026-08-31 14:24:51.699 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-08-31 14:24:51.700 +05:30 [INF] Hosting environment: Development
+2026-08-31 14:24:51.702 +05:30 [INF] Content root path: C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API
+2026-08-31 14:25:17.179 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.html - null null
+2026-08-31 14:25:17.692 +05:30 [INF] HTTP GET /swagger/index.html responded 304 in 174.7872 ms
+2026-08-31 14:25:17.721 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.html - 304 null null 543.101ms
+2026-08-31 14:25:17.758 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui.css - null null
+2026-08-31 14:25:17.764 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.js - null null
+2026-08-31 14:25:17.765 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-bundle.js - null null
+2026-08-31 14:25:17.764 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-standalone-preset.js - null null
+2026-08-31 14:25:18.085 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.css - null null
+2026-08-31 14:25:18.330 +05:30 [INF] HTTP GET /swagger/index.js responded 304 in 7.4889 ms
+2026-08-31 14:25:18.342 +05:30 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 154.4564 ms
+2026-08-31 14:25:18.370 +05:30 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 11.9300 ms
+2026-08-31 14:25:18.377 +05:30 [INF] HTTP GET /swagger/index.css responded 304 in 0.3392 ms
+2026-08-31 14:25:18.387 +05:30 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 35.3207 ms
+2026-08-31 14:25:18.409 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.js - 304 null null 644.2133ms
+2026-08-31 14:25:18.418 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui.css - 304 null null 660.7904ms
+2026-08-31 14:25:19.601 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-standalone-preset.js - 304 null null 1837.0491ms
+2026-08-31 14:25:19.607 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.css - 304 null null 1521.7926ms
+2026-08-31 14:25:19.620 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-bundle.js - 304 null null 1854.7712ms
+2026-08-31 14:25:19.998 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/v1/swagger.json - null null
+2026-08-31 14:25:20.353 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 347.3293 ms
+2026-08-31 14:25:20.367 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 368.6248ms
+2026-08-31 14:26:03.705 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/Auth/login - application/json 64
+2026-08-31 14:26:03.741 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-08-31 14:26:03.754 +05:30 [INF] CORS policy execution successful.
+2026-08-31 14:26:03.970 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-08-31 14:26:04.551 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoanDeductionPrediction.Models.DTOs.LoginRequest) on controller LoanDeductionPrediction.API.Controllers.AuthController (LoanDeductionPrediction.API).
+2026-08-31 14:26:05.696 +05:30 [WRN] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2026-08-31 14:26:24.187 +05:30 [INF] Executed DbCommand (17,767ms) [Parameters=[@email='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @email
+2026-08-31 14:26:29.244 +05:30 [INF] Executed DbCommand (3,524ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime2), @p4='?' (Size = 500), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([CreatedAt], [ExpiresAt], [IsRevoked], [RevokedAt], [Token], [UserId])
+OUTPUT INSERTED.[RefreshTokenId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2026-08-31 14:26:29.322 +05:30 [INF] Executing OkObjectResult, writing value of type 'LoanDeductionPrediction.Models.DTOs.LoginResponse'.
+2026-08-31 14:26:29.580 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API) in 24486.2612ms
+2026-08-31 14:26:29.592 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-08-31 14:26:29.801 +05:30 [INF] HTTP POST /api/Auth/login responded 200 in 26069.8306 ms
+2026-08-31 14:26:29.892 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/Auth/login - 200 null application/json; charset=utf-8 26187.4933ms
+2026-08-31 14:27:24.685 +05:30 [INF] Request starting HTTP/1.1 DELETE http://localhost:5082/api/Loan/7 - null null
+2026-08-31 14:27:24.806 +05:30 [INF] CORS policy execution successful.
+2026-08-31 14:27:25.016 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.LoanController.DeleteLoan (LoanDeductionPrediction.API)'
+2026-08-31 14:27:25.074 +05:30 [INF] Route matched with {action = "DeleteLoan", controller = "Loan"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteLoan(Int32) on controller LoanDeductionPrediction.API.Controllers.LoanController (LoanDeductionPrediction.API).
+2026-08-31 14:27:25.439 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@loanId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LoanId], [l].[BorrowerId], [l].[CreatedAt], [l].[EMIAmount], [l].[EndDate], [l].[InterestRate], [l].[LoanOfficerId], [l].[OutstandingAmount], [l].[PrincipalAmount], [l].[StartDate], [l].[Status], [l].[TenureMonths]
+FROM [LoanAccounts] AS [l]
+WHERE [l].[LoanId] = @loanId AND [l].[Status] <> N'DELETED'
+2026-08-31 14:27:25.676 +05:30 [INF] Executed DbCommand (20ms) [Parameters=[@p11='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p3='?' (DbType = Date), @p4='?' (Precision = 5) (Scale = 2) (DbType = Decimal), @p5='?' (DbType = Int32), @p6='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p7='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p8='?' (DbType = Date), @p9='?' (Size = 30), @p10='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [LoanAccounts] SET [BorrowerId] = @p0, [CreatedAt] = @p1, [EMIAmount] = @p2, [EndDate] = @p3, [InterestRate] = @p4, [LoanOfficerId] = @p5, [OutstandingAmount] = @p6, [PrincipalAmount] = @p7, [StartDate] = @p8, [Status] = @p9, [TenureMonths] = @p10
+OUTPUT 1
+WHERE [LoanId] = @p11;
+2026-08-31 14:27:25.687 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-08-31 14:27:25.714 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.LoanController.DeleteLoan (LoanDeductionPrediction.API) in 621.6258ms
+2026-08-31 14:27:25.723 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.LoanController.DeleteLoan (LoanDeductionPrediction.API)'
+2026-08-31 14:27:25.735 +05:30 [INF] HTTP DELETE /api/Loan/7 responded 200 in 930.7891 ms
+2026-08-31 14:27:25.851 +05:30 [INF] Request finished HTTP/1.1 DELETE http://localhost:5082/api/Loan/7 - 200 null application/json; charset=utf-8 1165.2406ms
+2026-08-31 14:31:26.686 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/api/User - null null
+2026-08-31 14:31:26.731 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.UserController.GetUsers (LoanDeductionPrediction.API)'
+2026-08-31 14:31:26.748 +05:30 [INF] Route matched with {action = "GetUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUsers() on controller LoanDeductionPrediction.API.Controllers.UserController (LoanDeductionPrediction.API).
+2026-08-31 14:31:26.893 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserId], [u].[FullName], [u].[Email], [u].[Role], [u].[IsActive], [u].[CreatedAt]
+FROM [Users] AS [u]
+ORDER BY [u].[UserId]
+2026-08-31 14:31:26.911 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType13`6[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], LoanDeductionPrediction.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-08-31 14:31:26.933 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.UserController.GetUsers (LoanDeductionPrediction.API) in 178.5859ms
+2026-08-31 14:31:26.936 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.UserController.GetUsers (LoanDeductionPrediction.API)'
+2026-08-31 14:31:26.944 +05:30 [INF] HTTP GET /api/User responded 200 in 229.3045 ms
+2026-08-31 14:31:26.952 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/api/User - 200 null application/json; charset=utf-8 266.6893ms
+2026-08-31 14:31:38.763 +05:30 [INF] Request starting HTTP/1.1 DELETE http://localhost:5082/api/Loan/3 - null null
+2026-08-31 14:31:38.794 +05:30 [INF] CORS policy execution successful.
+2026-08-31 14:31:38.807 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.LoanController.DeleteLoan (LoanDeductionPrediction.API)'
+2026-08-31 14:31:38.809 +05:30 [INF] Route matched with {action = "DeleteLoan", controller = "Loan"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteLoan(Int32) on controller LoanDeductionPrediction.API.Controllers.LoanController (LoanDeductionPrediction.API).
+2026-08-31 14:31:38.833 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@loanId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LoanId], [l].[BorrowerId], [l].[CreatedAt], [l].[EMIAmount], [l].[EndDate], [l].[InterestRate], [l].[LoanOfficerId], [l].[OutstandingAmount], [l].[PrincipalAmount], [l].[StartDate], [l].[Status], [l].[TenureMonths]
+FROM [LoanAccounts] AS [l]
+WHERE [l].[LoanId] = @loanId AND [l].[Status] <> N'DELETED'
+2026-08-31 14:31:38.851 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@p11='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p3='?' (DbType = Date), @p4='?' (Precision = 5) (Scale = 2) (DbType = Decimal), @p5='?' (DbType = Int32), @p6='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p7='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p8='?' (DbType = Date), @p9='?' (Size = 30), @p10='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [LoanAccounts] SET [BorrowerId] = @p0, [CreatedAt] = @p1, [EMIAmount] = @p2, [EndDate] = @p3, [InterestRate] = @p4, [LoanOfficerId] = @p5, [OutstandingAmount] = @p6, [PrincipalAmount] = @p7, [StartDate] = @p8, [Status] = @p9, [TenureMonths] = @p10
+OUTPUT 1
+WHERE [LoanId] = @p11;
+2026-08-31 14:31:38.856 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-08-31 14:31:38.858 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.LoanController.DeleteLoan (LoanDeductionPrediction.API) in 44.5994ms
+2026-08-31 14:31:38.862 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.LoanController.DeleteLoan (LoanDeductionPrediction.API)'
+2026-08-31 14:31:38.865 +05:30 [INF] HTTP DELETE /api/Loan/3 responded 200 in 70.5749 ms
+2026-08-31 14:31:38.870 +05:30 [INF] Request finished HTTP/1.1 DELETE http://localhost:5082/api/Loan/3 - 200 null application/json; charset=utf-8 107.2569ms
+2026-08-31 14:53:28.453 +05:30 [INF] Request starting HTTP/1.1 DELETE http://localhost:5082/api/Loan/8 - null null
+2026-08-31 14:53:28.607 +05:30 [INF] CORS policy execution successful.
+2026-08-31 14:53:28.748 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.LoanController.DeleteLoan (LoanDeductionPrediction.API)'
+2026-08-31 14:53:28.916 +05:30 [INF] Route matched with {action = "DeleteLoan", controller = "Loan"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteLoan(Int32) on controller LoanDeductionPrediction.API.Controllers.LoanController (LoanDeductionPrediction.API).
+2026-08-31 14:53:29.369 +05:30 [INF] Executed DbCommand (19ms) [Parameters=[@loanId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LoanId], [l].[BorrowerId], [l].[CreatedAt], [l].[EMIAmount], [l].[EndDate], [l].[InterestRate], [l].[LoanOfficerId], [l].[OutstandingAmount], [l].[PrincipalAmount], [l].[StartDate], [l].[Status], [l].[TenureMonths]
+FROM [LoanAccounts] AS [l]
+WHERE [l].[LoanId] = @loanId AND [l].[Status] <> N'DELETED'
+2026-08-31 14:53:29.514 +05:30 [INF] Executed DbCommand (25ms) [Parameters=[@p11='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p3='?' (DbType = Date), @p4='?' (Precision = 5) (Scale = 2) (DbType = Decimal), @p5='?' (DbType = Int32), @p6='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p7='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p8='?' (DbType = Date), @p9='?' (Size = 30), @p10='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [LoanAccounts] SET [BorrowerId] = @p0, [CreatedAt] = @p1, [EMIAmount] = @p2, [EndDate] = @p3, [InterestRate] = @p4, [LoanOfficerId] = @p5, [OutstandingAmount] = @p6, [PrincipalAmount] = @p7, [StartDate] = @p8, [Status] = @p9, [TenureMonths] = @p10
+OUTPUT 1
+WHERE [LoanId] = @p11;
+2026-08-31 14:53:29.540 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-08-31 14:53:29.560 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.LoanController.DeleteLoan (LoanDeductionPrediction.API) in 577.3726ms
+2026-08-31 14:53:29.564 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.LoanController.DeleteLoan (LoanDeductionPrediction.API)'
+2026-08-31 14:53:29.572 +05:30 [INF] HTTP DELETE /api/Loan/8 responded 200 in 1051.1489 ms
+2026-08-31 14:53:29.586 +05:30 [INF] Request finished HTTP/1.1 DELETE http://localhost:5082/api/Loan/8 - 200 null application/json; charset=utf-8 1152.8791ms
+2026-08-31 14:56:47.417 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/api/Loan - null null
+2026-08-31 14:56:48.166 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '31-08-2026 09:26:25', Current time (UTC): '31-08-2026 09:26:48'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2026-08-31 14:56:48.330 +05:30 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '31-08-2026 09:26:25', Current time (UTC): '31-08-2026 09:26:48'.
+2026-08-31 14:56:48.349 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|LoanOfficer)
+2026-08-31 14:56:48.382 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2026-08-31 14:56:48.384 +05:30 [INF] HTTP GET /api/Loan responded 401 in 530.3953 ms
+2026-08-31 14:56:48.392 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/api/Loan - 401 0 null 977.1394ms
+2026-08-31 14:57:00.017 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/api/Loan - null null
+2026-08-31 14:57:00.077 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '31-08-2026 09:26:25', Current time (UTC): '31-08-2026 09:27:00'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2026-08-31 14:57:00.089 +05:30 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '31-08-2026 09:26:25', Current time (UTC): '31-08-2026 09:27:00'.
+2026-08-31 14:57:00.093 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|LoanOfficer)
+2026-08-31 14:57:00.095 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2026-08-31 14:57:00.096 +05:30 [INF] HTTP GET /api/Loan responded 401 in 20.6552 ms
+2026-08-31 14:57:00.107 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/api/Loan - 401 0 null 89.7025ms
+2026-08-31 14:57:24.708 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/api/Loan - null null
+2026-08-31 14:57:24.725 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '31-08-2026 09:26:25', Current time (UTC): '31-08-2026 09:27:24'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2026-08-31 14:57:24.740 +05:30 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '31-08-2026 09:26:25', Current time (UTC): '31-08-2026 09:27:24'.
+2026-08-31 14:57:24.744 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|LoanOfficer)
+2026-08-31 14:57:24.749 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2026-08-31 14:57:24.756 +05:30 [INF] HTTP GET /api/Loan responded 401 in 32.3696 ms
+2026-08-31 14:57:24.762 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/api/Loan - 401 0 null 53.7443ms
+2026-08-31 14:57:43.063 +05:30 [INF] Application is shutting down...

@@ -4,8 +4,6 @@ namespace LoanDeductionPrediction.Repositories.Interfaces
 {
     public interface ILoanRepository
     {
-
-        Task<bool> DeleteAsync(int loanId);
         Task<LoanAccount?> GetByIdAsync(int loanId);
 
         Task<List<LoanAccount>> GetAllAsync();

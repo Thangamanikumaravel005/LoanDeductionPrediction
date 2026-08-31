@@ -406,3 +406,12 @@ User enters:
 ```text
 
 ###
+
+Migration:
+
+dotnet ef migrations add AddPayment --project LoanDeductionPrediction.Repositories --startup-project LoanDeductionPrediction.API
+
+SQl DB:
+
+dotnet ef database update --project LoanDeductionPrediction.Repositories --startup-project LoanDeductionPrediction.API
+

@@ -1,3 +1,4 @@
+// It convert the C# query into SQL query and execute it on the database server, returning the results as objects in C#.
 using Microsoft.EntityFrameworkCore;
 
 namespace LoanDeductionPrediction.Repositories.Entities
@@ -11,7 +12,8 @@ namespace LoanDeductionPrediction.Repositories.Entities
         }
 
         // ============================================================
-        // DbSets
+        // DbSets (It represents a collection of database entities allowed to be queried from the 
+        // database and manipulated in memory)
         // ============================================================
 
         public virtual DbSet<User> Users { get; set; }

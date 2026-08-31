@@ -342,16 +342,32 @@ namespace LoanDeductionPrediction.Services.Implementations
 
         public async Task<bool> DeleteAsync(int loanId)
 {
-    var loan = await _loanRepository.GetByIdAsync(loanId);
+    if (loanId <= 0)
+    {
+        throw new ArgumentException(
+            "Invalid loan ID.");
+    }
+
+    var loan =
+        await _loanRepository.GetByIdAsync(loanId);
 
     if (loan == null)
     {
         return false;
     }
 
-    return await _loanRepository.DeleteAsync(loanId);
-}
+    if (loan.Status == "DELETED")
+    {
+        throw new InvalidOperationException(
+            "Loan is already deleted.");
+    }
 
+    loan.Status = "DELETED";
+
+    await _loanRepository.UpdateAsync(loan);
+
+    return true;
+}
         
         // UPDATE LOAN STATUS
         
