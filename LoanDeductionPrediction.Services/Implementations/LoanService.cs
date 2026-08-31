@@ -340,6 +340,18 @@ namespace LoanDeductionPrediction.Services.Implementations
                 createdLoan);
         }
 
+        public async Task<bool> DeleteAsync(int loanId)
+{
+    var loan = await _loanRepository.GetByIdAsync(loanId);
+
+    if (loan == null)
+    {
+        return false;
+    }
+
+    return await _loanRepository.DeleteAsync(loanId);
+}
+
         
         // UPDATE LOAN STATUS
         

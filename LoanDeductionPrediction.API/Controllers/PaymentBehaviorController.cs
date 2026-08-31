@@ -73,21 +73,6 @@ namespace LoanDeductionPrediction.API.Controllers
         }
 
         // ============================================================
-        // RECORD BEHAVIOR FOR ONE SCHEDULE
-        // ============================================================
-
-        [HttpPost("record/{scheduleId:int}")]
-        public async Task<ActionResult<PaymentBehaviorLog>>
-            RecordBehavior(int scheduleId)
-        {
-            var result =
-                await _service.RecordBehaviorAsync(
-                    scheduleId);
-
-            return Ok(result);
-        }
-
-        // ============================================================
         // PROCESS OVERDUE / MISSED EMIs
         // ============================================================
 

@@ -86,6 +86,42 @@ namespace LoanDeductionPrediction.API.Controllers
             return Ok(loans);
         }
 
+        
+// ADMIN - DELETE LOAN
+// DELETE: api/Loan/{id}
+
+
+[HttpDelete("{id:int}")]
+[Authorize(Roles = "Admin,LoanOfficer")]
+public async Task<IActionResult> DeleteLoan(int id)
+{
+    try
+    {
+        var result = await _loanService.DeleteAsync(id);
+
+        if (!result)
+        {
+            return NotFound(new
+            {
+                message = "Loan not found."
+            });
+        }
+
+        return Ok(new
+        {
+            message =
+                "Loan deleted successfully and loan history preserved."
+        });
+    }
+    catch (InvalidOperationException ex)
+    {
+        return BadRequest(new
+        {
+            message = ex.Message
+        });
+    }
+}
+
         // GET: api/Loan/officer/{officerId} Admin and Loan Officer
         
         [HttpGet("officer/{officerId:int}")]
@@ -111,52 +147,6 @@ namespace LoanDeductionPrediction.API.Controllers
                     officerId);
 
             return Ok(loans);
-        }
-
-        
-        // POST: api/Loan Admin and Loan Officer
-
-        [HttpPost]
-        [Authorize(Roles = "Admin,LoanOfficer")]
-        public async Task<IActionResult> Create(
-            [FromBody] CreateLoanRequest request)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var role =
-                User.FindFirstValue(ClaimTypes.Role);
-
-            var currentUserId =
-                GetCurrentUserId();
-
-            // Loan Officer can create only loans assigned
-            // to themselves
-            if (role == "LoanOfficer" &&
-                currentUserId != request.LoanOfficerId)
-            {
-                return Forbid();
-            }
-
-            try
-            {
-                var loan =
-                    await _loanService.CreateAsync(request);
-
-                return CreatedAtAction(
-                    nameof(GetById),
-                    new { id = loan.LoanId },
-                    loan);
-            }
-            catch (ArgumentException ex)
-            {
-                return BadRequest(new
-                {
-                    message = ex.Message
-                });
-            }
         }
 
         

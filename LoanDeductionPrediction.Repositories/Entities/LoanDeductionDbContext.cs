@@ -10,12 +10,11 @@ namespace LoanDeductionPrediction.Repositories.Entities
         {
         }
 
-         
+        // ============================================================
         // DbSets
-         
-        public virtual DbSet<User> Users { get; set; }
+        // ============================================================
 
-        public virtual DbSet<LoanRequest> LoanRequests { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 
         public virtual DbSet<LoanAccount> LoanAccounts { get; set; }
 
@@ -26,32 +25,116 @@ namespace LoanDeductionPrediction.Repositories.Entities
         public virtual DbSet<RiskPrediction> RiskPredictions { get; set; }
 
         public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
- 
-        public virtual DbSet<BorrowerLoanApplication> BorrowerLoanApplications { get; set; }
 
-         
+        public virtual DbSet<Payment> Payments { get; set; }
+
+        public virtual DbSet<BorrowerLoanApplication>
+            BorrowerLoanApplications { get; set; }
+
+        public virtual DbSet<LoanHistory> LoanHistories { get; set; }
+
+
+        // ============================================================
         // Model Configuration
-         
+        // ============================================================
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(
+            ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<LoanRequest>()
-    .HasOne(x => x.Borrower)
-    .WithMany()
-    .HasForeignKey(x => x.BorrowerId)
-    .OnDelete(DeleteBehavior.Restrict);
 
-modelBuilder.Entity<LoanRequest>()
-    .HasOne(x => x.LoanOfficer)
-    .WithMany()
-    .HasForeignKey(x => x.ReviewedByLoanOfficerId)
-    .OnDelete(DeleteBehavior.Restrict);
+            // ========================================================
+            // LOAN HISTORY
+            // ========================================================
 
-             
+            modelBuilder.Entity<LoanHistory>(entity =>
+            {
+                entity.HasKey(e => e.LoanHistoryId);
+
+                entity.Property(e => e.PrincipalAmount)
+                    .HasPrecision(18, 2);
+
+                entity.Property(e => e.InterestRate)
+                    .HasPrecision(18, 2);
+
+                entity.Property(e => e.EmiAmount)
+                    .HasPrecision(18, 2);
+
+                entity.Property(e => e.OutstandingAmount)
+                    .HasPrecision(18, 2);
+
+                entity.Property(e => e.Status)
+                    .HasMaxLength(50);
+
+                entity.HasIndex(e => e.OriginalLoanId);
+            });
+
+
+            // ========================================================
+            // PAYMENT
+            // ========================================================
+
+            modelBuilder.Entity<Payment>(entity =>
+            {
+                entity.HasKey(e => e.PaymentId);
+
+                entity.ToTable("Payments");
+
+                entity.Property(e => e.PaymentId)
+                    .ValueGeneratedOnAdd();
+
+                entity.Property(e => e.Amount)
+                    .HasColumnType("decimal(18,2)")
+                    .IsRequired();
+
+                entity.Property(e => e.PaymentDate)
+                    .IsRequired();
+
+                entity.Property(e => e.PaymentStatus)
+                    .HasMaxLength(30)
+                    .IsRequired();
+
+                entity.Property(e => e.CreatedAt)
+                    .HasDefaultValueSql("(getdate())")
+                    .IsRequired();
+
+
+                // Payment -> RepaymentSchedule
+
+                entity.HasOne(e => e.Schedule)
+                    .WithMany()
+                    .HasForeignKey(e => e.ScheduleId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+
+                // Payment -> LoanAccount
+
+                entity.HasOne(e => e.Loan)
+                    .WithMany()
+                    .HasForeignKey(e => e.LoanId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+
+                // Payment -> Borrower/User
+
+                entity.HasOne(e => e.Borrower)
+                    .WithMany()
+                    .HasForeignKey(e => e.BorrowerId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+
+                entity.HasIndex(e => e.BorrowerId);
+
+                entity.HasIndex(e => e.LoanId);
+
+                entity.HasIndex(e => e.ScheduleId);
+            });
+
+
+            // ========================================================
             // USER
-
+            // ========================================================
 
             modelBuilder.Entity<User>(entity =>
             {
@@ -86,9 +169,10 @@ modelBuilder.Entity<LoanRequest>()
                     .IsRequired();
             });
 
-             
+
+            // ========================================================
             // LOAN ACCOUNT
-             
+            // ========================================================
 
             modelBuilder.Entity<LoanAccount>(entity =>
             {
@@ -133,26 +217,32 @@ modelBuilder.Entity<LoanRequest>()
                     .HasDefaultValueSql("(getdate())")
                     .IsRequired();
 
+
                 // Borrower relationship
+
                 entity.HasOne(e => e.Borrower)
                     .WithMany(e => e.LoanAccountBorrowers)
                     .HasForeignKey(e => e.BorrowerId)
                     .OnDelete(DeleteBehavior.NoAction);
 
+
                 // Loan Officer relationship
+
                 entity.HasOne(e => e.LoanOfficer)
                     .WithMany(e => e.LoanAccountLoanOfficers)
                     .HasForeignKey(e => e.LoanOfficerId)
                     .OnDelete(DeleteBehavior.NoAction);
+
 
                 entity.HasIndex(e => e.BorrowerId);
 
                 entity.HasIndex(e => e.LoanOfficerId);
             });
 
-             
+
+            // ========================================================
             // REPAYMENT SCHEDULE
-             
+            // ========================================================
 
             modelBuilder.Entity<RepaymentSchedule>(entity =>
             {
@@ -193,17 +283,20 @@ modelBuilder.Entity<LoanRequest>()
                     .HasMaxLength(30)
                     .IsRequired();
 
+
                 entity.HasOne(e => e.Loan)
                     .WithMany(e => e.RepaymentSchedules)
                     .HasForeignKey(e => e.LoanId)
                     .OnDelete(DeleteBehavior.Cascade);
 
+
                 entity.HasIndex(e => e.LoanId);
             });
 
-             
+
+            // ========================================================
             // PAYMENT BEHAVIOR LOG
-             
+            // ========================================================
 
             modelBuilder.Entity<PaymentBehaviorLog>(entity =>
             {
@@ -231,20 +324,24 @@ modelBuilder.Entity<LoanRequest>()
                     .HasDefaultValueSql("(getdate())")
                     .IsRequired();
 
+
                 entity.HasOne(e => e.Borrower)
                     .WithMany(e => e.PaymentBehaviorLogs)
                     .HasForeignKey(e => e.BorrowerId)
                     .OnDelete(DeleteBehavior.NoAction);
+
 
                 entity.HasOne(e => e.Loan)
                     .WithMany(e => e.PaymentBehaviorLogs)
                     .HasForeignKey(e => e.LoanId)
                     .OnDelete(DeleteBehavior.NoAction);
 
+
                 entity.HasOne(e => e.Schedule)
                     .WithMany(e => e.PaymentBehaviorLogs)
                     .HasForeignKey(e => e.ScheduleId)
                     .OnDelete(DeleteBehavior.NoAction);
+
 
                 entity.HasIndex(e => e.BorrowerId);
 
@@ -253,9 +350,10 @@ modelBuilder.Entity<LoanRequest>()
                 entity.HasIndex(e => e.ScheduleId);
             });
 
-             
+
+            // ========================================================
             // RISK PREDICTION
-             
+            // ========================================================
 
             modelBuilder.Entity<RiskPrediction>(entity =>
             {
@@ -274,68 +372,79 @@ modelBuilder.Entity<LoanRequest>()
                     .HasMaxLength(30)
                     .IsRequired();
 
+
                 entity.HasOne(e => e.Borrower)
                     .WithMany(e => e.RiskPredictions)
                     .HasForeignKey(e => e.BorrowerId)
                     .OnDelete(DeleteBehavior.NoAction);
+
 
                 entity.HasOne(e => e.Loan)
                     .WithMany(e => e.RiskPredictions)
                     .HasForeignKey(e => e.LoanId)
                     .OnDelete(DeleteBehavior.NoAction);
 
+
                 entity.HasIndex(e => e.BorrowerId);
 
                 entity.HasIndex(e => e.LoanId);
             });
 
-             
+
+            // ========================================================
             // REFRESH TOKEN
-             
+            // ========================================================
 
             modelBuilder.Entity<RefreshToken>(entity =>
-{
-    entity.HasKey(e => e.RefreshTokenId);
+            {
+                entity.HasKey(e => e.RefreshTokenId);
 
-    entity.ToTable("RefreshTokens");
+                entity.ToTable("RefreshTokens");
 
-    entity.Property(e => e.RefreshTokenId)
-        .ValueGeneratedOnAdd();
+                entity.Property(e => e.RefreshTokenId)
+                    .ValueGeneratedOnAdd();
 
-    entity.Property(e => e.UserId)
-        .IsRequired();
+                entity.Property(e => e.UserId)
+                    .IsRequired();
 
-    entity.Property(e => e.Token)
-        .HasMaxLength(500)
-        .IsRequired();
+                entity.Property(e => e.Token)
+                    .HasMaxLength(500)
+                    .IsRequired();
 
-    entity.Property(e => e.ExpiresAt)
-        .IsRequired();
+                entity.Property(e => e.ExpiresAt)
+                    .IsRequired();
 
-    entity.Property(e => e.CreatedAt)
-        .IsRequired();
+                entity.Property(e => e.CreatedAt)
+                    .IsRequired();
 
-    entity.Property(e => e.RevokedAt)
-        .IsRequired(false);
+                entity.Property(e => e.RevokedAt)
+                    .IsRequired(false);
 
-    entity.Property(e => e.IsRevoked)
-        .IsRequired()
-        .ValueGeneratedNever();
+                entity.Property(e => e.IsRevoked)
+                    .IsRequired()
+                    .ValueGeneratedNever();
 
-    // IMPORTANT: explicitly map UserId -> User.UserId
-    entity.HasOne(e => e.User)
-        .WithMany(u => u.RefreshTokens)
-        .HasForeignKey(e => e.UserId)
-        .HasPrincipalKey(u => u.UserId)
-        .OnDelete(DeleteBehavior.Cascade);
 
-    entity.HasIndex(e => e.Token)
-        .IsUnique();
+                // User relationship
 
-    entity.HasIndex(e => e.UserId);
-});
+                entity.HasOne(e => e.User)
+                    .WithMany(u => u.RefreshTokens)
+                    .HasForeignKey(e => e.UserId)
+                    .HasPrincipalKey(u => u.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
 
+
+                entity.HasIndex(e => e.Token)
+                    .IsUnique();
+
+                entity.HasIndex(e => e.UserId);
+            });
+
+
+            // ========================================================
             // BORROWER LOAN APPLICATION
+            // ========================================================
+
             modelBuilder.Entity<BorrowerLoanApplication>(entity =>
             {
                 entity.HasKey(e => e.ApplicationId);
@@ -398,12 +507,15 @@ modelBuilder.Entity<LoanRequest>()
                 entity.Property(e => e.ReviewedAt)
                     .IsRequired(false);
 
+
                 entity.HasOne(e => e.ReviewedByLoanOfficer)
                     .WithMany(u => u.ReviewedBorrowerApplications)
                     .HasForeignKey(e => e.ReviewedByLoanOfficerId)
                     .OnDelete(DeleteBehavior.Restrict);
 
+
                 entity.HasIndex(e => e.Email);
+
                 entity.HasIndex(e => e.Status);
             });
         }

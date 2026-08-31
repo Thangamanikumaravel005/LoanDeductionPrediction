@@ -158,6 +158,110 @@ namespace LoanDeductionPrediction.Repositories.Migrations
                     b.ToTable("LoanAccounts", (string)null);
                 });
 
+            modelBuilder.Entity("LoanDeductionPrediction.Repositories.Entities.LoanHistory", b =>
+                {
+                    b.Property<int>("LoanHistoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LoanHistoryId"));
+
+                    b.Property<int>("BorrowerId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("EmiAmount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateOnly>("EndDate")
+                        .HasColumnType("date");
+
+                    b.Property<decimal?>("InterestRate")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int?>("LoanOfficerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OriginalLoanId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("OutstandingAmount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("PrincipalAmount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateOnly>("StartDate")
+                        .HasColumnType("date");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int?>("TenureMonths")
+                        .HasColumnType("int");
+
+                    b.HasKey("LoanHistoryId");
+
+                    b.HasIndex("OriginalLoanId");
+
+                    b.ToTable("LoanHistories");
+                });
+
+            modelBuilder.Entity("LoanDeductionPrediction.Repositories.Entities.Payment", b =>
+                {
+                    b.Property<int>("PaymentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PaymentId"));
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("BorrowerId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("(getdate())");
+
+                    b.Property<int>("LoanId")
+                        .HasColumnType("int");
+
+                    b.Property<DateOnly>("PaymentDate")
+                        .HasColumnType("date");
+
+                    b.Property<string>("PaymentStatus")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<int>("ScheduleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PaymentId");
+
+                    b.HasIndex("BorrowerId");
+
+                    b.HasIndex("LoanId");
+
+                    b.HasIndex("ScheduleId");
+
+                    b.ToTable("Payments", (string)null);
+                });
+
             modelBuilder.Entity("LoanDeductionPrediction.Repositories.Entities.PaymentBehaviorLog", b =>
                 {
                     b.Property<int>("BehaviorLogId")
@@ -366,64 +470,6 @@ namespace LoanDeductionPrediction.Repositories.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
-            modelBuilder.Entity("LoanRequest", b =>
-                {
-                    b.Property<int>("LoanRequestId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LoanRequestId"));
-
-                    b.Property<int>("BorrowerId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CollateralDetails")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal?>("CollateralValue")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal?>("InterestRate")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("LoanType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal?>("MonthlySalary")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Remarks")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("RequestedAmount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<DateTime>("RequestedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("ReviewedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("ReviewedByLoanOfficerId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("TenureMonths")
-                        .HasColumnType("int");
-
-                    b.HasKey("LoanRequestId");
-
-                    b.HasIndex("BorrowerId");
-
-                    b.HasIndex("ReviewedByLoanOfficerId");
-
-                    b.ToTable("LoanRequests");
-                });
-
             modelBuilder.Entity("LoanDeductionPrediction.Repositories.Entities.BorrowerLoanApplication", b =>
                 {
                     b.HasOne("LoanDeductionPrediction.Repositories.Entities.User", "ReviewedByLoanOfficer")
@@ -451,6 +497,33 @@ namespace LoanDeductionPrediction.Repositories.Migrations
                     b.Navigation("Borrower");
 
                     b.Navigation("LoanOfficer");
+                });
+
+            modelBuilder.Entity("LoanDeductionPrediction.Repositories.Entities.Payment", b =>
+                {
+                    b.HasOne("LoanDeductionPrediction.Repositories.Entities.User", "Borrower")
+                        .WithMany()
+                        .HasForeignKey("BorrowerId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("LoanDeductionPrediction.Repositories.Entities.LoanAccount", "Loan")
+                        .WithMany()
+                        .HasForeignKey("LoanId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("LoanDeductionPrediction.Repositories.Entities.RepaymentSchedule", "Schedule")
+                        .WithMany()
+                        .HasForeignKey("ScheduleId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Borrower");
+
+                    b.Navigation("Loan");
+
+                    b.Navigation("Schedule");
                 });
 
             modelBuilder.Entity("LoanDeductionPrediction.Repositories.Entities.PaymentBehaviorLog", b =>
@@ -519,24 +592,6 @@ namespace LoanDeductionPrediction.Repositories.Migrations
                     b.Navigation("Borrower");
 
                     b.Navigation("Loan");
-                });
-
-            modelBuilder.Entity("LoanRequest", b =>
-                {
-                    b.HasOne("LoanDeductionPrediction.Repositories.Entities.User", "Borrower")
-                        .WithMany()
-                        .HasForeignKey("BorrowerId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("LoanDeductionPrediction.Repositories.Entities.User", "LoanOfficer")
-                        .WithMany()
-                        .HasForeignKey("ReviewedByLoanOfficerId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.Navigation("Borrower");
-
-                    b.Navigation("LoanOfficer");
                 });
 
             modelBuilder.Entity("LoanDeductionPrediction.Repositories.Entities.LoanAccount", b =>

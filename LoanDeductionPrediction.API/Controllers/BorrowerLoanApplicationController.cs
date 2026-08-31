@@ -70,7 +70,7 @@ namespace LoanDeductionPrediction.API.Controllers
         // GET: api/BorrowerLoanApplication/{id}
         
         [HttpGet("{id:int}")]
-        [Authorize(Roles = "LoanOfficer")]
+        [Authorize(Roles = "LoanOfficer, Admin")]
         public async Task<IActionResult> GetById(int id)
         {
             var application = await _applicationService.GetByIdAsync(id);

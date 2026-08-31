@@ -77,16 +77,17 @@ builder.Services.AddScoped<
     RepaymentScheduleRepository>();
 
 builder.Services.AddScoped<
+    IPaymentRepository,
+    PaymentRepository>();
+
+
+builder.Services.AddScoped<
     IPaymentBehaviorRepository,
     PaymentBehaviorRepository>();
 
 builder.Services.AddScoped<
     IRiskPredictionRepository,
     RiskPredictionRepository>();
-
-builder.Services.AddScoped<
-    IAlertRepository,
-    AlertRepository>();
 
 builder.Services.AddScoped<
     IDashboardRepository,
@@ -99,10 +100,6 @@ builder.Services.AddScoped<
 builder.Services.AddScoped<
     ILoanDeductionUnitOfWork,
     LoanDeductionUnitOfWork>();
-
-builder.Services.AddScoped<
-    ILoanRequestRepository,
-    LoanRequestRepository>();
 
 builder.Services.AddScoped<
     IBorrowerLoanApplicationRepository,
@@ -152,20 +149,16 @@ builder.Services.AddScoped<
     RiskPredictionService>();
 
 builder.Services.AddScoped<
-    IAlertService,
-    AlertService>();
-
-builder.Services.AddScoped<
     IDashboardService,
     DashboardService>();
 
 builder.Services.AddScoped<
-    IRefreshTokenService,
-    RefreshTokenService>();
+    IPaymentService,
+    PaymentService>();
 
 builder.Services.AddScoped<
-    ILoanRequestService,
-    LoanRequestService>();
+    IRefreshTokenService,
+    RefreshTokenService>();
 
 builder.Services.AddScoped<
     IBorrowerLoanApplicationService,

@@ -12,10 +12,5 @@ namespace LoanDeductionPrediction.Services.Interfaces
 
         Task<List<RepaymentScheduleDto>> GenerateScheduleAsync(
             int loanId);
-
-        Task<RepaymentScheduleDto> RecordPaymentAsync(
-            int scheduleId,
-            decimal paidAmount,
-            DateOnly paymentDate);
     }
 }

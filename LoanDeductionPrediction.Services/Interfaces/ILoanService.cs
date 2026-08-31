@@ -20,5 +20,7 @@ namespace LoanDeductionPrediction.Services.Interfaces
         Task<bool> UpdateStatusAsync(
             int loanId,
             string status);
+
+        Task<bool> DeleteAsync(int loanId);
     }
 }
