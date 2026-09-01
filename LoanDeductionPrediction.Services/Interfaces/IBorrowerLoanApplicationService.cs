@@ -4,8 +4,9 @@ namespace LoanDeductionPrediction.Services.Interfaces
 {
     public interface IBorrowerLoanApplicationService
     {
-        Task<BorrowerLoanApplicationDto> SubmitApplicationAsync(
-            CreateBorrowerLoanApplicationRequest request);
+       Task<BorrowerLoanApplicationDto> SubmitApplicationAsync(
+    CreateBorrowerLoanApplicationRequest request,
+    int borrowerId);
 
         Task<List<BorrowerLoanApplicationDto>> GetPendingApplicationsAsync();
 

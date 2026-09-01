@@ -1,3 +1,9 @@
+C:\Users\thang\AppData\Local\Temp\opencode\api-build\LoanDeductionPrediction.Models.deps.json
+C:\Users\thang\AppData\Local\Temp\opencode\api-build\LoanDeductionPrediction.Models.dll
+C:\Users\thang\AppData\Local\Temp\opencode\api-build\LoanDeductionPrediction.Models.pdb
+C:\Users\thang\AppData\Local\Temp\opencode\api-build2\LoanDeductionPrediction.Models.deps.json
+C:\Users\thang\AppData\Local\Temp\opencode\api-build2\LoanDeductionPrediction.Models.dll
+C:\Users\thang\AppData\Local\Temp\opencode\api-build2\LoanDeductionPrediction.Models.pdb
 C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Models\bin\Debug\net10.0\LoanDeductionPrediction.Models.deps.json
 C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Models\bin\Debug\net10.0\LoanDeductionPrediction.Models.dll
 C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Models\bin\Debug\net10.0\LoanDeductionPrediction.Models.pdb
@@ -11,9 +17,3 @@ C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDed
 C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Models\obj\Debug\net10.0\refint\LoanDeductionPrediction.Models.dll
 C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Models\obj\Debug\net10.0\LoanDeductionPrediction.Models.pdb
 C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Models\obj\Debug\net10.0\ref\LoanDeductionPrediction.Models.dll
-C:\Users\thang\AppData\Local\Temp\opencode\api-build\LoanDeductionPrediction.Models.deps.json
-C:\Users\thang\AppData\Local\Temp\opencode\api-build\LoanDeductionPrediction.Models.dll
-C:\Users\thang\AppData\Local\Temp\opencode\api-build\LoanDeductionPrediction.Models.pdb
-C:\Users\thang\AppData\Local\Temp\opencode\api-build2\LoanDeductionPrediction.Models.deps.json
-C:\Users\thang\AppData\Local\Temp\opencode\api-build2\LoanDeductionPrediction.Models.dll
-C:\Users\thang\AppData\Local\Temp\opencode\api-build2\LoanDeductionPrediction.Models.pdb

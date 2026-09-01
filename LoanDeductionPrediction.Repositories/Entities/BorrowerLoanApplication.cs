@@ -6,6 +6,10 @@ namespace LoanDeductionPrediction.Repositories.Entities
 {
     public int ApplicationId { get; set; }
 
+    public int BorrowerId { get; set; }
+
+public virtual User Borrower { get; set; } = null!;
+
     public string FullName { get; set; } = null!;
 
     public DateOnly DateOfBirth { get; set; }

@@ -27,24 +27,38 @@ namespace LoanDeductionPrediction.Repositories.Implementations
                 .FirstOrDefaultAsync(a => a.ApplicationId == applicationId);
         }
 
-        public async Task<List<BorrowerLoanApplication>> GetPendingAsync()
-        {
-            return await _context.BorrowerLoanApplications
-                .Include(a => a.ReviewedByLoanOfficer)
-                .Where(a => a.Status == "PENDING")
-                .OrderByDescending(a => a.CreatedAt)
-                .ToListAsync();
-        }
+       public async Task<List<BorrowerLoanApplication>> GetPendingAsync()
+{
+    return await _context.BorrowerLoanApplications
+        .Where(a => a.Status == "PENDING")
+        .OrderByDescending(a => a.CreatedAt)
+        .ToListAsync();
+}
 
-        public async Task<List<BorrowerLoanApplication>> GetByEmailAsync(string email)
-        {
-            var normalizedEmail = email.Trim().ToLower();
-            return await _context.BorrowerLoanApplications
-                .Include(a => a.ReviewedByLoanOfficer)
-                .Where(a => a.Email.ToLower() == normalizedEmail)
-                .OrderByDescending(a => a.CreatedAt)
-                .ToListAsync();
-        }
+        public async Task<List<BorrowerLoanApplication>>
+    GetByEmailAsync(string email)
+{
+    var normalizedEmail = email.Trim().ToLower();
+
+    return await _context.BorrowerLoanApplications
+        .Include(a => a.ReviewedByLoanOfficer)
+        .Where(a => a.Email.ToLower() == normalizedEmail)
+        .OrderByDescending(a => a.CreatedAt)
+        .ToListAsync();
+}
+
+
+// NEW METHOD
+public async Task<List<BorrowerLoanApplication>>
+    GetByBorrowerIdAsync(int borrowerId)
+{
+    return await _context.BorrowerLoanApplications
+        .Include(a => a.ReviewedByLoanOfficer)
+        .Where(a => a.BorrowerId == borrowerId)
+        .OrderByDescending(a => a.CreatedAt)
+        .ToListAsync();
+}
+
 
         public async Task UpdateAsync(BorrowerLoanApplication application)
         {

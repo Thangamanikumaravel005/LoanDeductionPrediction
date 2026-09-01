@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using LoanDeductionPrediction.Models.DTOs;
@@ -24,68 +25,52 @@ namespace LoanDeductionPrediction.API.Controllers
         // BORROWER - SUBMIT LOAN APPLICATION
         // POST: api/BorrowerLoanApplication
         
-        [AllowAnonymous]
         [HttpPost]
+        [Authorize(Roles = "Borrower")]
         public async Task<IActionResult> SubmitApplication(
             [FromBody] CreateBorrowerLoanApplicationRequest request)
+{
+    if (!ModelState.IsValid)
+    {
+        return BadRequest(ModelState);
+    }
+
+    var userIdClaim =
+        User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+    if (!int.TryParse(userIdClaim, out int borrowerId))
+    {
+        return Unauthorized(new
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            message = "Invalid borrower identity."
+        });
+    }
 
-            try
-            {
-                var result = await _applicationService.SubmitApplicationAsync(request);
+    try
+    {
+        var result =
+            await _applicationService
+                .SubmitApplicationAsync(
+                    request,
+                    borrowerId);
 
-                return CreatedAtAction(
-                    nameof(GetById),
-                    new { id = result.ApplicationId },
-                    result);
-            }
-            catch (ArgumentException ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
-            catch (InvalidOperationException ex)
-            {
-                return Conflict(new { message = ex.Message });
-            }
-        }
-
-        
-        // LOAN OFFICER - VIEW PENDING APPLICATIONS
-        // GET: api/BorrowerLoanApplication/pending
-        
-        [HttpGet("pending")]
-        [Authorize(Roles = "LoanOfficer")]
-        public async Task<IActionResult> GetPendingApplications()
+        return Ok(result);
+    }
+    catch (ArgumentException ex)
+    {
+        return BadRequest(new
         {
-            var applications = await _applicationService.GetPendingApplicationsAsync();
-            return Ok(applications);
-        }
-
-        
-        // LOAN OFFICER - VIEW ONE APPLICATION
-        // GET: api/BorrowerLoanApplication/{id}
-        
-        [HttpGet("{id:int}")]
-        [Authorize(Roles = "LoanOfficer, Admin")]
-        public async Task<IActionResult> GetById(int id)
+            message = ex.Message
+        });
+    }
+    catch (InvalidOperationException ex)
+    {
+        return Conflict(new
         {
-            var application = await _applicationService.GetByIdAsync(id);
-
-            if (application == null)
-            {
-                return NotFound(new
-                {
-                    message = "Borrower loan application not found."
-                });
-            }
-
-            return Ok(application);
-        }
-
+            message = ex.Message
+        });
+    }
+}
         
         // BORROWER - VIEW MY APPLICATIONS
         // GET: api/BorrowerLoanApplication/my
@@ -114,6 +99,20 @@ namespace LoanDeductionPrediction.API.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+
+        // GET: api/BorrowerLoanApplication/pending
+// Loan Officer and Admin
+
+[HttpGet("pending")]
+[Authorize(Roles = "Admin,LoanOfficer")]
+public async Task<IActionResult> GetPendingApplications()
+{
+    var applications =
+        await _applicationService
+            .GetPendingApplicationsAsync();
+
+    return Ok(applications);
+}
 
         
         // LOAN OFFICER - ACCEPT APPLICATION

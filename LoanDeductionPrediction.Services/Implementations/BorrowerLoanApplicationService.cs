@@ -8,7 +8,6 @@ using LoanDeductionPrediction.Repositories.Entities;
 using LoanDeductionPrediction.Repositories.Interfaces;
 using LoanDeductionPrediction.Repositories.UnitOfWork;
 using LoanDeductionPrediction.Services.Interfaces;
-using Microsoft.EntityFrameworkCore;
 
 namespace LoanDeductionPrediction.Services.Implementations
 {
@@ -34,22 +33,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             _mapper;
 
 
-        
-        // LOAN ELIGIBILITY RULES
-        
-
-        // Salary based loan:
-        // Maximum loan = 20 times monthly salary
-        private const decimal SalaryMultiplier = 20m;
-
-        // Collateral based loan:
-        // Maximum loan = 70% of collateral value
-        private const decimal CollateralPercentage = 0.70m;
-
-
-        
+        // =========================================================
         // CONSTRUCTOR
-        
+        // =========================================================
 
         public BorrowerLoanApplicationService(
             IBorrowerLoanApplicationRepository applicationRepository,
@@ -79,18 +65,19 @@ namespace LoanDeductionPrediction.Services.Implementations
         }
 
 
-        
-        // SUBMIT APPLICATION
-        // BORROWER
-        
+        // =========================================================
+        // SUBMIT LOAN APPLICATION
+        // Borrower
+        // =========================================================
 
         public async Task<BorrowerLoanApplicationDto>
             SubmitApplicationAsync(
-                CreateBorrowerLoanApplicationRequest request)
+                CreateBorrowerLoanApplicationRequest request,
+                int borrowerId)
         {
-            
-            // BASIC VALIDATION
-            
+            // -----------------------------------------------------
+            // Basic validation
+            // -----------------------------------------------------
 
             if (request == null)
             {
@@ -98,37 +85,11 @@ namespace LoanDeductionPrediction.Services.Implementations
                     nameof(request));
             }
 
-
-            if (string.IsNullOrWhiteSpace(
-                request.FullName))
+            if (borrowerId <= 0)
             {
                 throw new ArgumentException(
-                    "Full name is required.");
+                    "Invalid borrower ID.");
             }
-
-
-            if (string.IsNullOrWhiteSpace(
-                request.Email))
-            {
-                throw new ArgumentException(
-                    "Email is required.");
-            }
-
-
-            if (string.IsNullOrWhiteSpace(
-                request.Password))
-            {
-                throw new ArgumentException(
-                    "Password is required.");
-            }
-
-
-            if (request.Password.Length < 8)
-            {
-                throw new ArgumentException(
-                    "Password must contain at least 8 characters.");
-            }
-
 
             if (request.RequestedAmount <= 0)
             {
@@ -136,211 +97,120 @@ namespace LoanDeductionPrediction.Services.Implementations
                     "Requested amount must be greater than zero.");
             }
 
-
-            if (string.IsNullOrWhiteSpace(
-                request.LoanType))
-            {
-                throw new ArgumentException(
-                    "Loan type is required.");
-            }
-
-
-            
-            // DATE OF BIRTH VALIDATION
-            
-
-            var today =
-                DateOnly.FromDateTime(
-                    DateTime.Today);
-
-            if (request.DateOfBirth > today)
+            if (request.DateOfBirth >
+                DateOnly.FromDateTime(DateTime.Today))
             {
                 throw new ArgumentException(
                     "Date of birth cannot be in the future.");
             }
 
 
-            
-            // FINANCIAL VALIDATION
-            
+            // -----------------------------------------------------
+            // Get existing borrower
+            // -----------------------------------------------------
+
+            var borrower =
+                await _userRepository
+                    .GetByIdAsync(borrowerId);
+
+            if (borrower == null)
+            {
+                throw new InvalidOperationException(
+                    "Borrower account not found.");
+            }
+
+            if (!borrower.IsActive)
+            {
+                throw new InvalidOperationException(
+                    "Borrower account is inactive.");
+            }
+
+            if (!string.Equals(
+                borrower.Role,
+                "Borrower",
+                StringComparison.OrdinalIgnoreCase))
+            {
+                throw new InvalidOperationException(
+                    "Only a Borrower can submit a loan application.");
+            }
+
+
+            // -----------------------------------------------------
+            // Salary / collateral validation
+            // -----------------------------------------------------
 
             bool hasSalary =
                 request.MonthlySalary.HasValue &&
                 request.MonthlySalary.Value > 0;
 
-
             bool hasCollateral =
-                request.CollateralValue.HasValue &&
-                request.CollateralValue.Value > 0;
-
-
-            
-            // MUST PROVIDE SALARY OR COLLATERAL
-            
+                !string.IsNullOrWhiteSpace(
+                    request.CollateralDetails);
 
             if (!hasSalary && !hasCollateral)
             {
                 throw new ArgumentException(
-                    "Either monthly salary or collateral value must be provided.");
+                    "You must provide either Monthly Salary or Collateral Details.");
             }
 
 
-            
-            // DO NOT ALLOW BOTH
-            
-
-            if (hasSalary && hasCollateral)
-            {
-                throw new ArgumentException(
-                    "Provide either monthly salary or collateral value, not both.");
-            }
-
-
-            decimal maximumEligibleAmount;
-
-
-            
-            // SALARY BASED VALIDATION
-            
-
-            if (hasSalary)
-            {
-                maximumEligibleAmount =
-                    request.MonthlySalary!.Value *
-                    SalaryMultiplier;
-            }
-
-
-            
-            // COLLATERAL BASED VALIDATION
-            
-
-            else
-            {
-                if (string.IsNullOrWhiteSpace(
-                    request.CollateralDetails))
-                {
-                    throw new ArgumentException(
-                        "Collateral details are required when using collateral.");
-                }
-
-
-                maximumEligibleAmount =
-                    request.CollateralValue!.Value *
-                    CollateralPercentage;
-            }
-
-
-            
-            // REQUESTED AMOUNT VALIDATION
-            
-
-            if (request.RequestedAmount >
-                maximumEligibleAmount)
-            {
-                throw new ArgumentException(
-                    $"Requested amount exceeds the maximum eligible loan amount of {maximumEligibleAmount:0.00}.");
-            }
-
-
-            
-            // EMAIL VALIDATION
-            
-
-            var email =
-                request.Email
-                    .Trim()
-                    .ToLowerInvariant();
-
-
-            
-            // CHECK EXISTING PENDING APPLICATION
-            
+            // -----------------------------------------------------
+            // Check pending application
+            // -----------------------------------------------------
 
             var existingApplications =
                 await _applicationRepository
-                    .GetByEmailAsync(email);
-
+                    .GetByEmailAsync(borrower.Email);
 
             if (existingApplications.Any(
-                a => string.Equals(
-                    a.Status,
-                    "PENDING",
-                    StringComparison.OrdinalIgnoreCase)))
+                a => a.Status == "PENDING"))
             {
                 throw new InvalidOperationException(
-                    "A pending application with this email address already exists.");
+                    "You already have a pending loan application.");
             }
 
 
-            
-            // CHECK EXISTING USER
-            
-
-            var existingUser =
-                await _userRepository
-                    .GetByEmailAsync(email);
-
-
-            // Admin / LoanOfficer cannot use same email
-            if (existingUser != null &&
-                !string.Equals(
-                    existingUser.Role,
-                    "Borrower",
-                    StringComparison.OrdinalIgnoreCase))
-            {
-                throw new InvalidOperationException(
-                    "This email address is already registered with a staff role.");
-            }
-
-
-            
-            // HASH PASSWORD
-            
-
-            var passwordHash =
-                BCrypt.Net.BCrypt.HashPassword(
-                    request.Password);
-
-
-            
-            // CREATE APPLICATION
-            
+            // -----------------------------------------------------
+            // Create application
+            // -----------------------------------------------------
 
             var application =
                 new BorrowerLoanApplication
                 {
+                    // IMPORTANT:
+                    // Link application to existing borrower
+                    BorrowerId = borrowerId,
+
+                    // Keep these as application information
+                    // because they already exist in your entity
                     FullName =
-                        request.FullName.Trim(),
+                        borrower.FullName,
 
                     DateOfBirth =
                         request.DateOfBirth,
 
                     Email =
-                        email,
+                        borrower.Email
+                            .Trim()
+                            .ToLowerInvariant(),
 
+                    // Password is NOT created here.
+                    // Borrower already has an account.
+                    //
+                    // If PasswordHash is still required by your
+                    // existing database/entity, we temporarily
+                    // copy the existing user's hash.
                     PasswordHash =
-                        passwordHash,
+                        borrower.PasswordHash,
 
-                    // Salary is stored only when
-                    // salary-based application is used
                     MonthlySalary =
                         hasSalary
                             ? request.MonthlySalary
                             : null,
 
-                    // Collateral details are stored only
-                    // when collateral-based application is used
                     CollateralDetails =
                         hasCollateral
                             ? request.CollateralDetails!.Trim()
-                            : null,
-
-                    // NEW:
-                    // Store collateral value
-                    CollateralValue =
-                        hasCollateral
-                            ? request.CollateralValue
                             : null,
 
                     LoanType =
@@ -349,14 +219,12 @@ namespace LoanDeductionPrediction.Services.Implementations
                     RequestedAmount =
                         request.RequestedAmount,
 
-                    // Application waits for Loan Officer
                     Status =
                         "PENDING",
 
                     CreatedAt =
                         DateTime.UtcNow,
 
-                    // Officer decides these later
                     InterestRate =
                         null,
 
@@ -370,33 +238,36 @@ namespace LoanDeductionPrediction.Services.Implementations
                         null,
 
                     Remarks =
-                        string.IsNullOrWhiteSpace(
-                            request.Remarks)
-                            ? null
-                            : request.Remarks.Trim()
+                        null
                 };
 
 
-            
-            // SAVE APPLICATION
-            
+            // -----------------------------------------------------
+            // Save application
+            // -----------------------------------------------------
 
             var createdApplication =
                 await _applicationRepository
                     .AddAsync(application);
 
 
-            return _mapper.Map<BorrowerLoanApplicationDto>(
-                createdApplication);
+            // -----------------------------------------------------
+            // Return DTO
+            // -----------------------------------------------------
+
+            return _mapper.Map<
+                BorrowerLoanApplicationDto>(
+                    createdApplication);
         }
 
 
-        
-        // VIEW PENDING APPLICATIONS
-        // LOAN OFFICER
-        
+        // =========================================================
+        // GET PENDING APPLICATIONS
+        // Loan Officer
+        // =========================================================
 
-        public async Task<List<BorrowerLoanApplicationDto>>
+        public async Task<
+            List<BorrowerLoanApplicationDto>>
             GetPendingApplicationsAsync()
         {
             var applications =
@@ -405,15 +276,16 @@ namespace LoanDeductionPrediction.Services.Implementations
 
             return _mapper.Map<
                 List<BorrowerLoanApplicationDto>>(
-                    applications);
+                applications);
         }
 
 
-        
-        // VIEW ONE APPLICATION
-        
+        // =========================================================
+        // GET APPLICATION BY ID
+        // =========================================================
 
-        public async Task<BorrowerLoanApplicationDto?>
+        public async Task<
+            BorrowerLoanApplicationDto?>
             GetByIdAsync(
                 int applicationId)
         {
@@ -422,31 +294,29 @@ namespace LoanDeductionPrediction.Services.Implementations
                 return null;
             }
 
-
             var application =
                 await _applicationRepository
                     .GetByIdAsync(
                         applicationId);
-
 
             if (application == null)
             {
                 return null;
             }
 
-
             return _mapper.Map<
                 BorrowerLoanApplicationDto>(
-                    application);
+                application);
         }
 
 
-        
-        // VIEW MY APPLICATIONS
-        // BORROWER
-        
+        // =========================================================
+        // GET MY APPLICATIONS
+        // Borrower
+        // =========================================================
 
-        public async Task<List<BorrowerLoanApplicationDto>>
+        public async Task<
+            List<BorrowerLoanApplicationDto>>
             GetMyApplicationsAsync(
                 int userId)
         {
@@ -456,12 +326,9 @@ namespace LoanDeductionPrediction.Services.Implementations
                     "Invalid user ID.");
             }
 
-
             var user =
                 await _userRepository
-                    .GetByIdAsync(
-                        userId);
-
+                    .GetByIdAsync(userId);
 
             if (user == null)
             {
@@ -469,47 +336,49 @@ namespace LoanDeductionPrediction.Services.Implementations
                     "User not found.");
             }
 
+            if (!string.Equals(
+                user.Role,
+                "Borrower",
+                StringComparison.OrdinalIgnoreCase))
+            {
+                throw new ArgumentException(
+                    "User is not a Borrower.");
+            }
 
             var applications =
                 await _applicationRepository
                     .GetByEmailAsync(
                         user.Email);
 
-
             return _mapper.Map<
                 List<BorrowerLoanApplicationDto>>(
-                    applications);
+                applications);
         }
 
 
-        
+        // =========================================================
         // ACCEPT APPLICATION
-        // LOAN OFFICER
-        
+        // Loan Officer
+        // =========================================================
 
-        public async Task<AcceptBorrowerLoanApplicationResponse>
+        public async Task<
+            AcceptBorrowerLoanApplicationResponse>
             AcceptApplicationAsync(
                 int applicationId,
                 int loanOfficerId,
                 ApproveBorrowerLoanApplicationRequest request)
         {
-            
-            // BASIC VALIDATION
-            
-
             if (applicationId <= 0)
             {
                 throw new ArgumentException(
                     "Invalid application ID.");
             }
 
-
             if (loanOfficerId <= 0)
             {
                 throw new ArgumentException(
                     "Invalid loan officer ID.");
             }
-
 
             if (request == null)
             {
@@ -518,9 +387,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            
-            // INTEREST RATE
-            
+            // -----------------------------------------------------
+            // Validate loan terms
+            // -----------------------------------------------------
 
             if (request.InterestRate < 0 ||
                 request.InterestRate > 100)
@@ -528,11 +397,6 @@ namespace LoanDeductionPrediction.Services.Implementations
                 throw new ArgumentException(
                     "Interest rate must be between 0 and 100.");
             }
-
-
-            
-            // TENURE
-            
 
             if (request.TenureMonths <= 0 ||
                 request.TenureMonths > 360)
@@ -542,15 +406,14 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            
-            // VERIFY LOAN OFFICER
-            
+            // -----------------------------------------------------
+            // Verify Loan Officer
+            // -----------------------------------------------------
 
             var loanOfficer =
                 await _userRepository
                     .GetByIdAsync(
                         loanOfficerId);
-
 
             if (loanOfficer == null)
             {
@@ -558,13 +421,11 @@ namespace LoanDeductionPrediction.Services.Implementations
                     "Loan Officer not found.");
             }
 
-
             if (!loanOfficer.IsActive)
             {
                 throw new ArgumentException(
                     "Loan Officer account is inactive.");
             }
-
 
             if (!string.Equals(
                 loanOfficer.Role,
@@ -576,15 +437,14 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            
-            // GET APPLICATION
-            
+            // -----------------------------------------------------
+            // Get application
+            // -----------------------------------------------------
 
             var application =
                 await _applicationRepository
                     .GetByIdAsync(
                         applicationId);
-
 
             if (application == null)
             {
@@ -593,257 +453,169 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            
-            // ONLY PENDING APPLICATIONS
-            
+            // -----------------------------------------------------
+            // Check application status
+            // -----------------------------------------------------
 
-            if (!string.Equals(
-                application.Status,
-                "PENDING",
-                StringComparison.OrdinalIgnoreCase))
+            if (application.Status != "PENDING")
             {
                 throw new InvalidOperationException(
-                    $"Cannot accept application with status '{application.Status}'. Only PENDING applications can be accepted.");
+                    $"Cannot accept application with status " +
+                    $"'{application.Status}'. " +
+                    $"Only PENDING applications can be accepted.");
             }
 
 
-            LoanDto? createdLoanDto =
-                null;
+            // -----------------------------------------------------
+            // Get existing borrower
+            // -----------------------------------------------------
 
-            User? borrowerUser =
-                null;
+            var borrower =
+                await _userRepository
+                    .GetByIdAsync(
+                        application.BorrowerId);
+
+            if (borrower == null)
+            {
+                throw new InvalidOperationException(
+                    "Borrower account associated with this application was not found.");
+            }
+
+            if (!borrower.IsActive)
+            {
+                throw new InvalidOperationException(
+                    "Borrower account is inactive.");
+            }
+
+            if (!string.Equals(
+                borrower.Role,
+                "Borrower",
+                StringComparison.OrdinalIgnoreCase))
+            {
+                throw new InvalidOperationException(
+                    "The application is not associated with a valid Borrower.");
+            }
 
 
-            
-            // ACCEPTANCE TRANSACTION
-            
+            LoanDto? createdLoanDto = null;
+
+
+            // -----------------------------------------------------
+            // Transaction
+            // -----------------------------------------------------
 
             await _unitOfWork
                 .ExecuteInTransactionAsync(
-                    async () =>
-                    {
-                        // -------------------------------------------------
-                        // 1. UPDATE APPLICATION
-                        // -------------------------------------------------
+                async () =>
+                {
+                    // -------------------------------------------------
+                    // 1. Update application
+                    // -------------------------------------------------
 
-                        application.InterestRate =
-                            request.InterestRate;
+                    application.InterestRate =
+                        request.InterestRate;
 
-                        application.TenureMonths =
-                            request.TenureMonths;
+                    application.TenureMonths =
+                        request.TenureMonths;
 
-                        application.Status =
-                            "ACCEPTED";
+                    application.Status =
+                        "ACCEPTED";
 
-                        application.ReviewedByLoanOfficerId =
-                            loanOfficerId;
+                    application.ReviewedByLoanOfficerId =
+                        loanOfficerId;
 
-                        application.ReviewedAt =
-                            DateTime.UtcNow;
+                    application.ReviewedAt =
+                        DateTime.UtcNow;
 
-
-                        _unitOfWork
-                            .Context
-                            .BorrowerLoanApplications
-                            .Update(application);
+                    _unitOfWork.Context
+                        .BorrowerLoanApplications
+                        .Update(application);
 
 
-                        // -------------------------------------------------
-                        // 2. FIND EXISTING USER
-                        // -------------------------------------------------
+                    // -------------------------------------------------
+                    // 2. Create LoanAccount
+                    // -------------------------------------------------
 
-                        var normalizedEmail =
-                            application.Email
-                                .Trim()
-                                .ToLower();
-
-
-                        borrowerUser =
-                            await _unitOfWork
-                                .Context
-                                .Users
-                                .FirstOrDefaultAsync(
-                                    u =>
-                                        u.Email.ToLower()
-                                        == normalizedEmail);
-
-
-                        // =================================================
-                        // CREATE BORROWER USER
-                        // =================================================
-
-                        if (borrowerUser == null)
+                    var createLoanRequest =
+                        new CreateLoanRequest
                         {
-                            borrowerUser =
-                                new User
-                                {
-                                    FullName =
-                                        application.FullName,
+                            BorrowerId =
+                                borrower.UserId,
 
-                                    Email =
-                                        normalizedEmail,
+                            LoanOfficerId =
+                                loanOfficerId,
 
-                                    // IMPORTANT:
-                                    // Use existing hash.
-                                    // Do NOT hash again.
-                                    PasswordHash =
-                                        application.PasswordHash,
+                            PrincipalAmount =
+                                application.RequestedAmount,
 
-                                    Role =
-                                        "Borrower",
+                            InterestRate =
+                                request.InterestRate,
 
-                                    IsActive =
-                                        true,
+                            TenureMonths =
+                                request.TenureMonths,
 
-                                    CreatedAt =
-                                        DateTime.UtcNow
-                                };
+                            StartDate =
+                                DateOnly.FromDateTime(
+                                    DateTime.Today)
+                        };
 
 
-                            _unitOfWork
-                                .Context
-                                .Users
-                                .Add(borrowerUser);
+                    createdLoanDto =
+                        await _loanService
+                            .CreateAsync(
+                                createLoanRequest);
 
 
-                            await _unitOfWork
-                                .Context
-                                .SaveChangesAsync();
-                        }
+                    // -------------------------------------------------
+                    // 3. Generate repayment schedule
+                    // -------------------------------------------------
+
+                    await _repaymentScheduleService
+                        .GenerateScheduleAsync(
+                            createdLoanDto.LoanId);
+                });
 
 
-                        // =================================================
-                        // EXISTING USER
-                        // =================================================
-
-                        else
-                        {
-                            // If the user already exists but is inactive,
-                            // activate the account.
-                            if (!borrowerUser.IsActive)
-                            {
-                                borrowerUser.IsActive =
-                                    true;
-
-                                _unitOfWork
-                                    .Context
-                                    .Users
-                                    .Update(
-                                        borrowerUser);
-
-
-                                await _unitOfWork
-                                    .Context
-                                    .SaveChangesAsync();
-                            }
-
-
-                            // Safety check:
-                            // Only Borrower accounts should reach
-                            // this stage.
-                            if (!string.Equals(
-                                borrowerUser.Role,
-                                "Borrower",
-                                StringComparison.OrdinalIgnoreCase))
-                            {
-                                throw new InvalidOperationException(
-                                    "The email belongs to a non-borrower account.");
-                            }
-                        }
-
-
-                        // =================================================
-                        // 3. CREATE LOAN
-                        // =================================================
-
-                        var createLoanRequest =
-                            new CreateLoanRequest
-                            {
-                                BorrowerId =
-                                    borrowerUser.UserId,
-
-                                LoanOfficerId =
-                                    loanOfficerId,
-
-                                PrincipalAmount =
-                                    application.RequestedAmount,
-
-                                InterestRate =
-                                    request.InterestRate,
-
-                                TenureMonths =
-                                    request.TenureMonths,
-
-                                StartDate =
-                                    DateOnly.FromDateTime(
-                                        DateTime.Today)
-                            };
-
-
-                        createdLoanDto =
-                            await _loanService
-                                .CreateAsync(
-                                    createLoanRequest);
-
-
-                        // =================================================
-                        // 4. GENERATE REPAYMENT SCHEDULE
-                        // =================================================
-
-                        await _repaymentScheduleService
-                            .GenerateScheduleAsync(
-                                createdLoanDto.LoanId);
-                    });
-
-
-            
-            // RETURN ACCEPTANCE RESPONSE
-            
+            // -----------------------------------------------------
+            // Return response
+            // -----------------------------------------------------
 
             return new AcceptBorrowerLoanApplicationResponse
             {
                 Message =
-                    "Borrower application accepted, account created/activated, loan account established, and repayment schedule generated successfully.",
+                    "Borrower application accepted, loan account established, and repayment schedule generated successfully.",
 
                 Application =
                     _mapper.Map<
                         BorrowerLoanApplicationDto>(
-                            application),
+                        application),
 
                 Loan =
                     createdLoanDto!,
 
                 BorrowerUserId =
-                    borrowerUser!.UserId
+                    borrower.UserId
             };
         }
 
 
-        
+        // =========================================================
         // REJECT APPLICATION
-        // LOAN OFFICER
-        
+        // Loan Officer
+        // =========================================================
 
-        public async Task<BorrowerLoanApplicationDto>
+        public async Task<
+            BorrowerLoanApplicationDto>
             RejectApplicationAsync(
                 int applicationId,
                 int loanOfficerId,
                 RejectBorrowerLoanApplicationRequest request)
         {
-            
-            // VALIDATE APPLICATION ID
-            
-
             if (applicationId <= 0)
             {
                 throw new ArgumentException(
                     "Invalid application ID.");
             }
-
-
-            
-            // VALIDATE LOAN OFFICER ID
-            
 
             if (loanOfficerId <= 0)
             {
@@ -852,15 +624,14 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            
-            // VERIFY LOAN OFFICER
-            
+            // -----------------------------------------------------
+            // Verify Loan Officer
+            // -----------------------------------------------------
 
             var loanOfficer =
                 await _userRepository
                     .GetByIdAsync(
                         loanOfficerId);
-
 
             if (loanOfficer == null)
             {
@@ -868,13 +639,11 @@ namespace LoanDeductionPrediction.Services.Implementations
                     "Loan Officer not found.");
             }
 
-
             if (!loanOfficer.IsActive)
             {
                 throw new ArgumentException(
                     "Loan Officer account is inactive.");
             }
-
 
             if (!string.Equals(
                 loanOfficer.Role,
@@ -886,15 +655,14 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            
-            // GET APPLICATION
-            
+            // -----------------------------------------------------
+            // Get application
+            // -----------------------------------------------------
 
             var application =
                 await _applicationRepository
                     .GetByIdAsync(
                         applicationId);
-
 
             if (application == null)
             {
@@ -903,23 +671,22 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            
-            // ONLY PENDING APPLICATIONS
-            
+            // -----------------------------------------------------
+            // Check status
+            // -----------------------------------------------------
 
-            if (!string.Equals(
-                application.Status,
-                "PENDING",
-                StringComparison.OrdinalIgnoreCase))
+            if (application.Status != "PENDING")
             {
                 throw new InvalidOperationException(
-                    $"Cannot reject application with status '{application.Status}'. Only PENDING applications can be rejected.");
+                    $"Cannot reject application with status " +
+                    $"'{application.Status}'. " +
+                    $"Only PENDING applications can be rejected.");
             }
 
 
-            
-            // UPDATE APPLICATION
-            
+            // -----------------------------------------------------
+            // Reject
+            // -----------------------------------------------------
 
             application.Status =
                 "REJECTED";
@@ -930,17 +697,12 @@ namespace LoanDeductionPrediction.Services.Implementations
             application.ReviewedAt =
                 DateTime.UtcNow;
 
-
             application.Remarks =
                 string.IsNullOrWhiteSpace(
                     request?.Remarks)
                     ? null
                     : request.Remarks.Trim();
 
-
-            
-            // SAVE
-            
 
             await _applicationRepository
                 .UpdateAsync(
@@ -949,7 +711,7 @@ namespace LoanDeductionPrediction.Services.Implementations
 
             return _mapper.Map<
                 BorrowerLoanApplicationDto>(
-                    application);
+                application);
         }
     }
 }

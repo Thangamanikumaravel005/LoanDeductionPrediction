@@ -1,14 +1,13 @@
 using System.Text;
 using Serilog;
 using Serilog.Events;
+
 using LoanDeductionPrediction.Repositories.Entities;
-using LoanDeductionPrediction.Repositories.Seed;
-
-using LoanDeductionPrediction.API.Middleware;
-using LoanDeductionPrediction.Repositories.UnitOfWork;
-
 using LoanDeductionPrediction.Repositories.Implementations;
 using LoanDeductionPrediction.Repositories.Interfaces;
+using LoanDeductionPrediction.Repositories.UnitOfWork;
+
+using LoanDeductionPrediction.API.Middleware;
 
 using LoanDeductionPrediction.Services.BackgroundServices;
 using LoanDeductionPrediction.Services.Implementations;
@@ -19,14 +18,18 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
 
-// LOGGING(Serilog is a logging library for .NET applications that provides structured logging capabilities. 
-// It allows developers to log messages with various levels of severity (e.g., Information, Warning, Error).
-
+// =========================================================
+// LOGGING
+// =========================================================
 
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Information()
-  .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-.MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Information)
+    .MinimumLevel.Override(
+        "Microsoft",
+        LogEventLevel.Information)
+    .MinimumLevel.Override(
+        "Microsoft.AspNetCore",
+        LogEventLevel.Information)
     .WriteTo.Console()
     .WriteTo.File(
         "Logs/app-.log",
@@ -35,34 +38,38 @@ Log.Logger = new LoggerConfiguration()
     .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Host.UseSerilog();
 
- 
-// CONTROLLERS(it will receive and process HTTP requests and return HTTP responses) 
+// =========================================================
+// CONTROLLERS
+// =========================================================
 
 builder.Services.AddControllers();
 
- 
+// =========================================================
 // DATABASE
- 
+// =========================================================
 
 builder.Services.AddDbContext<LoanDeductionDbContext>(options =>
     options.UseSqlServer(
-        builder.Configuration.GetConnectionString("DefaultConnection"),
-        sqlOptions => sqlOptions.EnableRetryOnFailure()
+        builder.Configuration.GetConnectionString(
+            "DefaultConnection"),
+        sqlOptions =>
+            sqlOptions.EnableRetryOnFailure()
     ));
 
- 
-// AUTOMAPPER(it automatically maps data from one object to another, between DTOs and entities)
- 
+// =========================================================
+// AUTOMAPPER
+// =========================================================
 
 builder.Services.AddAutoMapper(
     cfg => { },
     AppDomain.CurrentDomain.GetAssemblies());
 
- 
-// REPOSITORIES REGISTRATION(AddScope create a new instance for each HTTP request)
- 
+// =========================================================
+// REPOSITORIES REGISTRATION
+// =========================================================
 
 builder.Services.AddScoped<
     IUserRepository,
@@ -79,7 +86,6 @@ builder.Services.AddScoped<
 builder.Services.AddScoped<
     IPaymentRepository,
     PaymentRepository>();
-
 
 builder.Services.AddScoped<
     IPaymentBehaviorRepository,
@@ -105,28 +111,17 @@ builder.Services.AddScoped<
     IBorrowerLoanApplicationRepository,
     BorrowerLoanApplicationRepository>();
 
-    // CLOCK SERVICE
-//
-    // A single clock instance drives the whole application.
-//
-    // SystemClock reads the test date from configuration:
-    //
-    //   "TestSettings": {
-    //     "UseTestDate": true,
-    //     "TestDate": "2027-07-01"
-    //   }
-//
-    // When UseTestDate is true  -> IClock.Today returns TestDate.
-    // When UseTestDate is false -> IClock.Today returns the real date.
-//
+// =========================================================
+// CLOCK SERVICE
+// =========================================================
 
 builder.Services.AddSingleton<
-    // Singleton handles whole application with one instance of the service.
     IClock,
     SystemClock>();
 
-// SERVICES REGISTRATION(AddScope create a new instance for each HTTP request.)
- 
+// =========================================================
+// SERVICES REGISTRATION
+// =========================================================
 
 builder.Services.AddScoped<
     IUserService,
@@ -163,15 +158,17 @@ builder.Services.AddScoped<
 builder.Services.AddScoped<
     IBorrowerLoanApplicationService,
     BorrowerLoanApplicationService>();
- 
-// BACKGROUND SERVICES (Automatically checks overdue repayment schedules and records MISSED payment behavior.)
+
+// =========================================================
+// BACKGROUND SERVICES
+// =========================================================
 
 builder.Services.AddHostedService<
     PaymentBehaviorBackgroundService>();
 
- 
+// =========================================================
 // JWT AUTHENTICATION
- 
+// =========================================================
 
 var jwtKey =
     builder.Configuration["Jwt:Key"];
@@ -231,15 +228,15 @@ builder.Services
             };
     });
 
- 
-// AUTHORIZATION (It defines the access and rules for users to perform defined actions within the application.)
- 
+// =========================================================
+// AUTHORIZATION
+// =========================================================
 
 builder.Services.AddAuthorization();
 
- 
-// CORS(Cross Origin Resource Sharing. It aloows frotend to access backend API from different port.)
- 
+// =========================================================
+// CORS
+// =========================================================
 
 builder.Services.AddCors(options =>
 {
@@ -254,9 +251,9 @@ builder.Services.AddCors(options =>
         });
 });
 
- 
+// =========================================================
 // SWAGGER / OPENAPI
- 
+// =========================================================
 
 builder.Services.AddEndpointsApiExplorer();
 
@@ -276,9 +273,7 @@ builder.Services.AddSwaggerGen(options =>
                 "Loan Deduction Prediction System with Behavioral Analytics"
         });
 
-     
     // JWT Bearer Security Definition
-     
 
     options.AddSecurityDefinition(
         "Bearer",
@@ -303,9 +298,7 @@ builder.Services.AddSwaggerGen(options =>
                 "Enter: Bearer {your JWT token}"
         });
 
-     
     // JWT Security Requirement
-     
 
     options.AddSecurityRequirement(
         document =>
@@ -320,33 +313,44 @@ builder.Services.AddSwaggerGen(options =>
             });
 });
 
- 
+// =========================================================
 // BUILD APPLICATION
- 
+// =========================================================
 
 var app = builder.Build();
-using (var scope = app.Services.CreateScope())
-{
-    var context =
-        scope.ServiceProvider
-            .GetRequiredService<LoanDeductionDbContext>();
 
-    context.Database.Migrate();
+// =========================================================
+// DATABASE MIGRATION
+// =========================================================
+//
+// Migration is intentionally NOT executed automatically here.
+//
+// Run migrations manually using:
+//
+// dotnet ef database update
+//
+// This prevents the application from waiting for the
+// __EFMigrationsLock every time the API starts.
+//
+// =========================================================
 
-    DatabaseSeeder.Seed(context);
-}
+
+// =========================================================
+// SERILOG REQUEST LOGGING
+// =========================================================
+
 app.UseSerilogRequestLogging();
 
- 
+// =========================================================
 // GLOBAL EXCEPTION HANDLING
- 
+// =========================================================
 
 app.UseMiddleware<
     GlobalExceptionMiddleware>();
 
- 
+// =========================================================
 // SWAGGER
- 
+// =========================================================
 
 if (app.Environment.IsDevelopment())
 {
@@ -363,39 +367,39 @@ if (app.Environment.IsDevelopment())
     });
 }
 
- 
+// =========================================================
 // HTTPS
- 
+// =========================================================
 
 app.UseHttpsRedirection();
 
- 
+// =========================================================
 // CORS
- 
+// =========================================================
 
 app.UseCors(
     "AllowFrontend");
 
- 
+// =========================================================
 // AUTHENTICATION
- 
+// =========================================================
 
 app.UseAuthentication();
 
- 
+// =========================================================
 // AUTHORIZATION
- 
+// =========================================================
 
 app.UseAuthorization();
 
- 
+// =========================================================
 // CONTROLLERS
- 
+// =========================================================
 
 app.MapControllers();
 
- 
+// =========================================================
 // RUN APPLICATION
- 
+// =========================================================
 
 app.Run();

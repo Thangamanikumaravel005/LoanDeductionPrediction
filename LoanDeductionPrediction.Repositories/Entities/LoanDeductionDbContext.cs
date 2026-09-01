@@ -460,6 +460,11 @@ namespace LoanDeductionPrediction.Repositories.Entities
                     .HasMaxLength(100)
                     .IsRequired();
 
+                entity.HasOne(e => e.Borrower)
+                    .WithMany()
+                    .HasForeignKey(e => e.BorrowerId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
                 entity.Property(e => e.DateOfBirth)
                     .IsRequired();
 

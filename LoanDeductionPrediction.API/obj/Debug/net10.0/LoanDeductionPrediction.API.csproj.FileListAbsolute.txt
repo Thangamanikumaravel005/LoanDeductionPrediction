@@ -1,3 +1,19 @@
+C:\Users\thang\AppData\Local\Temp\opencode\api-build\appsettings.Development.json
+C:\Users\thang\AppData\Local\Temp\opencode\api-build\appsettings.json
+C:\Users\thang\AppData\Local\Temp\opencode\api-build\LoanDeductionPrediction.API.staticwebassets.endpoints.json
+C:\Users\thang\AppData\Local\Temp\opencode\api-build\LoanDeductionPrediction.API.exe
+C:\Users\thang\AppData\Local\Temp\opencode\api-build\LoanDeductionPrediction.API.deps.json
+C:\Users\thang\AppData\Local\Temp\opencode\api-build\LoanDeductionPrediction.API.runtimeconfig.json
+C:\Users\thang\AppData\Local\Temp\opencode\api-build\LoanDeductionPrediction.API.dll
+C:\Users\thang\AppData\Local\Temp\opencode\api-build\LoanDeductionPrediction.API.pdb
+C:\Users\thang\AppData\Local\Temp\opencode\api-build2\appsettings.Development.json
+C:\Users\thang\AppData\Local\Temp\opencode\api-build2\appsettings.json
+C:\Users\thang\AppData\Local\Temp\opencode\api-build2\LoanDeductionPrediction.API.staticwebassets.endpoints.json
+C:\Users\thang\AppData\Local\Temp\opencode\api-build2\LoanDeductionPrediction.API.exe
+C:\Users\thang\AppData\Local\Temp\opencode\api-build2\LoanDeductionPrediction.API.deps.json
+C:\Users\thang\AppData\Local\Temp\opencode\api-build2\LoanDeductionPrediction.API.runtimeconfig.json
+C:\Users\thang\AppData\Local\Temp\opencode\api-build2\LoanDeductionPrediction.API.dll
+C:\Users\thang\AppData\Local\Temp\opencode\api-build2\LoanDeductionPrediction.API.pdb
 C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API\bin\Debug\net10.0\appsettings.Development.json
 C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API\bin\Debug\net10.0\appsettings.json
 C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API\bin\Debug\net10.0\LoanDeductionPrediction.API.staticwebassets.endpoints.json
@@ -186,19 +202,3 @@ C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDed
 C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API\obj\Debug\net10.0\LoanDeductionPrediction.API.pdb
 C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API\obj\Debug\net10.0\LoanDeductionPrediction.API.genruntimeconfig.cache
 C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API\obj\Debug\net10.0\ref\LoanDeductionPrediction.API.dll
-C:\Users\thang\AppData\Local\Temp\opencode\api-build\appsettings.Development.json
-C:\Users\thang\AppData\Local\Temp\opencode\api-build\appsettings.json
-C:\Users\thang\AppData\Local\Temp\opencode\api-build\LoanDeductionPrediction.API.staticwebassets.endpoints.json
-C:\Users\thang\AppData\Local\Temp\opencode\api-build\LoanDeductionPrediction.API.exe
-C:\Users\thang\AppData\Local\Temp\opencode\api-build\LoanDeductionPrediction.API.deps.json
-C:\Users\thang\AppData\Local\Temp\opencode\api-build\LoanDeductionPrediction.API.runtimeconfig.json
-C:\Users\thang\AppData\Local\Temp\opencode\api-build\LoanDeductionPrediction.API.dll
-C:\Users\thang\AppData\Local\Temp\opencode\api-build\LoanDeductionPrediction.API.pdb
-C:\Users\thang\AppData\Local\Temp\opencode\api-build2\appsettings.Development.json
-C:\Users\thang\AppData\Local\Temp\opencode\api-build2\appsettings.json
-C:\Users\thang\AppData\Local\Temp\opencode\api-build2\LoanDeductionPrediction.API.staticwebassets.endpoints.json
-C:\Users\thang\AppData\Local\Temp\opencode\api-build2\LoanDeductionPrediction.API.exe
-C:\Users\thang\AppData\Local\Temp\opencode\api-build2\LoanDeductionPrediction.API.deps.json
-C:\Users\thang\AppData\Local\Temp\opencode\api-build2\LoanDeductionPrediction.API.runtimeconfig.json
-C:\Users\thang\AppData\Local\Temp\opencode\api-build2\LoanDeductionPrediction.API.dll
-C:\Users\thang\AppData\Local\Temp\opencode\api-build2\LoanDeductionPrediction.API.pdb

@@ -5,32 +5,26 @@ namespace LoanDeductionPrediction.Models.DTOs
 {
     public class CreateBorrowerLoanApplicationRequest
     {
-        [Required(ErrorMessage = "Full name is required.")]
-        [StringLength(100, ErrorMessage = "Full name cannot exceed 100 characters.")]
-        public string FullName { get; set; } = string.Empty;
-
         [Required(ErrorMessage = "Date of birth is required.")]
         public DateOnly DateOfBirth { get; set; }
 
-        [Required(ErrorMessage = "Email is required.")]
-        [EmailAddress(ErrorMessage = "Invalid email format.")]
-        [StringLength(150, ErrorMessage = "Email cannot exceed 150 characters.")]
-        public string Email { get; set; } = string.Empty;
-
-        [Required(ErrorMessage = "Password is required.")]
-        [MinLength(8, ErrorMessage = "Password must contain at least 8 characters.")]
-        public string Password { get; set; } = string.Empty;
-
-        [Range(0, double.MaxValue, ErrorMessage = "Monthly salary cannot be negative.")]
+        [Range(
+            0,
+            double.MaxValue,
+            ErrorMessage = "Monthly salary cannot be negative.")]
         public decimal? MonthlySalary { get; set; }
 
-        [StringLength(500, ErrorMessage = "Collateral details cannot exceed 500 characters.")]
+        [StringLength(
+            500,
+            ErrorMessage = "Collateral details cannot exceed 500 characters.")]
         public string? CollateralDetails { get; set; }
 
         public decimal? CollateralValue { get; set; }
 
         [Required(ErrorMessage = "Loan type is required.")]
-        [StringLength(50, ErrorMessage = "Loan type cannot exceed 50 characters.")]
+        [StringLength(
+            50,
+            ErrorMessage = "Loan type cannot exceed 50 characters.")]
         public string LoanType { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Requested amount is required.")]
@@ -43,6 +37,7 @@ namespace LoanDeductionPrediction.Models.DTOs
 
         public string? Remarks { get; set; }
     }
+
 
     public class BorrowerLoanApplicationDto
     {
@@ -77,6 +72,7 @@ namespace LoanDeductionPrediction.Models.DTOs
         public DateTime CreatedAt { get; set; }
     }
 
+
     public class ApproveBorrowerLoanApplicationRequest
     {
         [Required(ErrorMessage = "Interest rate is required.")]
@@ -88,15 +84,22 @@ namespace LoanDeductionPrediction.Models.DTOs
         public decimal InterestRate { get; set; }
 
         [Required(ErrorMessage = "Tenure in months is required.")]
-        [Range(1, 360, ErrorMessage = "Tenure must be between 1 and 360 months.")]
+        [Range(
+            1,
+            360,
+            ErrorMessage = "Tenure must be between 1 and 360 months.")]
         public int TenureMonths { get; set; }
     }
 
+
     public class RejectBorrowerLoanApplicationRequest
     {
-        [StringLength(500, ErrorMessage = "Remarks cannot exceed 500 characters.")]
+        [StringLength(
+            500,
+            ErrorMessage = "Remarks cannot exceed 500 characters.")]
         public string? Remarks { get; set; }
     }
+
 
     public class AcceptBorrowerLoanApplicationResponse
     {

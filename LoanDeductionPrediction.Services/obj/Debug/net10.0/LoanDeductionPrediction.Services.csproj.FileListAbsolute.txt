@@ -1,3 +1,15 @@
+C:\Users\thang\AppData\Local\Temp\opencode\api-build\LoanDeductionPrediction.Services.deps.json
+C:\Users\thang\AppData\Local\Temp\opencode\api-build\LoanDeductionPrediction.Services.dll
+C:\Users\thang\AppData\Local\Temp\opencode\api-build\LoanDeductionPrediction.Services.pdb
+C:\Users\thang\AppData\Local\Temp\opencode\api-build2\LoanDeductionPrediction.Services.deps.json
+C:\Users\thang\AppData\Local\Temp\opencode\api-build2\LoanDeductionPrediction.Services.dll
+C:\Users\thang\AppData\Local\Temp\opencode\api-build2\LoanDeductionPrediction.Services.pdb
+C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Services\obj\Debug\net10.0\LoanDeductionPrediction.Services.csproj.AssemblyReference.cache
+C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Services\obj\Debug\net10.0\LoanDeductionPrediction.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Services\obj\Debug\net10.0\LoanDeductionPrediction.Services.AssemblyInfoInputs.cache
+C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Services\obj\Debug\net10.0\LoanDeductionPrediction.Services.AssemblyInfo.cs
+C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Services\obj\Debug\net10.0\LoanDeductionPrediction.Services.csproj.CoreCompileInputs.cache
+C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Services\obj\Debug\net10.0\LoanDeductionPrediction.Services.sourcelink.json
 C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Services\bin\Debug\net10.0\LoanDeductionPrediction.Services.deps.json
 C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Services\bin\Debug\net10.0\LoanDeductionPrediction.Services.dll
 C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Services\bin\Debug\net10.0\LoanDeductionPrediction.Services.pdb
@@ -5,20 +17,8 @@ C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDed
 C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Services\bin\Debug\net10.0\LoanDeductionPrediction.Repositories.dll
 C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Services\bin\Debug\net10.0\LoanDeductionPrediction.Repositories.pdb
 C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Services\bin\Debug\net10.0\LoanDeductionPrediction.Models.pdb
-C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Services\obj\Debug\net10.0\LoanDeductionPrediction.Services.csproj.AssemblyReference.cache
-C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Services\obj\Debug\net10.0\LoanDeductionPrediction.Services.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Services\obj\Debug\net10.0\LoanDeductionPrediction.Services.AssemblyInfoInputs.cache
-C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Services\obj\Debug\net10.0\LoanDeductionPrediction.Services.AssemblyInfo.cs
-C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Services\obj\Debug\net10.0\LoanDeductionPrediction.Services.csproj.CoreCompileInputs.cache
-C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Services\obj\Debug\net10.0\LoanDeductionPrediction.Services.sourcelink.json
 C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Services\obj\Debug\net10.0\LoanDedu.0E7B9472.Up2Date
 C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Services\obj\Debug\net10.0\LoanDeductionPrediction.Services.dll
 C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Services\obj\Debug\net10.0\refint\LoanDeductionPrediction.Services.dll
 C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Services\obj\Debug\net10.0\LoanDeductionPrediction.Services.pdb
 C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.Services\obj\Debug\net10.0\ref\LoanDeductionPrediction.Services.dll
-C:\Users\thang\AppData\Local\Temp\opencode\api-build\LoanDeductionPrediction.Services.deps.json
-C:\Users\thang\AppData\Local\Temp\opencode\api-build\LoanDeductionPrediction.Services.dll
-C:\Users\thang\AppData\Local\Temp\opencode\api-build\LoanDeductionPrediction.Services.pdb
-C:\Users\thang\AppData\Local\Temp\opencode\api-build2\LoanDeductionPrediction.Services.deps.json
-C:\Users\thang\AppData\Local\Temp\opencode\api-build2\LoanDeductionPrediction.Services.dll
-C:\Users\thang\AppData\Local\Temp\opencode\api-build2\LoanDeductionPrediction.Services.pdb
