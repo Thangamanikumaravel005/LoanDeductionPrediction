@@ -26,9 +26,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             _clock = clock;
         }
 
-        // ============================================================
+       
         // PAY ONE MONTH'S EMI
-        // ============================================================
+       
 
         public async Task<Payment> PayEmiAsync(
             int scheduleId)
@@ -39,9 +39,9 @@ namespace LoanDeductionPrediction.Services.Implementations
                     "Invalid schedule ID.");
             }
 
-            // --------------------------------------------------------
+           
             // 1. Find the repayment schedule
-            // --------------------------------------------------------
+           
 
             var schedule =
                 await _scheduleRepository
@@ -53,9 +53,9 @@ namespace LoanDeductionPrediction.Services.Implementations
                     "Repayment schedule not found.");
             }
 
-            // --------------------------------------------------------
+           
             // 2. Prevent duplicate payment
-            // --------------------------------------------------------
+           
 
             if (string.Equals(
                     schedule.Status,
@@ -66,9 +66,9 @@ namespace LoanDeductionPrediction.Services.Implementations
                     "This EMI has already been paid.");
             }
 
-            // --------------------------------------------------------
+           
             // 3. Get the loan
-            // --------------------------------------------------------
+           
 
             var loan =
                 await _loanRepository
@@ -80,9 +80,9 @@ namespace LoanDeductionPrediction.Services.Implementations
                     "Loan not found.");
             }
 
-            // --------------------------------------------------------
+           
             // 4. Calculate remaining EMI amount
-            // --------------------------------------------------------
+           
 
             var remainingAmount =
                 schedule.Emiamount -
@@ -94,9 +94,9 @@ namespace LoanDeductionPrediction.Services.Implementations
                     "There is no remaining amount to pay.");
             }
 
-            // --------------------------------------------------------
+           
             // 5. Create payment record
-            // --------------------------------------------------------
+           
 
             var payment = new Payment
             {
@@ -126,9 +126,9 @@ namespace LoanDeductionPrediction.Services.Implementations
                 await _paymentRepository
                     .AddAsync(payment);
 
-            // --------------------------------------------------------
+           
             // 6. Update repayment schedule
-            // --------------------------------------------------------
+           
 
             schedule.PaidAmount =
                 schedule.PaidAmount +
@@ -143,9 +143,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             await _scheduleRepository
                 .UpdateAsync(schedule);
 
-            // --------------------------------------------------------
+           
             // 7. Record payment behavior
-            // --------------------------------------------------------
+           
 
             await _paymentBehaviorService
                 .RecordBehaviorAsync(
@@ -154,9 +154,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             return savedPayment;
         }
 
-        // ============================================================
+       
         // GET PAYMENTS BY LOAN
-        // ============================================================
+       
 
         public async Task<List<Payment>>
             GetByLoanIdAsync(
@@ -172,9 +172,9 @@ namespace LoanDeductionPrediction.Services.Implementations
                 .GetByLoanIdAsync(loanId);
         }
 
-        // ============================================================
+       
         // GET PAYMENTS BY BORROWER
-        // ============================================================
+       
 
         public async Task<List<Payment>>
             GetByBorrowerIdAsync(
@@ -190,9 +190,9 @@ namespace LoanDeductionPrediction.Services.Implementations
                 .GetByBorrowerIdAsync(borrowerId);
         }
 
-        // ============================================================
+       
         // GET PAYMENT BY ID
-        // ============================================================
+       
 
         public async Task<Payment?>
             GetByIdAsync(

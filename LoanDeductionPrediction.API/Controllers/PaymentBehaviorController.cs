@@ -18,9 +18,9 @@ namespace LoanDeductionPrediction.API.Controllers
             _service = service;
         }
 
-        // ============================================================
+        
         // GET BY BORROWER
-        // ============================================================
+        
 
         [HttpGet("borrower/{borrowerId:int}")]
         public async Task<ActionResult<List<PaymentBehaviorLog>>>
@@ -33,9 +33,9 @@ namespace LoanDeductionPrediction.API.Controllers
             return Ok(result);
         }
 
-        // ============================================================
+        
         // GET BY LOAN
-        // ============================================================
+        
 
         [HttpGet("loan/{loanId:int}")]
         public async Task<ActionResult<List<PaymentBehaviorLog>>>
@@ -48,9 +48,9 @@ namespace LoanDeductionPrediction.API.Controllers
             return Ok(result);
         }
 
-        // ============================================================
+        
         // GET BY ID
-        // ============================================================
+        
 
         [HttpGet("{id:int}")]
         public async Task<ActionResult<PaymentBehaviorLog>>
@@ -72,9 +72,9 @@ namespace LoanDeductionPrediction.API.Controllers
             return Ok(result);
         }
 
-        // ============================================================
+        
         // PROCESS OVERDUE / MISSED EMIs
-        // ============================================================
+        
 
         [HttpPost("process-overdue")]
         public async Task<IActionResult>

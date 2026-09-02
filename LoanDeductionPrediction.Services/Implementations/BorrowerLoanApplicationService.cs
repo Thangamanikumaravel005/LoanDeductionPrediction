@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using LoanDeductionPrediction.Models.DTOs;
 using LoanDeductionPrediction.Repositories.Entities;
@@ -33,9 +29,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             _mapper;
 
 
-        // =========================================================
+        
         // CONSTRUCTOR
-        // =========================================================
+        
 
         public BorrowerLoanApplicationService(
             IBorrowerLoanApplicationRepository applicationRepository,
@@ -64,20 +60,19 @@ namespace LoanDeductionPrediction.Services.Implementations
                 mapper;
         }
 
-
-        // =========================================================
+      
         // SUBMIT LOAN APPLICATION
         // Borrower
-        // =========================================================
+        
 
         public async Task<BorrowerLoanApplicationDto>
             SubmitApplicationAsync(
                 CreateBorrowerLoanApplicationRequest request,
                 int borrowerId)
         {
-            // -----------------------------------------------------
+            
             // Basic validation
-            // -----------------------------------------------------
+            
 
             if (request == null)
             {
@@ -105,9 +100,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            // -----------------------------------------------------
+            
             // Get existing borrower
-            // -----------------------------------------------------
+            
 
             var borrower =
                 await _userRepository
@@ -135,9 +130,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            // -----------------------------------------------------
+            
             // Salary / collateral validation
-            // -----------------------------------------------------
+            
 
             bool hasSalary =
                 request.MonthlySalary.HasValue &&
@@ -154,9 +149,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            // -----------------------------------------------------
+            
             // Check pending application
-            // -----------------------------------------------------
+            
 
             var existingApplications =
                 await _applicationRepository
@@ -170,9 +165,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            // -----------------------------------------------------
+            
             // Create application
-            // -----------------------------------------------------
+            
 
             var application =
                 new BorrowerLoanApplication
@@ -242,18 +237,18 @@ namespace LoanDeductionPrediction.Services.Implementations
                 };
 
 
-            // -----------------------------------------------------
+            
             // Save application
-            // -----------------------------------------------------
+            
 
             var createdApplication =
                 await _applicationRepository
                     .AddAsync(application);
 
 
-            // -----------------------------------------------------
+            
             // Return DTO
-            // -----------------------------------------------------
+            
 
             return _mapper.Map<
                 BorrowerLoanApplicationDto>(
@@ -261,10 +256,10 @@ namespace LoanDeductionPrediction.Services.Implementations
         }
 
 
-        // =========================================================
+        
         // GET PENDING APPLICATIONS
         // Loan Officer
-        // =========================================================
+        
 
         public async Task<
             List<BorrowerLoanApplicationDto>>
@@ -280,10 +275,10 @@ namespace LoanDeductionPrediction.Services.Implementations
         }
 
 
-        // =========================================================
+        
         // GET APPLICATION BY ID
-        // =========================================================
-
+        
+    
         public async Task<
             BorrowerLoanApplicationDto?>
             GetByIdAsync(
@@ -310,10 +305,10 @@ namespace LoanDeductionPrediction.Services.Implementations
         }
 
 
-        // =========================================================
+        
         // GET MY APPLICATIONS
         // Borrower
-        // =========================================================
+        
 
         public async Task<
             List<BorrowerLoanApplicationDto>>
@@ -356,10 +351,10 @@ namespace LoanDeductionPrediction.Services.Implementations
         }
 
 
-        // =========================================================
+        
         // ACCEPT APPLICATION
         // Loan Officer
-        // =========================================================
+        
 
         public async Task<
             AcceptBorrowerLoanApplicationResponse>
@@ -387,9 +382,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            // -----------------------------------------------------
+            
             // Validate loan terms
-            // -----------------------------------------------------
+            
 
             if (request.InterestRate < 0 ||
                 request.InterestRate > 100)
@@ -406,9 +401,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            // -----------------------------------------------------
+            
             // Verify Loan Officer
-            // -----------------------------------------------------
+            
 
             var loanOfficer =
                 await _userRepository
@@ -437,9 +432,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            // -----------------------------------------------------
+            
             // Get application
-            // -----------------------------------------------------
+            
 
             var application =
                 await _applicationRepository
@@ -453,9 +448,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            // -----------------------------------------------------
+            
             // Check application status
-            // -----------------------------------------------------
+            
 
             if (application.Status != "PENDING")
             {
@@ -466,9 +461,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            // -----------------------------------------------------
+            
             // Get existing borrower
-            // -----------------------------------------------------
+            
 
             var borrower =
                 await _userRepository
@@ -500,9 +495,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             LoanDto? createdLoanDto = null;
 
 
-            // -----------------------------------------------------
+            
             // Transaction
-            // -----------------------------------------------------
+            
 
             await _unitOfWork
                 .ExecuteInTransactionAsync(
@@ -576,9 +571,9 @@ namespace LoanDeductionPrediction.Services.Implementations
                 });
 
 
-            // -----------------------------------------------------
+            
             // Return response
-            // -----------------------------------------------------
+            
 
             return new AcceptBorrowerLoanApplicationResponse
             {
@@ -599,10 +594,10 @@ namespace LoanDeductionPrediction.Services.Implementations
         }
 
 
-        // =========================================================
+        
         // REJECT APPLICATION
         // Loan Officer
-        // =========================================================
+        
 
         public async Task<
             BorrowerLoanApplicationDto>
@@ -624,9 +619,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            // -----------------------------------------------------
+            
             // Verify Loan Officer
-            // -----------------------------------------------------
+            
 
             var loanOfficer =
                 await _userRepository
@@ -655,9 +650,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            // -----------------------------------------------------
+            
             // Get application
-            // -----------------------------------------------------
+            
 
             var application =
                 await _applicationRepository
@@ -671,9 +666,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            // -----------------------------------------------------
+            
             // Check status
-            // -----------------------------------------------------
+            
 
             if (application.Status != "PENDING")
             {
@@ -684,9 +679,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            // -----------------------------------------------------
+            
             // Reject
-            // -----------------------------------------------------
+            
 
             application.Status =
                 "REJECTED";

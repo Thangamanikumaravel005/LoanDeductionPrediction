@@ -40,6 +40,7 @@ namespace LoanDeductionPrediction.API.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+                
             }
 
             if (string.IsNullOrWhiteSpace(request.Email) ||

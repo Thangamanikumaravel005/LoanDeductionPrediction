@@ -26,15 +26,6 @@ namespace LoanDeductionPrediction.Services.BackgroundServices
         protected override async Task ExecuteAsync(
             CancellationToken stoppingToken)
         {
-            // Allow the hourly job to be disabled.
-            //
-            //   "BackgroundServices": {
-            //     "MissedEmiProcessingEnabled": false
-            //   }
-            //
-            // Set to false during manual Swagger testing so the hourly run
-            // cannot mark future EMIs as MISSED unexpectedly. Defaults to true
-            // (enabled) so production behaviour is unchanged.
             var enabled =
                 _configuration.GetValue<bool>(
                     "BackgroundServices:MissedEmiProcessingEnabled",

@@ -18,9 +18,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
 
-// =========================================================
+
 // LOGGING
-// =========================================================
+
 
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Information()
@@ -41,15 +41,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseSerilog();
 
-// =========================================================
+
 // CONTROLLERS
-// =========================================================
+
 
 builder.Services.AddControllers();
 
-// =========================================================
+
 // DATABASE
-// =========================================================
+
 
 builder.Services.AddDbContext<LoanDeductionDbContext>(options =>
     options.UseSqlServer(
@@ -59,17 +59,17 @@ builder.Services.AddDbContext<LoanDeductionDbContext>(options =>
             sqlOptions.EnableRetryOnFailure()
     ));
 
-// =========================================================
+
 // AUTOMAPPER
-// =========================================================
+
 
 builder.Services.AddAutoMapper(
     cfg => { },
     AppDomain.CurrentDomain.GetAssemblies());
 
-// =========================================================
+
 // REPOSITORIES REGISTRATION
-// =========================================================
+
 
 builder.Services.AddScoped<
     IUserRepository,
@@ -111,17 +111,18 @@ builder.Services.AddScoped<
     IBorrowerLoanApplicationRepository,
     BorrowerLoanApplicationRepository>();
 
-// =========================================================
+
 // CLOCK SERVICE
-// =========================================================
+//Singleton- It will create a single object for whole application.
+
 
 builder.Services.AddSingleton<
     IClock,
     SystemClock>();
 
-// =========================================================
+
 // SERVICES REGISTRATION
-// =========================================================
+//Scoped- It will create a new object for each request.
 
 builder.Services.AddScoped<
     IUserService,
@@ -159,16 +160,16 @@ builder.Services.AddScoped<
     IBorrowerLoanApplicationService,
     BorrowerLoanApplicationService>();
 
-// =========================================================
+
 // BACKGROUND SERVICES
-// =========================================================
+
 
 builder.Services.AddHostedService<
     PaymentBehaviorBackgroundService>();
 
-// =========================================================
+
 // JWT AUTHENTICATION
-// =========================================================
+
 
 var jwtKey =
     builder.Configuration["Jwt:Key"];
@@ -228,15 +229,15 @@ builder.Services
             };
     });
 
-// =========================================================
+
 // AUTHORIZATION
-// =========================================================
+
 
 builder.Services.AddAuthorization();
 
-// =========================================================
-// CORS
-// =========================================================
+
+// CORS controls which frontend applications are allowed to call your backend API.
+
 
 builder.Services.AddCors(options =>
 {
@@ -251,9 +252,9 @@ builder.Services.AddCors(options =>
         });
 });
 
-// =========================================================
+
 // SWAGGER / OPENAPI
-// =========================================================
+
 
 builder.Services.AddEndpointsApiExplorer();
 
@@ -299,7 +300,7 @@ builder.Services.AddSwaggerGen(options =>
         });
 
     // JWT Security Requirement
-
+    
     options.AddSecurityRequirement(
         document =>
             new OpenApiSecurityRequirement
@@ -313,44 +314,30 @@ builder.Services.AddSwaggerGen(options =>
             });
 });
 
-// =========================================================
+
 // BUILD APPLICATION
-// =========================================================
+
 
 var app = builder.Build();
 
-// =========================================================
+
 // DATABASE MIGRATION
-// =========================================================
-//
-// Migration is intentionally NOT executed automatically here.
-//
-// Run migrations manually using:
-//
 // dotnet ef database update
-//
-// This prevents the application from waiting for the
-// __EFMigrationsLock every time the API starts.
-//
-// =========================================================
-
-
-// =========================================================
 // SERILOG REQUEST LOGGING
-// =========================================================
+
 
 app.UseSerilogRequestLogging();
 
-// =========================================================
+
 // GLOBAL EXCEPTION HANDLING
-// =========================================================
+
 
 app.UseMiddleware<
     GlobalExceptionMiddleware>();
 
-// =========================================================
+
 // SWAGGER
-// =========================================================
+
 
 if (app.Environment.IsDevelopment())
 {
@@ -367,39 +354,39 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-// =========================================================
+
 // HTTPS
-// =========================================================
+
 
 app.UseHttpsRedirection();
 
-// =========================================================
+
 // CORS
-// =========================================================
+
 
 app.UseCors(
     "AllowFrontend");
 
-// =========================================================
+
 // AUTHENTICATION
-// =========================================================
+
 
 app.UseAuthentication();
 
-// =========================================================
+
 // AUTHORIZATION
-// =========================================================
+
 
 app.UseAuthorization();
 
-// =========================================================
+
 // CONTROLLERS
-// =========================================================
+
 
 app.MapControllers();
 
-// =========================================================
+
 // RUN APPLICATION
-// =========================================================
+
 
 app.Run();

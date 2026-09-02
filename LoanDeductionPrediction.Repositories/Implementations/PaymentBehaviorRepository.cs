@@ -15,9 +15,9 @@ namespace LoanDeductionPrediction.Repositories.Implementations
             _context = context;
         }
 
-        // ============================================================
+       
         // GET PAYMENT BEHAVIOR BY BORROWER
-        // ============================================================
+       
 
         public async Task<List<PaymentBehaviorLog>>
             GetByBorrowerIdAsync(int borrowerId)
@@ -31,9 +31,9 @@ namespace LoanDeductionPrediction.Repositories.Implementations
                 .ToListAsync();
         }
 
-        // ============================================================
+       
         // GET PAYMENT BEHAVIOR BY LOAN
-        // ============================================================
+       
 
         public async Task<List<PaymentBehaviorLog>>
             GetByLoanIdAsync(int loanId)
@@ -46,9 +46,9 @@ namespace LoanDeductionPrediction.Repositories.Implementations
                 .ToListAsync();
         }
 
-        // ============================================================
+       
         // GET PAYMENT BEHAVIOR BY ID
-        // ============================================================
+       
 
         public async Task<PaymentBehaviorLog?>
             GetByIdAsync(int id)
@@ -60,9 +60,9 @@ namespace LoanDeductionPrediction.Repositories.Implementations
                     x.BehaviorLogId == id);
         }
 
-        // ============================================================
+       
         // GET PAYMENT BEHAVIOR BY SCHEDULE ID
-        // ============================================================
+       
 
         public async Task<PaymentBehaviorLog?>
             GetByScheduleIdAsync(int scheduleId)
@@ -73,9 +73,9 @@ namespace LoanDeductionPrediction.Repositories.Implementations
                     x.ScheduleId == scheduleId);
         }
 
-        // ============================================================
+       
         // ADD + SAVE
-        // ============================================================
+       
 
         public async Task<PaymentBehaviorLog>
             AddAsync(PaymentBehaviorLog log)
@@ -89,9 +89,9 @@ namespace LoanDeductionPrediction.Repositories.Implementations
             return log;
         }
 
-        // ============================================================
+       
         // ADD WITHOUT SAVE
-        // ============================================================
+       
 
         public async Task<PaymentBehaviorLog>
             AddWithoutSaveAsync(
@@ -106,9 +106,9 @@ namespace LoanDeductionPrediction.Repositories.Implementations
             return log;
         }
 
-        // ============================================================
+       
         // CHECK BORROWER EXISTS
-        // ============================================================
+       
 
         public async Task<bool>
             BorrowerExistsAsync(int borrowerId)

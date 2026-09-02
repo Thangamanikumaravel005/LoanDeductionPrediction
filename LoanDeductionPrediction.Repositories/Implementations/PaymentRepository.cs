@@ -14,9 +14,9 @@ namespace LoanDeductionPrediction.Repositories.Implementations
             _context = context;
         }
 
-        // ============================================================
+       
         // ADD PAYMENT
-        // ============================================================
+       
 
         public async Task<Payment> AddAsync(
             Payment payment)
@@ -28,9 +28,9 @@ namespace LoanDeductionPrediction.Repositories.Implementations
             return payment;
         }
 
-        // ============================================================
+       
         // GET PAYMENTS BY LOAN
-        // ============================================================
+       
 
         public async Task<List<Payment>> GetByLoanIdAsync(
             int loanId)
@@ -43,9 +43,9 @@ namespace LoanDeductionPrediction.Repositories.Implementations
                 .ToListAsync();
         }
 
-        // ============================================================
+       
         // GET PAYMENTS BY BORROWER
-        // ============================================================
+       
 
         public async Task<List<Payment>> GetByBorrowerIdAsync(
             int borrowerId)
@@ -58,9 +58,9 @@ namespace LoanDeductionPrediction.Repositories.Implementations
                 .ToListAsync();
         }
 
-        // ============================================================
+       
         // GET PAYMENT BY ID
-        // ============================================================
+       
 
         public async Task<Payment?> GetByIdAsync(
             int paymentId)

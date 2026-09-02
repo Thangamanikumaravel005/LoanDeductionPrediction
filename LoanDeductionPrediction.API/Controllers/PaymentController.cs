@@ -17,9 +17,9 @@ namespace LoanDeductionPrediction.API.Controllers
             _paymentService = paymentService;
         }
 
-        // ============================================================
+        
         // PAY ONE MONTH'S EMI
-        // ============================================================
+        
 
         [HttpPost("pay/{scheduleId:int}")]
         public async Task<IActionResult> PayEmi(
@@ -71,9 +71,9 @@ namespace LoanDeductionPrediction.API.Controllers
             });
         }
 
-        // ============================================================
+        
         // GET PAYMENT HISTORY BY LOAN
-        // ============================================================
+        
 
         [HttpGet("loan/{loanId:int}")]
         public async Task<IActionResult> GetByLoan(
@@ -130,9 +130,9 @@ namespace LoanDeductionPrediction.API.Controllers
             });
         }
 
-        // ============================================================
+        
         // GET PAYMENT HISTORY BY BORROWER
-        // ============================================================
+        
 
         [HttpGet("borrower/{borrowerId:int}")]
         public async Task<IActionResult> GetByBorrower(
@@ -190,9 +190,9 @@ namespace LoanDeductionPrediction.API.Controllers
             });
         }
 
-        // ============================================================
+        
         // GET PAYMENT BY ID
-        // ============================================================
+        
 
         [HttpGet("{paymentId:int}")]
         public async Task<IActionResult> GetById(

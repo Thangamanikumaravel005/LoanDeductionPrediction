@@ -15,9 +15,9 @@ namespace LoanDeductionPrediction.Repositories.Implementations
         }
 
 
-        // =========================================================
+        
         // GET LOAN BY ID
-        // =========================================================
+        
 
         public async Task<LoanAccount?> GetByIdAsync(
             int loanId)
@@ -30,9 +30,9 @@ namespace LoanDeductionPrediction.Repositories.Implementations
         }
 
 
-        // =========================================================
+        
         // GET ALL LOANS
-        // =========================================================
+        
 
         public async Task<List<LoanAccount>> GetAllAsync()
         {
@@ -45,9 +45,9 @@ namespace LoanDeductionPrediction.Repositories.Implementations
         }
 
 
-        // =========================================================
+        
         // GET LOANS BY BORROWER
-        // =========================================================
+        
 
         public async Task<List<LoanAccount>>
             GetByBorrowerIdAsync(int borrowerId)
@@ -62,9 +62,9 @@ namespace LoanDeductionPrediction.Repositories.Implementations
         }
 
 
-        // =========================================================
+        
         // GET LOANS BY LOAN OFFICER
-        // =========================================================
+        
 
         public async Task<List<LoanAccount>>
             GetByLoanOfficerIdAsync(
@@ -80,9 +80,9 @@ namespace LoanDeductionPrediction.Repositories.Implementations
         }
 
 
-        // =========================================================
+        
         // CREATE LOAN
-        // =========================================================
+        
 
         public async Task<LoanAccount> AddAsync(
             LoanAccount loan)
@@ -95,9 +95,9 @@ namespace LoanDeductionPrediction.Repositories.Implementations
         }
 
 
-        // =========================================================
+        
         // UPDATE LOAN
-        // =========================================================
+        
 
         public async Task UpdateAsync(
             LoanAccount loan)

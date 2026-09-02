@@ -27,9 +27,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             _logger = logger;
         }
 
-        // ============================================================
+        
         // GET PAYMENT BEHAVIOR BY BORROWER
-        // ============================================================
+        
 
         public async Task<List<PaymentBehaviorLog>>
             GetByBorrowerIdAsync(int borrowerId)
@@ -38,9 +38,9 @@ namespace LoanDeductionPrediction.Services.Implementations
                 .GetByBorrowerIdAsync(borrowerId);
         }
 
-        // ============================================================
+        
         // GET PAYMENT BEHAVIOR BY LOAN
-        // ============================================================
+        
 
         public async Task<List<PaymentBehaviorLog>>
             GetByLoanIdAsync(int loanId)
@@ -49,9 +49,9 @@ namespace LoanDeductionPrediction.Services.Implementations
                 .GetByLoanIdAsync(loanId);
         }
 
-        // ============================================================
+        
         // GET PAYMENT BEHAVIOR BY ID
-        // ============================================================
+        
 
         public async Task<PaymentBehaviorLog?>
             GetByIdAsync(int id)
@@ -60,9 +60,9 @@ namespace LoanDeductionPrediction.Services.Implementations
                 .GetByIdAsync(id);
         }
 
-        // ============================================================
+        
         // RECORD PAYMENT BEHAVIOR
-        // ============================================================
+        
 
         public async Task<PaymentBehaviorLog>
             RecordBehaviorAsync(int scheduleId)
@@ -103,9 +103,9 @@ namespace LoanDeductionPrediction.Services.Implementations
                 loan);
         }
 
-        // ============================================================
+        
         // CREATE PAYMENT BEHAVIOR LOG
-        // ============================================================
+        
 
         public async Task<PaymentBehaviorLog>
             CreateBehaviorLogAsync(
@@ -170,14 +170,14 @@ namespace LoanDeductionPrediction.Services.Implementations
                 .AddAsync(log);
         }
 
-        // ============================================================
+        
         // PROCESS OVERDUE / MISSED EMIs
         //
         // Swagger:
         //
         // POST /api/PaymentBehavior/process-overdue
         //
-        // ============================================================
+        
 
         public async Task<int>
             ProcessOverdueSchedulesAsync()
@@ -194,9 +194,9 @@ namespace LoanDeductionPrediction.Services.Implementations
                 "System/Test Date: {Today}",
                 today);
 
-            // --------------------------------------------------------
+          
             // Get overdue schedules
-            // --------------------------------------------------------
+          
 
             var overdueSchedules =
                 await _scheduleRepository
@@ -208,9 +208,9 @@ namespace LoanDeductionPrediction.Services.Implementations
 
             var processedCount = 0;
 
-            // --------------------------------------------------------
+          
             // Process each overdue schedule
-            // --------------------------------------------------------
+          
 
             foreach (var schedule in overdueSchedules)
             {
@@ -228,10 +228,10 @@ namespace LoanDeductionPrediction.Services.Implementations
                     schedule.PaidAmount,
                     schedule.Emiamount);
 
-                // ----------------------------------------------------
+               
                 // Safety check:
                 // fully paid EMI should never become MISSED
-                // ----------------------------------------------------
+               
 
                 if (schedule.PaidAmount >= schedule.Emiamount)
                 {
@@ -242,17 +242,17 @@ namespace LoanDeductionPrediction.Services.Implementations
                     continue;
                 }
 
-                // ----------------------------------------------------
+               
                 // Do not re-count schedules that are already MISSED
                 // (this makes the method safe to run multiple times).
-                // ----------------------------------------------------
+               
 
                 var wasAlreadyMissed =
                     schedule.Status == "MISSED";
 
-                // ----------------------------------------------------
+               
                 // Get loan
-                // ----------------------------------------------------
+               
 
                 var loan =
                     await _loanRepository
@@ -268,15 +268,13 @@ namespace LoanDeductionPrediction.Services.Implementations
                     continue;
                 }
 
-                // ----------------------------------------------------
-                // Mark schedule as MISSED
-                // ----------------------------------------------------
+               
 
                 schedule.Status = "MISSED";
 
-                // ----------------------------------------------------
+               
                 // Check whether behavior log already exists
-                // ----------------------------------------------------
+               
 
                 var existingLog =
                     await _behaviorRepository

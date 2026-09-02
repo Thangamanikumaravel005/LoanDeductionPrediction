@@ -19,9 +19,9 @@ namespace LoanDeductionPrediction.Repositories.Entities
         public DateTime CreatedAt { get; set; }
 
 
-        // ============================================================
+        
         // NAVIGATION PROPERTIES
-        // ============================================================
+        
 
         public User? Borrower { get; set; }
 

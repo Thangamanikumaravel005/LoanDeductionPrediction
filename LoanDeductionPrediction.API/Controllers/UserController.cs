@@ -18,10 +18,10 @@ namespace LoanDeductionPrediction.API.Controllers
             _context = context;
         }
 
-        // ============================================================
+        
         // GET: api/User
         // Admin / Loan Officer can view users
-        // ============================================================
+        
 
         [HttpGet]
         public async Task<IActionResult> GetUsers()
@@ -43,10 +43,10 @@ namespace LoanDeductionPrediction.API.Controllers
             return Ok(users);
         }
 
-        // ============================================================
+        
         // GET: api/User/{id}
         // Admin / Loan Officer can view one user
-        // ============================================================
+        
 
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetUser(int id)
@@ -76,14 +76,14 @@ namespace LoanDeductionPrediction.API.Controllers
             return Ok(user);
         }
 
-        // ============================================================
+        
         // POST: api/User
         //
         // Admin       → can create LoanOfficer
         // LoanOfficer  → can create Borrower
         //
         // Borrower     → cannot access this controller
-        // ============================================================
+        
 
         [HttpPost]
         public async Task<IActionResult> CreateUser(
@@ -332,10 +332,10 @@ namespace LoanDeductionPrediction.API.Controllers
                 });
         }
 
-        // ============================================================
+        
         // PUT: api/User/{id}
         // Update existing user
-        // ============================================================
+        
 
         [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdateUser(
@@ -481,10 +481,10 @@ namespace LoanDeductionPrediction.API.Controllers
             });
         }
 
-        // ============================================================
+        
         // DELETE: api/User/{id}
         // Deactivate user
-        // ============================================================
+        
 
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteUser(
@@ -540,9 +540,9 @@ namespace LoanDeductionPrediction.API.Controllers
         }
     }
 
-    // ================================================================
+   
     // REQUEST MODELS
-    // ================================================================
+  
 
     public class CreateUserRequest
     {

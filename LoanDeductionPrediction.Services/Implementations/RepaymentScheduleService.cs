@@ -22,9 +22,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             _mapper;
 
 
-        // ============================================================
+        
         // CONSTRUCTOR
-        // ============================================================
+        
 
         public RepaymentScheduleService(
             IRepaymentScheduleRepository scheduleRepository,
@@ -42,9 +42,9 @@ namespace LoanDeductionPrediction.Services.Implementations
         }
 
 
-        // ============================================================
+        
         // GET REPAYMENT SCHEDULE BY LOAN ID
-        // ============================================================
+        
 
         public async Task<List<RepaymentScheduleDto>>
             GetByLoanIdAsync(int loanId)
@@ -65,9 +65,9 @@ namespace LoanDeductionPrediction.Services.Implementations
         }
 
 
-        // ============================================================
+        
         // GET REPAYMENT SCHEDULE BY ID
-        // ============================================================
+        
 
         public async Task<RepaymentScheduleDto?>
             GetByIdAsync(int scheduleId)
@@ -93,16 +93,16 @@ namespace LoanDeductionPrediction.Services.Implementations
         }
 
 
-        // ============================================================
+        
         // GENERATE REPAYMENT SCHEDULE
-        // ============================================================
+        
 
         public async Task<List<RepaymentScheduleDto>>
             GenerateScheduleAsync(int loanId)
         {
-            // --------------------------------------------------------
+           
             // Validate loan ID
-            // --------------------------------------------------------
+           
 
             if (loanId <= 0)
             {
@@ -111,9 +111,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            // --------------------------------------------------------
+           
             // Get loan
-            // --------------------------------------------------------
+           
 
             var loan =
                 await _loanRepository
@@ -126,9 +126,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            // --------------------------------------------------------
+           
             // Check whether schedule already exists
-            // --------------------------------------------------------
+           
 
             var exists =
                 await _scheduleRepository
@@ -141,9 +141,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            // --------------------------------------------------------
+           
             // Validate principal
-            // --------------------------------------------------------
+           
 
             if (loan.PrincipalAmount <= 0)
             {
@@ -152,9 +152,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            // --------------------------------------------------------
+           
             // Validate tenure
-            // --------------------------------------------------------
+           
 
             if (loan.TenureMonths <= 0)
             {
@@ -163,9 +163,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            // --------------------------------------------------------
+           
             // Validate interest rate
-            // --------------------------------------------------------
+           
 
             if (loan.InterestRate < 0)
             {
@@ -174,9 +174,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            // --------------------------------------------------------
+           
             // Validate EMI
-            // --------------------------------------------------------
+           
 
             if (loan.Emiamount <= 0)
             {
@@ -185,9 +185,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            // --------------------------------------------------------
+           
             // Create schedule collection
-            // --------------------------------------------------------
+           
 
             var schedules =
                 new List<RepaymentSchedule>();
@@ -196,9 +196,9 @@ namespace LoanDeductionPrediction.Services.Implementations
                 loan.PrincipalAmount;
 
 
-            // --------------------------------------------------------
+           
             // Calculate monthly interest rate
-            // --------------------------------------------------------
+           
 
             decimal monthlyInterestRate =
                 loan.InterestRate /
@@ -206,18 +206,18 @@ namespace LoanDeductionPrediction.Services.Implementations
                 100m;
 
 
-            // --------------------------------------------------------
+           
             // Generate installments
-            // --------------------------------------------------------
+           
 
             for (
                 int installment = 1;
                 installment <= loan.TenureMonths;
                 installment++)
             {
-                // ----------------------------------------------------
+                
                 // Calculate interest
-                // ----------------------------------------------------
+                
 
                 decimal interestAmount =
                     Math.Round(
@@ -227,18 +227,18 @@ namespace LoanDeductionPrediction.Services.Implementations
                         MidpointRounding.AwayFromZero);
 
 
-                // ----------------------------------------------------
+                
                 // Calculate principal
-                // ----------------------------------------------------
+                
 
                 decimal principalAmount =
                     loan.Emiamount -
                     interestAmount;
 
 
-                // ----------------------------------------------------
+                
                 // Final installment adjustment
-                // ----------------------------------------------------
+                
 
                 if (
                     installment ==
@@ -258,9 +258,9 @@ namespace LoanDeductionPrediction.Services.Implementations
                 }
 
 
-                // ----------------------------------------------------
+                
                 // Prevent negative principal
-                // ----------------------------------------------------
+                
 
                 if (principalAmount < 0)
                 {
@@ -268,27 +268,27 @@ namespace LoanDeductionPrediction.Services.Implementations
                 }
 
 
-                // ----------------------------------------------------
+                
                 // Calculate EMI
-                // ----------------------------------------------------
+                
 
                 decimal emiAmount =
                     principalAmount +
                     interestAmount;
 
 
-                // ----------------------------------------------------
+                
                 // Calculate due date
-                // ----------------------------------------------------
+                
 
                 var dueDate =
                     loan.StartDate.AddMonths(
                         installment);
 
 
-                // ----------------------------------------------------
+                
                 // Create repayment schedule
-                // ----------------------------------------------------
+                
 
                 schedules.Add(
                     new RepaymentSchedule
@@ -331,9 +331,9 @@ namespace LoanDeductionPrediction.Services.Implementations
                     });
 
 
-                // ----------------------------------------------------
+                
                 // Reduce remaining principal
-                // ----------------------------------------------------
+                
 
                 remainingPrincipal -=
                     principalAmount;
@@ -345,17 +345,17 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
 
-            // --------------------------------------------------------
+           
             // Save schedules
-            // --------------------------------------------------------
+           
 
             await _scheduleRepository
                 .AddRangeAsync(schedules);
 
 
-            // --------------------------------------------------------
+           
             // Return DTOs
-            // --------------------------------------------------------
+           
 
             return _mapper.Map<
                 List<RepaymentScheduleDto>>(
