@@ -6,7 +6,6 @@ namespace LoanDeductionPrediction.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
     public class PaymentController : ControllerBase
     {
         private readonly IPaymentService _paymentService;
@@ -22,6 +21,7 @@ namespace LoanDeductionPrediction.API.Controllers
         
 
         [HttpPost("pay/{scheduleId:int}")]
+        [Authorize (Roles = "Borrower")]
         public async Task<IActionResult> PayEmi(
             int scheduleId)
         {
@@ -76,6 +76,7 @@ namespace LoanDeductionPrediction.API.Controllers
         
 
         [HttpGet("loan/{loanId:int}")]
+        [Authorize (Roles = "Borrower,LoanOfficer")]
         public async Task<IActionResult> GetByLoan(
             int loanId)
         {
@@ -135,6 +136,7 @@ namespace LoanDeductionPrediction.API.Controllers
         
 
         [HttpGet("borrower/{borrowerId:int}")]
+        [Authorize (Roles = "Borrower,LoanOfficer")]
         public async Task<IActionResult> GetByBorrower(
             int borrowerId)
         {
@@ -195,6 +197,7 @@ namespace LoanDeductionPrediction.API.Controllers
         
 
         [HttpGet("{paymentId:int}")]
+        [Authorize (Roles = "Borrower,LoanOfficer")]
         public async Task<IActionResult> GetById(
             int paymentId)
         {

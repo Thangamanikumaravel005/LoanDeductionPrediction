@@ -9,7 +9,6 @@ using LoanDeductionPrediction.Repositories.UnitOfWork;
 
 using LoanDeductionPrediction.API.Middleware;
 
-using LoanDeductionPrediction.Services.BackgroundServices;
 using LoanDeductionPrediction.Services.Implementations;
 using LoanDeductionPrediction.Services.Interfaces;
 
@@ -159,14 +158,6 @@ builder.Services.AddScoped<
 builder.Services.AddScoped<
     IBorrowerLoanApplicationService,
     BorrowerLoanApplicationService>();
-
-
-// BACKGROUND SERVICES
-
-
-builder.Services.AddHostedService<
-    PaymentBehaviorBackgroundService>();
-
 
 // JWT AUTHENTICATION
 

@@ -27,9 +27,9 @@ namespace LoanDeductionPrediction.Services.Implementations
             _logger = logger;
         }
 
-        
+        // =========================================================
         // GET PAYMENT BEHAVIOR BY BORROWER
-        
+        // =========================================================
 
         public async Task<List<PaymentBehaviorLog>>
             GetByBorrowerIdAsync(int borrowerId)
@@ -38,9 +38,9 @@ namespace LoanDeductionPrediction.Services.Implementations
                 .GetByBorrowerIdAsync(borrowerId);
         }
 
-        
+        // =========================================================
         // GET PAYMENT BEHAVIOR BY LOAN
-        
+        // =========================================================
 
         public async Task<List<PaymentBehaviorLog>>
             GetByLoanIdAsync(int loanId)
@@ -49,9 +49,9 @@ namespace LoanDeductionPrediction.Services.Implementations
                 .GetByLoanIdAsync(loanId);
         }
 
-        
+        // =========================================================
         // GET PAYMENT BEHAVIOR BY ID
-        
+        // =========================================================
 
         public async Task<PaymentBehaviorLog?>
             GetByIdAsync(int id)
@@ -60,9 +60,9 @@ namespace LoanDeductionPrediction.Services.Implementations
                 .GetByIdAsync(id);
         }
 
-        
+        // =========================================================
         // RECORD PAYMENT BEHAVIOR
-        
+        // =========================================================
 
         public async Task<PaymentBehaviorLog>
             RecordBehaviorAsync(int scheduleId)
@@ -103,9 +103,126 @@ namespace LoanDeductionPrediction.Services.Implementations
                 loan);
         }
 
-        
+        // =========================================================
+        // PROCESS ONE SPECIFIC MISSED EMI
+        //
+        // POST /api/PaymentBehavior/process-missed/{scheduleId}
+        //
+        // Example:
+        // POST /api/PaymentBehavior/process-missed/21
+        //
+        // Only ScheduleId = 21 will be processed.
+        // =========================================================
+
+        public async Task<PaymentBehaviorLog>
+            ProcessMissedPaymentAsync(int scheduleId)
+        {
+            // Validate ScheduleId
+            if (scheduleId <= 0)
+            {
+                throw new ArgumentException(
+                    "Invalid schedule ID.");
+            }
+
+            // Get selected repayment schedule
+            var schedule =
+                await _scheduleRepository
+                    .GetByIdAsync(scheduleId);
+
+            if (schedule == null)
+            {
+                throw new ArgumentException(
+                    $"Repayment schedule {scheduleId} was not found.");
+            }
+
+            var today = _clock.Today;
+
+            // -----------------------------------------------------
+            // Check whether EMI is overdue
+            // -----------------------------------------------------
+
+            if (schedule.DueDate >= today)
+            {
+                throw new InvalidOperationException(
+                    "This EMI is not overdue yet.");
+            }
+
+            // -----------------------------------------------------
+            // Check whether EMI is already fully paid
+            // -----------------------------------------------------
+
+            if (schedule.PaidAmount >= schedule.Emiamount)
+            {
+                throw new InvalidOperationException(
+                    "This EMI is already fully paid.");
+            }
+
+            // -----------------------------------------------------
+            // Check whether behavior log already exists
+            // -----------------------------------------------------
+
+            var existingLog =
+                await _behaviorRepository
+                    .GetByScheduleIdAsync(scheduleId);
+
+            if (existingLog != null)
+            {
+                return existingLog;
+            }
+
+            // -----------------------------------------------------
+            // Get loan
+            // -----------------------------------------------------
+
+            var loan =
+                await _loanRepository
+                    .GetByIdAsync(schedule.LoanId);
+
+            if (loan == null)
+            {
+                throw new ArgumentException(
+                    $"Loan {schedule.LoanId} was not found.");
+            }
+
+            // -----------------------------------------------------
+            // Mark ONLY this EMI as MISSED
+            // -----------------------------------------------------
+
+            schedule.Status = "MISSED";
+
+            _logger.LogInformation(
+                "Marking EMI as MISSED. " +
+                "ScheduleId={ScheduleId}, " +
+                "LoanId={LoanId}, " +
+                "DueDate={DueDate}, " +
+                "Today={Today}",
+                schedule.ScheduleId,
+                schedule.LoanId,
+                schedule.DueDate,
+                today);
+
+            // -----------------------------------------------------
+            // Create behavior log
+            // -----------------------------------------------------
+
+            var behaviorLog =
+                await CreateBehaviorLogAsync(
+                    schedule,
+                    loan);
+
+            _logger.LogInformation(
+                "EMI marked as MISSED successfully. " +
+                "ScheduleId={ScheduleId}, " +
+                "DaysLate={DaysLate}",
+                schedule.ScheduleId,
+                behaviorLog.DaysLate);
+
+            return behaviorLog;
+        }
+
+        // =========================================================
         // CREATE PAYMENT BEHAVIOR LOG
-        
+        // =========================================================
 
         public async Task<PaymentBehaviorLog>
             CreateBehaviorLogAsync(
@@ -116,21 +233,36 @@ namespace LoanDeductionPrediction.Services.Implementations
 
             string paymentStatus;
 
+            // -----------------------------------------------------
             // Fully paid
+            // -----------------------------------------------------
+
             if (schedule.PaidAmount >= schedule.Emiamount)
             {
                 paymentStatus = "PAID";
             }
-            // Due date has passed and payment is incomplete
+
+            // -----------------------------------------------------
+            // Due date passed and EMI is not fully paid
+            // -----------------------------------------------------
+
             else if (schedule.DueDate < today)
             {
                 paymentStatus = "MISSED";
             }
+
+            // -----------------------------------------------------
             // Due date has not arrived
+            // -----------------------------------------------------
+
             else
             {
                 paymentStatus = "PENDING";
             }
+
+            // -----------------------------------------------------
+            // Calculate days late
+            // -----------------------------------------------------
 
             var daysLate = 0;
 
@@ -141,15 +273,19 @@ namespace LoanDeductionPrediction.Services.Implementations
                     schedule.DueDate.DayNumber;
             }
 
+            // -----------------------------------------------------
+            // Create behavior log
+            // -----------------------------------------------------
+
             var log = new PaymentBehaviorLog
-{
-    LoanId = schedule.LoanId,
-    ScheduleId = schedule.ScheduleId,
-    BorrowerId = loan.BorrowerId,
-    DueDate = schedule.DueDate,
-    PaymentStatus = paymentStatus,
-    DaysLate = daysLate
-};
+            {
+                LoanId = schedule.LoanId,
+                ScheduleId = schedule.ScheduleId,
+                BorrowerId = loan.BorrowerId,
+                DueDate = schedule.DueDate,
+                PaymentStatus = paymentStatus,
+                DaysLate = daysLate
+            };
 
             _logger.LogInformation(
                 "Creating payment behavior log. " +
@@ -168,171 +304,6 @@ namespace LoanDeductionPrediction.Services.Implementations
 
             return await _behaviorRepository
                 .AddAsync(log);
-        }
-
-        
-        // PROCESS OVERDUE / MISSED EMIs
-        //
-        // Swagger:
-        //
-        // POST /api/PaymentBehavior/process-overdue
-        //
-        
-
-        public async Task<int>
-            ProcessOverdueSchedulesAsync()
-        {
-            var today = _clock.Today;
-
-            _logger.LogInformation(
-                "============================================");
-
-            _logger.LogInformation(
-                "Starting overdue EMI processing.");
-
-            _logger.LogInformation(
-                "System/Test Date: {Today}",
-                today);
-
-          
-            // Get overdue schedules
-          
-
-            var overdueSchedules =
-                await _scheduleRepository
-                    .GetOverdueSchedulesAsync(today);
-
-            _logger.LogInformation(
-                "Found {Count} overdue repayment schedules.",
-                overdueSchedules.Count);
-
-            var processedCount = 0;
-
-          
-            // Process each overdue schedule
-          
-
-            foreach (var schedule in overdueSchedules)
-            {
-                _logger.LogInformation(
-                    "Processing ScheduleId={ScheduleId}, " +
-                    "LoanId={LoanId}, " +
-                    "DueDate={DueDate}, " +
-                    "CurrentStatus={Status}, " +
-                    "PaidAmount={PaidAmount}, " +
-                    "EMI={EmiAmount}",
-                    schedule.ScheduleId,
-                    schedule.LoanId,
-                    schedule.DueDate,
-                    schedule.Status,
-                    schedule.PaidAmount,
-                    schedule.Emiamount);
-
-               
-                // Safety check:
-                // fully paid EMI should never become MISSED
-               
-
-                if (schedule.PaidAmount >= schedule.Emiamount)
-                {
-                    _logger.LogInformation(
-                        "ScheduleId={ScheduleId} is fully paid. Skipping.",
-                        schedule.ScheduleId);
-
-                    continue;
-                }
-
-               
-                // Do not re-count schedules that are already MISSED
-                // (this makes the method safe to run multiple times).
-               
-
-                var wasAlreadyMissed =
-                    schedule.Status == "MISSED";
-
-               
-                // Get loan
-               
-
-                var loan =
-                    await _loanRepository
-                        .GetByIdAsync(schedule.LoanId);
-
-                if (loan == null)
-                {
-                    _logger.LogWarning(
-                        "LoanId={LoanId} was not found. Skipping ScheduleId={ScheduleId}.",
-                        schedule.LoanId,
-                        schedule.ScheduleId);
-
-                    continue;
-                }
-
-               
-
-                schedule.Status = "MISSED";
-
-               
-                // Check whether behavior log already exists
-               
-
-                var existingLog =
-                    await _behaviorRepository
-                        .GetByScheduleIdAsync(
-                            schedule.ScheduleId);
-
-                if (existingLog == null)
-                {
-                    // Create MISSED behavior log.
-                    //
-                    // CreateBehaviorLogAsync()
-                    // also saves through AddAsync(), which also
-                    // persists the tracked schedule.Status change.
-                    await CreateBehaviorLogAsync(
-                        schedule,
-                        loan);
-
-                    _logger.LogInformation(
-                        "ScheduleId={ScheduleId} changed to MISSED and behavior log created.",
-                        schedule.ScheduleId);
-                }
-                else
-                {
-                    // Behavior already exists, so no duplicate log is
-                    // created. Only persist the changed schedule status.
-                    await _scheduleRepository
-                        .UpdateAsync(schedule);
-
-                    _logger.LogInformation(
-                        "Existing behavior log found for ScheduleId={ScheduleId}. Skipping log creation; schedule persisted as MISSED.",
-                        schedule.ScheduleId);
-                }
-
-                // Only count schedules that were not already MISSED
-                // before this run.
-                if (!wasAlreadyMissed)
-                {
-                    processedCount++;
-                }
-                else
-                {
-                    _logger.LogInformation(
-                        "ScheduleId={ScheduleId} was already MISSED. Not counted in processedCount.",
-                        schedule.ScheduleId);
-                }
-            }
-
-            _logger.LogInformation(
-                "Finished overdue EMI processing.");
-
-            _logger.LogInformation(
-                "Processed Count: {Count}",
-                processedCount);
-
-            _logger.LogInformation(
-                "============================================");
-
-            return processedCount;
         }
     }
 }

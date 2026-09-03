@@ -23,12 +23,11 @@ namespace LoanDeductionPrediction.Repositories.Implementations
             GetByBorrowerIdAsync(int borrowerId)
         {
             return await _context
-                .PaymentBehaviorLogs
-                .AsNoTracking()
-                .Include(x => x.Borrower)
-                .Where(x => x.BorrowerId == borrowerId)
-                .OrderByDescending(x => x.DueDate)
-                .ToListAsync();
+    .PaymentBehaviorLogs
+    .AsNoTracking()
+    .Where(x => x.BorrowerId == borrowerId)
+    .OrderByDescending(x => x.DueDate)
+    .ToListAsync();
         }
 
        

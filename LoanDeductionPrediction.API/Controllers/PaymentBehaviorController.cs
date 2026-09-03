@@ -73,26 +73,22 @@ namespace LoanDeductionPrediction.API.Controllers
         }
 
         
-        // PROCESS OVERDUE / MISSED EMIs
-        
+// RECORD MISSEDPAYMENT BEHAVIOR
 
-        [HttpPost("process-overdue")]
-        public async Task<IActionResult>
-            ProcessOverduePayments()
-        {
-            var processedCount =
-                await _service
-                    .ProcessOverdueSchedulesAsync();
+        [HttpPost("process-missed/{scheduleId:int}")]
+public async Task<IActionResult> ProcessMissedPayment(
+    int scheduleId)
+{
+    var result =
+        await _service.ProcessMissedPaymentAsync(scheduleId);
 
-            return Ok(
-                new
-                {
-                    message =
-                        "Overdue EMI processing completed.",
-
-                    processedCount =
-                        processedCount
-                });
-        }
+    return Ok(new
+    {
+        message = "Selected EMI marked as MISSED.",
+        scheduleId = scheduleId,
+        paymentStatus = result.PaymentStatus,
+        daysLate = result.DaysLate
+    });
+}
     }
 }

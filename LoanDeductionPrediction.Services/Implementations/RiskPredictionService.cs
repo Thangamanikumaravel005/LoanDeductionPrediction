@@ -4,11 +4,9 @@ using LoanDeductionPrediction.Services.Interfaces;
 
 namespace LoanDeductionPrediction.Services.Implementations
 {
-    public class RiskPredictionService
-        : IRiskPredictionService
+    public class RiskPredictionService : IRiskPredictionService
     {
-        private readonly IRiskPredictionRepository
-            _riskRepository;
+        private readonly IRiskPredictionRepository _riskRepository;
 
         public RiskPredictionService(
             IRiskPredictionRepository riskRepository)
@@ -16,16 +14,16 @@ namespace LoanDeductionPrediction.Services.Implementations
             _riskRepository = riskRepository;
         }
 
-         
+        // ============================================================
         // GENERATE RISK PREDICTION
-         
+        // ============================================================
 
         public async Task<RiskPrediction>
             GeneratePredictionAsync(int loanId)
         {
-            
+            // --------------------------------------------------------
             // Validate loan ID
-            
+            // --------------------------------------------------------
 
             if (loanId <= 0)
             {
@@ -33,9 +31,9 @@ namespace LoanDeductionPrediction.Services.Implementations
                     "Invalid loan ID.");
             }
 
-            
+            // --------------------------------------------------------
             // Get loan
-            
+            // --------------------------------------------------------
 
             var loan =
                 await _riskRepository
@@ -47,9 +45,9 @@ namespace LoanDeductionPrediction.Services.Implementations
                     "Loan not found.");
             }
 
-            
-            // Validate loan
-            
+            // --------------------------------------------------------
+            // Validate loan amounts
+            // --------------------------------------------------------
 
             if (loan.PrincipalAmount <= 0)
             {
@@ -63,14 +61,20 @@ namespace LoanDeductionPrediction.Services.Implementations
                     "Loan outstanding amount is invalid.");
             }
 
-            
-            // Get payment behavior
-            
+            if (loan.OutstandingAmount >
+                loan.PrincipalAmount)
+            {
+                throw new InvalidOperationException(
+                    "Loan outstanding amount cannot be greater than the principal amount.");
+            }
+
+            // --------------------------------------------------------
+            // Get payment behaviour
+            // --------------------------------------------------------
 
             var behaviorLogs =
                 await _riskRepository
-                    .GetBehaviorLogsByLoanIdAsync(
-                        loanId);
+                    .GetBehaviorLogsByLoanIdAsync(loanId);
 
             if (behaviorLogs == null ||
                 behaviorLogs.Count == 0)
@@ -79,9 +83,9 @@ namespace LoanDeductionPrediction.Services.Implementations
                     "No payment behavior data is available for this loan.");
             }
 
-            
-            // Calculate behavior statistics
-            
+            // --------------------------------------------------------
+            // Calculate payment behaviour statistics
+            // --------------------------------------------------------
 
             int missedPayments =
                 behaviorLogs.Count(p =>
@@ -106,40 +110,34 @@ namespace LoanDeductionPrediction.Services.Implementations
 
             double averageDaysLate =
                 behaviorLogs.Average(p =>
-                    Math.Max(
-                        0,
-                        p.DaysLate));
+                    Math.Max(0, p.DaysLate));
 
-            
+            // --------------------------------------------------------
+            // Calculate outstanding balance ratio
+            // --------------------------------------------------------
+
+            decimal outstandingRatio =
+                loan.OutstandingAmount /
+                loan.PrincipalAmount;
+
+            // --------------------------------------------------------
             // Calculate risk score
-            
+            // --------------------------------------------------------
 
             decimal score = 0;
 
-            
             // Missed payments
-            
+            score += missedPayments * 25;
 
-            score +=
-                missedPayments * 25;
-
-            
             // Late payments
-            
+            score += latePayments * 10;
 
-            score +=
-                latePayments * 10;
-
-            
             // Partial payments
-            
+            score += partialPayments * 15;
 
-            score +=
-                partialPayments * 15;
-
-            
-            // Average delay
-            
+            // --------------------------------------------------------
+            // Average payment delay
+            // --------------------------------------------------------
 
             if (averageDaysLate > 7)
             {
@@ -150,22 +148,22 @@ namespace LoanDeductionPrediction.Services.Implementations
                 score += 10;
             }
 
-            
-            // Outstanding balance ratio
-            
-
-            decimal outstandingRatio =
-                loan.OutstandingAmount /
-                loan.PrincipalAmount;
+            // --------------------------------------------------------
+            // Outstanding balance
+            // --------------------------------------------------------
 
             if (outstandingRatio > 0.75m)
             {
-                score += 10;
+                score += 30;
+            }
+            else if (outstandingRatio > 0.50m)
+            {
+                score += 15;
             }
 
-            
+            // --------------------------------------------------------
             // Keep score between 0 and 100
-            
+            // --------------------------------------------------------
 
             if (score < 0)
             {
@@ -177,9 +175,9 @@ namespace LoanDeductionPrediction.Services.Implementations
                 score = 100;
             }
 
-            
+            // --------------------------------------------------------
             // Determine risk level
-            
+            // --------------------------------------------------------
 
             string riskLevel;
 
@@ -196,12 +194,11 @@ namespace LoanDeductionPrediction.Services.Implementations
                 riskLevel = "HIGH";
             }
 
-            
-            // Generate risk reasons
-            
+            // --------------------------------------------------------
+            // Generate reasons
+            // --------------------------------------------------------
 
-            var reasons =
-                new List<string>();
+            var reasons = new List<string>();
 
             if (missedPayments > 0)
             {
@@ -221,16 +218,26 @@ namespace LoanDeductionPrediction.Services.Implementations
                     $"{partialPayments} partial payment(s)");
             }
 
-            if (averageDaysLate > 0)
+            if (averageDaysLate > 7)
             {
                 reasons.Add(
-                    $"Average delay: {averageDaysLate:F2} days");
+                    $"High average payment delay: {averageDaysLate:F2} days");
+            }
+            else if (averageDaysLate > 3)
+            {
+                reasons.Add(
+                    $"Average payment delay: {averageDaysLate:F2} days");
             }
 
             if (outstandingRatio > 0.75m)
             {
                 reasons.Add(
                     "High outstanding loan balance");
+            }
+            else if (outstandingRatio > 0.50m)
+            {
+                reasons.Add(
+                    "Moderately high outstanding loan balance");
             }
 
             if (!reasons.Any())
@@ -244,9 +251,9 @@ namespace LoanDeductionPrediction.Services.Implementations
                     "; ",
                     reasons);
 
-            
+            // --------------------------------------------------------
             // Create prediction
-            
+            // --------------------------------------------------------
 
             var prediction =
                 new RiskPrediction
@@ -270,17 +277,17 @@ namespace LoanDeductionPrediction.Services.Implementations
                         reason
                 };
 
-            
+            // --------------------------------------------------------
             // Save prediction
-            
+            // --------------------------------------------------------
 
             return await _riskRepository
                 .AddAsync(prediction);
         }
 
-         
+        // ============================================================
         // GET BY ID
-         
+        // ============================================================
 
         public async Task<RiskPrediction?>
             GetByIdAsync(int id)
@@ -294,9 +301,9 @@ namespace LoanDeductionPrediction.Services.Implementations
                 .GetByIdAsync(id);
         }
 
-         
+        // ============================================================
         // GET BY LOAN
-         
+        // ============================================================
 
         public async Task<List<RiskPrediction>>
             GetByLoanIdAsync(int loanId)
@@ -307,7 +314,6 @@ namespace LoanDeductionPrediction.Services.Implementations
                     "Invalid loan ID.");
             }
 
-            // Verify loan exists.
             var loan =
                 await _riskRepository
                     .GetLoanAsync(loanId);
@@ -319,17 +325,15 @@ namespace LoanDeductionPrediction.Services.Implementations
             }
 
             return await _riskRepository
-                .GetByLoanIdAsync(
-                    loanId);
+                .GetByLoanIdAsync(loanId);
         }
 
-         
+        // ============================================================
         // GET BY BORROWER
-         
+        // ============================================================
 
         public async Task<List<RiskPrediction>>
-            GetByBorrowerIdAsync(
-                int borrowerId)
+            GetByBorrowerIdAsync(int borrowerId)
         {
             if (borrowerId <= 0)
             {
