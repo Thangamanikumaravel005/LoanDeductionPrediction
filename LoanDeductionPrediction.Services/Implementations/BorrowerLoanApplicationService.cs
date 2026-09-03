@@ -208,6 +208,13 @@ namespace LoanDeductionPrediction.Services.Implementations
                             ? request.CollateralDetails!.Trim()
                             : null,
 
+                    CollateralValue =
+            hasCollateral
+                ? request.CollateralValue
+                : null,
+
+                    CreditScore = request.CreditScore,
+
                     LoanType =
                         request.LoanType.Trim(),
 

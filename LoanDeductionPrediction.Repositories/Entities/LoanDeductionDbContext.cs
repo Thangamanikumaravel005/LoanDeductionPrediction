@@ -456,6 +456,9 @@ namespace LoanDeductionPrediction.Repositories.Entities
                 entity.Property(e => e.ApplicationId)
                     .ValueGeneratedOnAdd();
 
+                entity.Property(e => e.CreditScore)
+    .IsRequired(false);
+
                 entity.Property(e => e.FullName)
                     .HasMaxLength(100)
                     .IsRequired();

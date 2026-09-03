@@ -1,0 +1,688 @@
+2026-09-03 10:02:23.387 +05:30 [INF] User profile is available. Using 'C:\Users\thang\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-09-03 10:02:23.490 +05:30 [INF] Payment Behavior Background Service is disabled via configuration. Skipping hourly overdue EMI processing.
+2026-09-03 10:02:23.666 +05:30 [INF] Now listening on: http://localhost:5082
+2026-09-03 10:02:23.670 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-03 10:02:23.672 +05:30 [INF] Hosting environment: Development
+2026-09-03 10:02:23.674 +05:30 [INF] Content root path: C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API
+2026-09-03 10:03:09.322 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.html - null null
+2026-09-03 10:03:09.498 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.html - null null
+2026-09-03 10:03:09.699 +05:30 [INF] HTTP GET /swagger/index.html responded 304 in 283.7020 ms
+2026-09-03 10:03:09.709 +05:30 [INF] HTTP GET /swagger/index.html responded 200 in 165.5747 ms
+2026-09-03 10:03:09.717 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.html - 499 null null 397.0633ms
+2026-09-03 10:03:09.720 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.html - 200 null text/html;charset=utf-8 227.3741ms
+2026-09-03 10:03:09.735 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-bundle.js - null null
+2026-09-03 10:03:09.735 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.css - null null
+2026-09-03 10:03:09.736 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-standalone-preset.js - null null
+2026-09-03 10:03:09.737 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.js - null null
+2026-09-03 10:03:09.764 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui.css - null null
+2026-09-03 10:03:09.815 +05:30 [INF] HTTP GET /swagger/index.js responded 304 in 1.1790 ms
+2026-09-03 10:03:09.846 +05:30 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 18.5015 ms
+2026-09-03 10:03:09.846 +05:30 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 48.4859 ms
+2026-09-03 10:03:09.846 +05:30 [INF] HTTP GET /swagger/index.css responded 304 in 59.1808 ms
+2026-09-03 10:03:09.846 +05:30 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 76.4368 ms
+2026-09-03 10:03:09.851 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.js - 304 null null 113.7326ms
+2026-09-03 10:03:09.858 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui.css - 304 null null 93.9799ms
+2026-09-03 10:03:09.864 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-standalone-preset.js - 304 null null 128.3392ms
+2026-09-03 10:03:09.871 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.css - 304 null null 135.3692ms
+2026-09-03 10:03:09.876 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-bundle.js - 304 null null 140.6187ms
+2026-09-03 10:03:09.977 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/v1/swagger.json - null null
+2026-09-03 10:03:10.391 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 406.1679 ms
+2026-09-03 10:03:10.403 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 425.6322ms
+2026-09-03 10:03:56.310 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/Auth/login - application/json 61
+2026-09-03 10:03:56.324 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-09-03 10:03:56.334 +05:30 [INF] CORS policy execution successful.
+2026-09-03 10:03:56.422 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-09-03 10:03:56.463 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoanDeductionPrediction.Models.DTOs.LoginRequest) on controller LoanDeductionPrediction.API.Controllers.AuthController (LoanDeductionPrediction.API).
+2026-09-03 10:03:56.967 +05:30 [WRN] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2026-09-03 10:03:58.373 +05:30 [WRN] No store type was specified for the decimal property 'CollateralValue' on entity type 'BorrowerLoanApplication'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-09-03 10:03:59.981 +05:30 [INF] Executed DbCommand (238ms) [Parameters=[@email='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @email
+2026-09-03 10:04:01.533 +05:30 [INF] Executed DbCommand (67ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime2), @p4='?' (Size = 500), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([CreatedAt], [ExpiresAt], [IsRevoked], [RevokedAt], [Token], [UserId])
+OUTPUT INSERTED.[RefreshTokenId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2026-09-03 10:04:01.590 +05:30 [INF] Executing OkObjectResult, writing value of type 'LoanDeductionPrediction.Models.DTOs.LoginResponse'.
+2026-09-03 10:04:01.625 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API) in 5153.0859ms
+2026-09-03 10:04:01.631 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-09-03 10:04:01.639 +05:30 [INF] HTTP POST /api/Auth/login responded 200 in 5317.7194 ms
+2026-09-03 10:04:01.668 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/Auth/login - 200 null application/json; charset=utf-8 5359.5903ms
+2026-09-03 10:05:39.854 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/BorrowerLoanApplication - application/json 216
+2026-09-03 10:05:39.878 +05:30 [INF] CORS policy execution successful.
+2026-09-03 10:05:39.992 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.SubmitApplication (LoanDeductionPrediction.API)'
+2026-09-03 10:05:40.013 +05:30 [INF] Route matched with {action = "SubmitApplication", controller = "BorrowerLoanApplication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SubmitApplication(LoanDeductionPrediction.Models.DTOs.CreateBorrowerLoanApplicationRequest) on controller LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController (LoanDeductionPrediction.API).
+2026-09-03 10:05:40.090 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.SubmitApplication (LoanDeductionPrediction.API) in 71.0467ms
+2026-09-03 10:05:40.101 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.SubmitApplication (LoanDeductionPrediction.API)'
+2026-09-03 10:05:40.112 +05:30 [ERR] Unhandled exception occurred.
+System.InvalidCastException: Unable to cast object of type 'System.Boolean' to type 'System.String'.
+   at System.ComponentModel.DataAnnotations.StringLengthAttribute.IsValid(Object value)
+   at System.ComponentModel.DataAnnotations.ValidationAttribute.IsValid(Object value, ValidationContext validationContext)
+   at System.ComponentModel.DataAnnotations.ValidationAttribute.GetValidationResult(Object value, ValidationContext validationContext)
+   at Microsoft.AspNetCore.Mvc.DataAnnotations.DataAnnotationsModelValidator.Validate(ModelValidationContext validationContext)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.ValidateNode()
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.VisitImplementation(ModelMetadata& metadata, String& key, Object model)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.Visit(ModelMetadata metadata, String key, Object model)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.VisitChildren(IValidationStrategy strategy)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.VisitComplexType(IValidationStrategy defaultStrategy)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.VisitImplementation(ModelMetadata& metadata, String& key, Object model)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.Visit(ModelMetadata metadata, String key, Object model)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ObjectModelValidator.Validate(ActionContext actionContext, ValidationStateDictionary validationState, String prefix, Object model, ModelMetadata metadata, Object container)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.EnforceBindRequiredAndValidate(ObjectModelValidator baseObjectValidator, ActionContext actionContext, ParameterDescriptor parameter, ModelMetadata metadata, ModelBindingContext modelBindingContext, ModelBindingResult modelBindingResult, Object container)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value, Object container)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at LoanDeductionPrediction.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API\Middleware\GlobalExceptionMiddleware.cs:line 23
+2026-09-03 10:05:40.228 +05:30 [ERR] HTTP POST /api/BorrowerLoanApplication responded 500 in 351.4699 ms
+2026-09-03 10:05:40.239 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/BorrowerLoanApplication - 500 null application/json 385.0558ms
+2026-09-03 10:09:38.198 +05:30 [INF] Application is shutting down...
+2026-09-03 10:09:53.541 +05:30 [INF] User profile is available. Using 'C:\Users\thang\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-09-03 10:09:53.623 +05:30 [INF] Payment Behavior Background Service is disabled via configuration. Skipping hourly overdue EMI processing.
+2026-09-03 10:09:53.746 +05:30 [INF] Now listening on: http://localhost:5082
+2026-09-03 10:09:53.748 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-03 10:09:53.749 +05:30 [INF] Hosting environment: Development
+2026-09-03 10:09:53.750 +05:30 [INF] Content root path: C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API
+2026-09-03 10:10:05.608 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.html - null null
+2026-09-03 10:10:05.976 +05:30 [INF] HTTP GET /swagger/index.html responded 304 in 207.8739 ms
+2026-09-03 10:10:06.019 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.html - 304 null null 411.6553ms
+2026-09-03 10:10:06.080 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui.css - null null
+2026-09-03 10:10:06.095 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-bundle.js - null null
+2026-09-03 10:10:06.103 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.js - null null
+2026-09-03 10:10:06.116 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-standalone-preset.js - null null
+2026-09-03 10:10:06.140 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.css - null null
+2026-09-03 10:10:06.290 +05:30 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 118.8536 ms
+2026-09-03 10:10:06.296 +05:30 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 55.7915 ms
+2026-09-03 10:10:06.329 +05:30 [INF] HTTP GET /swagger/index.js responded 304 in 1.4914 ms
+2026-09-03 10:10:06.381 +05:30 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 32.5563 ms
+2026-09-03 10:10:06.768 +05:30 [INF] HTTP GET /swagger/index.css responded 304 in 0.5870 ms
+2026-09-03 10:10:06.801 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui.css - 304 null null 721.4768ms
+2026-09-03 10:10:06.857 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-bundle.js - 304 null null 761.8865ms
+2026-09-03 10:10:06.903 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.js - 304 null null 799.2765ms
+2026-09-03 10:10:06.932 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-standalone-preset.js - 304 null null 816.1313ms
+2026-09-03 10:10:06.970 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.css - 304 null null 829.2189ms
+2026-09-03 10:10:07.245 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/v1/swagger.json - null null
+2026-09-03 10:10:07.749 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 419.2294 ms
+2026-09-03 10:10:08.014 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 768.6341ms
+2026-09-03 10:10:50.113 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/Auth/login - application/json 61
+2026-09-03 10:10:50.147 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-09-03 10:10:50.167 +05:30 [INF] CORS policy execution successful.
+2026-09-03 10:10:50.418 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-09-03 10:10:50.500 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoanDeductionPrediction.Models.DTOs.LoginRequest) on controller LoanDeductionPrediction.API.Controllers.AuthController (LoanDeductionPrediction.API).
+2026-09-03 10:10:51.569 +05:30 [WRN] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2026-09-03 10:10:53.942 +05:30 [WRN] No store type was specified for the decimal property 'CollateralValue' on entity type 'BorrowerLoanApplication'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-09-03 10:10:56.820 +05:30 [INF] Executed DbCommand (110ms) [Parameters=[@email='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @email
+2026-09-03 10:11:00.078 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime2), @p4='?' (Size = 500), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([CreatedAt], [ExpiresAt], [IsRevoked], [RevokedAt], [Token], [UserId])
+OUTPUT INSERTED.[RefreshTokenId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2026-09-03 10:11:00.243 +05:30 [INF] Executing OkObjectResult, writing value of type 'LoanDeductionPrediction.Models.DTOs.LoginResponse'.
+2026-09-03 10:11:00.301 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API) in 9779.9324ms
+2026-09-03 10:11:00.306 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-09-03 10:11:00.314 +05:30 [INF] HTTP POST /api/Auth/login responded 200 in 10174.1293 ms
+2026-09-03 10:11:00.347 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/Auth/login - 200 null application/json; charset=utf-8 10233.8662ms
+2026-09-03 10:12:17.133 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/BorrowerLoanApplication - application/json 221
+2026-09-03 10:12:17.380 +05:30 [INF] CORS policy execution successful.
+2026-09-03 10:12:18.084 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.SubmitApplication (LoanDeductionPrediction.API)'
+2026-09-03 10:12:18.140 +05:30 [INF] Route matched with {action = "SubmitApplication", controller = "BorrowerLoanApplication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SubmitApplication(LoanDeductionPrediction.Models.DTOs.CreateBorrowerLoanApplicationRequest) on controller LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController (LoanDeductionPrediction.API).
+2026-09-03 10:12:18.250 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.SubmitApplication (LoanDeductionPrediction.API) in 93.1455ms
+2026-09-03 10:12:18.262 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.SubmitApplication (LoanDeductionPrediction.API)'
+2026-09-03 10:12:18.268 +05:30 [ERR] Unhandled exception occurred.
+System.InvalidCastException: Unable to cast object of type 'System.Boolean' to type 'System.String'.
+   at System.ComponentModel.DataAnnotations.StringLengthAttribute.IsValid(Object value)
+   at System.ComponentModel.DataAnnotations.ValidationAttribute.IsValid(Object value, ValidationContext validationContext)
+   at System.ComponentModel.DataAnnotations.ValidationAttribute.GetValidationResult(Object value, ValidationContext validationContext)
+   at Microsoft.AspNetCore.Mvc.DataAnnotations.DataAnnotationsModelValidator.Validate(ModelValidationContext validationContext)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.ValidateNode()
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.VisitImplementation(ModelMetadata& metadata, String& key, Object model)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.Visit(ModelMetadata metadata, String key, Object model)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.VisitChildren(IValidationStrategy strategy)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.VisitComplexType(IValidationStrategy defaultStrategy)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.VisitImplementation(ModelMetadata& metadata, String& key, Object model)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.Visit(ModelMetadata metadata, String key, Object model)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ObjectModelValidator.Validate(ActionContext actionContext, ValidationStateDictionary validationState, String prefix, Object model, ModelMetadata metadata, Object container)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.EnforceBindRequiredAndValidate(ObjectModelValidator baseObjectValidator, ActionContext actionContext, ParameterDescriptor parameter, ModelMetadata metadata, ModelBindingContext modelBindingContext, ModelBindingResult modelBindingResult, Object container)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value, Object container)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at LoanDeductionPrediction.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API\Middleware\GlobalExceptionMiddleware.cs:line 23
+2026-09-03 10:12:18.565 +05:30 [ERR] HTTP POST /api/BorrowerLoanApplication responded 500 in 1186.5213 ms
+2026-09-03 10:12:18.614 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/BorrowerLoanApplication - 500 null application/json 1481.6848ms
+2026-09-03 10:13:45.405 +05:30 [INF] Application is shutting down...
+2026-09-03 10:13:56.297 +05:30 [INF] User profile is available. Using 'C:\Users\thang\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-09-03 10:13:56.433 +05:30 [INF] Payment Behavior Background Service is disabled via configuration. Skipping hourly overdue EMI processing.
+2026-09-03 10:13:56.537 +05:30 [INF] Now listening on: http://localhost:5082
+2026-09-03 10:13:56.540 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-03 10:13:56.541 +05:30 [INF] Hosting environment: Development
+2026-09-03 10:13:56.543 +05:30 [INF] Content root path: C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API
+2026-09-03 10:14:09.843 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.html - null null
+2026-09-03 10:14:11.027 +05:30 [INF] HTTP GET /swagger/index.html responded 304 in 237.1837 ms
+2026-09-03 10:14:11.042 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.html - 304 null null 1201.8396ms
+2026-09-03 10:14:11.089 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-standalone-preset.js - null null
+2026-09-03 10:14:11.091 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-bundle.js - null null
+2026-09-03 10:14:11.356 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.css - null null
+2026-09-03 10:14:11.356 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.js - null null
+2026-09-03 10:14:11.648 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui.css - null null
+2026-09-03 10:14:11.999 +05:30 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 346.4287 ms
+2026-09-03 10:14:12.180 +05:30 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 54.8205 ms
+2026-09-03 10:14:12.583 +05:30 [INF] HTTP GET /swagger/index.css responded 304 in 4.6864 ms
+2026-09-03 10:14:13.116 +05:30 [INF] HTTP GET /swagger/index.js responded 304 in 7.1378 ms
+2026-09-03 10:14:13.145 +05:30 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 21.5247 ms
+2026-09-03 10:14:14.730 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui.css - 304 null null 3082.261ms
+2026-09-03 10:14:13.364 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-bundle.js - 304 null null 2283.6692ms
+2026-09-03 10:14:13.894 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.css - 304 null null 2537.4696ms
+2026-09-03 10:14:14.509 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.js - 304 null null 3152.8056ms
+2026-09-03 10:14:13.161 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-standalone-preset.js - 304 null null 2076.7566ms
+2026-09-03 10:14:15.121 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/v1/swagger.json - null null
+2026-09-03 10:14:18.141 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 1272.2795 ms
+2026-09-03 10:14:18.150 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 3029.6263ms
+2026-09-03 10:14:47.358 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/Auth/login - application/json 61
+2026-09-03 10:14:47.532 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-09-03 10:14:47.584 +05:30 [INF] CORS policy execution successful.
+2026-09-03 10:14:47.741 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-09-03 10:14:47.799 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoanDeductionPrediction.Models.DTOs.LoginRequest) on controller LoanDeductionPrediction.API.Controllers.AuthController (LoanDeductionPrediction.API).
+2026-09-03 10:14:49.322 +05:30 [WRN] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2026-09-03 10:14:51.277 +05:30 [WRN] No store type was specified for the decimal property 'CollateralValue' on entity type 'BorrowerLoanApplication'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-09-03 10:14:53.605 +05:30 [INF] Executed DbCommand (116ms) [Parameters=[@email='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @email
+2026-09-03 10:14:55.085 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime2), @p4='?' (Size = 500), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([CreatedAt], [ExpiresAt], [IsRevoked], [RevokedAt], [Token], [UserId])
+OUTPUT INSERTED.[RefreshTokenId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2026-09-03 10:14:55.125 +05:30 [INF] Executing OkObjectResult, writing value of type 'LoanDeductionPrediction.Models.DTOs.LoginResponse'.
+2026-09-03 10:14:55.148 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API) in 7317.5391ms
+2026-09-03 10:14:55.155 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-09-03 10:14:55.159 +05:30 [INF] HTTP POST /api/Auth/login responded 200 in 7752.2540 ms
+2026-09-03 10:14:55.174 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/Auth/login - 200 null application/json; charset=utf-8 7815.7551ms
+2026-09-03 10:16:28.148 +05:30 [INF] Application is shutting down...
+2026-09-03 10:16:38.298 +05:30 [INF] User profile is available. Using 'C:\Users\thang\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-09-03 10:16:38.371 +05:30 [INF] Payment Behavior Background Service is disabled via configuration. Skipping hourly overdue EMI processing.
+2026-09-03 10:16:38.456 +05:30 [INF] Now listening on: http://localhost:5082
+2026-09-03 10:16:38.459 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-03 10:16:38.460 +05:30 [INF] Hosting environment: Development
+2026-09-03 10:16:38.462 +05:30 [INF] Content root path: C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API
+2026-09-03 10:17:03.310 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.html - null null
+2026-09-03 10:17:03.692 +05:30 [INF] HTTP GET /swagger/index.html responded 304 in 213.0496 ms
+2026-09-03 10:17:03.954 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.html - 304 null null 611.8611ms
+2026-09-03 10:17:04.007 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.css - null null
+2026-09-03 10:17:04.009 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-standalone-preset.js - null null
+2026-09-03 10:17:04.015 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-bundle.js - null null
+2026-09-03 10:17:04.023 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.js - null null
+2026-09-03 10:17:04.283 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui.css - null null
+2026-09-03 10:17:04.981 +05:30 [INF] HTTP GET /swagger/index.css responded 304 in 292.6491 ms
+2026-09-03 10:17:05.011 +05:30 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 7.8445 ms
+2026-09-03 10:17:05.091 +05:30 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 75.4089 ms
+2026-09-03 10:17:05.112 +05:30 [INF] HTTP GET /swagger/index.js responded 304 in 0.7429 ms
+2026-09-03 10:17:05.192 +05:30 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 24.1863 ms
+2026-09-03 10:17:05.278 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.css - 304 null null 1297.2216ms
+2026-09-03 10:17:05.513 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-standalone-preset.js - 304 null null 1503.446ms
+2026-09-03 10:17:05.697 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-bundle.js - 304 null null 1682.4272ms
+2026-09-03 10:17:06.080 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.js - 304 null null 2056.9357ms
+2026-09-03 10:17:06.092 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui.css - 304 null null 1807.9373ms
+2026-09-03 10:17:07.424 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/v1/swagger.json - null null
+2026-09-03 10:17:08.578 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 1054.9296 ms
+2026-09-03 10:17:08.592 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 1167.4946ms
+2026-09-03 10:17:56.169 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/Auth/login - application/json 61
+2026-09-03 10:17:56.221 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-09-03 10:17:56.227 +05:30 [INF] CORS policy execution successful.
+2026-09-03 10:17:56.325 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-09-03 10:17:56.387 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoanDeductionPrediction.Models.DTOs.LoginRequest) on controller LoanDeductionPrediction.API.Controllers.AuthController (LoanDeductionPrediction.API).
+2026-09-03 10:17:57.060 +05:30 [WRN] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2026-09-03 10:17:58.676 +05:30 [WRN] No store type was specified for the decimal property 'CollateralValue' on entity type 'BorrowerLoanApplication'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-09-03 10:18:00.145 +05:30 [INF] Executed DbCommand (97ms) [Parameters=[@email='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @email
+2026-09-03 10:18:01.636 +05:30 [INF] Executed DbCommand (40ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime2), @p4='?' (Size = 500), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([CreatedAt], [ExpiresAt], [IsRevoked], [RevokedAt], [Token], [UserId])
+OUTPUT INSERTED.[RefreshTokenId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2026-09-03 10:18:01.713 +05:30 [INF] Executing OkObjectResult, writing value of type 'LoanDeductionPrediction.Models.DTOs.LoginResponse'.
+2026-09-03 10:18:01.751 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API) in 5348.182ms
+2026-09-03 10:18:01.755 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-09-03 10:18:01.761 +05:30 [INF] HTTP POST /api/Auth/login responded 200 in 5547.3970 ms
+2026-09-03 10:18:01.807 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/Auth/login - 200 null application/json; charset=utf-8 5638.0636ms
+2026-09-03 10:19:11.760 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/BorrowerLoanApplication - application/json 200
+2026-09-03 10:19:11.813 +05:30 [INF] CORS policy execution successful.
+2026-09-03 10:19:12.132 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.SubmitApplication (LoanDeductionPrediction.API)'
+2026-09-03 10:19:12.155 +05:30 [INF] Route matched with {action = "SubmitApplication", controller = "BorrowerLoanApplication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SubmitApplication(LoanDeductionPrediction.Models.DTOs.CreateBorrowerLoanApplicationRequest) on controller LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController (LoanDeductionPrediction.API).
+2026-09-03 10:19:12.237 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.SubmitApplication (LoanDeductionPrediction.API) in 77.5214ms
+2026-09-03 10:19:12.241 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.SubmitApplication (LoanDeductionPrediction.API)'
+2026-09-03 10:19:12.245 +05:30 [ERR] Unhandled exception occurred.
+System.InvalidCastException: Unable to cast object of type 'System.Int32' to type 'System.String'.
+   at System.ComponentModel.DataAnnotations.StringLengthAttribute.IsValid(Object value)
+   at System.ComponentModel.DataAnnotations.ValidationAttribute.IsValid(Object value, ValidationContext validationContext)
+   at System.ComponentModel.DataAnnotations.ValidationAttribute.GetValidationResult(Object value, ValidationContext validationContext)
+   at Microsoft.AspNetCore.Mvc.DataAnnotations.DataAnnotationsModelValidator.Validate(ModelValidationContext validationContext)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.ValidateNode()
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.VisitImplementation(ModelMetadata& metadata, String& key, Object model)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.Visit(ModelMetadata metadata, String key, Object model)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.VisitChildren(IValidationStrategy strategy)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.VisitComplexType(IValidationStrategy defaultStrategy)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.VisitImplementation(ModelMetadata& metadata, String& key, Object model)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.Visit(ModelMetadata metadata, String key, Object model)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ObjectModelValidator.Validate(ActionContext actionContext, ValidationStateDictionary validationState, String prefix, Object model, ModelMetadata metadata, Object container)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.EnforceBindRequiredAndValidate(ObjectModelValidator baseObjectValidator, ActionContext actionContext, ParameterDescriptor parameter, ModelMetadata metadata, ModelBindingContext modelBindingContext, ModelBindingResult modelBindingResult, Object container)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value, Object container)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at LoanDeductionPrediction.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API\Middleware\GlobalExceptionMiddleware.cs:line 23
+2026-09-03 10:19:12.349 +05:30 [ERR] HTTP POST /api/BorrowerLoanApplication responded 500 in 537.1541 ms
+2026-09-03 10:19:12.358 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/BorrowerLoanApplication - 500 null application/json 598.5421ms
+2026-09-03 10:21:28.732 +05:30 [INF] Application is shutting down...
+2026-09-03 10:21:39.530 +05:30 [INF] User profile is available. Using 'C:\Users\thang\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-09-03 10:21:39.589 +05:30 [INF] Payment Behavior Background Service is disabled via configuration. Skipping hourly overdue EMI processing.
+2026-09-03 10:21:39.720 +05:30 [INF] Now listening on: http://localhost:5082
+2026-09-03 10:21:39.722 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-03 10:21:39.725 +05:30 [INF] Hosting environment: Development
+2026-09-03 10:21:39.726 +05:30 [INF] Content root path: C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API
+2026-09-03 10:21:48.538 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.html - null null
+2026-09-03 10:21:49.110 +05:30 [INF] HTTP GET /swagger/index.html responded 304 in 181.2437 ms
+2026-09-03 10:21:49.128 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.html - 304 null null 590.3696ms
+2026-09-03 10:21:49.223 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.js - null null
+2026-09-03 10:21:49.232 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-bundle.js - null null
+2026-09-03 10:21:49.239 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.css - null null
+2026-09-03 10:21:49.244 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-standalone-preset.js - null null
+2026-09-03 10:21:49.291 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui.css - null null
+2026-09-03 10:21:49.423 +05:30 [INF] HTTP GET /swagger/index.js responded 304 in 18.3889 ms
+2026-09-03 10:21:49.705 +05:30 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 215.8247 ms
+2026-09-03 10:21:49.772 +05:30 [INF] HTTP GET /swagger/index.css responded 304 in 13.0408 ms
+2026-09-03 10:21:49.951 +05:30 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 31.0417 ms
+2026-09-03 10:21:50.092 +05:30 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 1.1656 ms
+2026-09-03 10:21:50.105 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.js - 304 null null 887.518ms
+2026-09-03 10:21:50.321 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-bundle.js - 304 null null 1089.0967ms
+2026-09-03 10:21:50.344 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.css - 304 null null 1104.7585ms
+2026-09-03 10:21:50.389 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-standalone-preset.js - 304 null null 1145.6182ms
+2026-09-03 10:21:50.408 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui.css - 304 null null 1116.9905ms
+2026-09-03 10:21:50.874 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/v1/swagger.json - null null
+2026-09-03 10:21:51.354 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 409.2118 ms
+2026-09-03 10:21:51.592 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 718.7929ms
+2026-09-03 10:22:19.531 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/Auth/login - application/json 61
+2026-09-03 10:22:19.592 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-09-03 10:22:20.159 +05:30 [INF] CORS policy execution successful.
+2026-09-03 10:22:21.109 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-09-03 10:22:21.190 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoanDeductionPrediction.Models.DTOs.LoginRequest) on controller LoanDeductionPrediction.API.Controllers.AuthController (LoanDeductionPrediction.API).
+2026-09-03 10:22:21.834 +05:30 [WRN] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2026-09-03 10:22:23.668 +05:30 [WRN] No store type was specified for the decimal property 'CollateralValue' on entity type 'BorrowerLoanApplication'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-09-03 10:22:25.711 +05:30 [INF] Executed DbCommand (158ms) [Parameters=[@email='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @email
+2026-09-03 10:22:28.585 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime2), @p4='?' (Size = 500), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([CreatedAt], [ExpiresAt], [IsRevoked], [RevokedAt], [Token], [UserId])
+OUTPUT INSERTED.[RefreshTokenId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2026-09-03 10:22:29.728 +05:30 [INF] Executing OkObjectResult, writing value of type 'LoanDeductionPrediction.Models.DTOs.LoginResponse'.
+2026-09-03 10:22:29.816 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API) in 8611.8519ms
+2026-09-03 10:22:29.820 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-09-03 10:22:29.827 +05:30 [INF] HTTP POST /api/Auth/login responded 200 in 10245.6161 ms
+2026-09-03 10:22:29.872 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/Auth/login - 200 null application/json; charset=utf-8 10341.0377ms
+2026-09-03 10:23:51.242 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/BorrowerLoanApplication - application/json 200
+2026-09-03 10:23:51.486 +05:30 [INF] CORS policy execution successful.
+2026-09-03 10:23:51.645 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.SubmitApplication (LoanDeductionPrediction.API)'
+2026-09-03 10:23:51.666 +05:30 [INF] Route matched with {action = "SubmitApplication", controller = "BorrowerLoanApplication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SubmitApplication(LoanDeductionPrediction.Models.DTOs.CreateBorrowerLoanApplicationRequest) on controller LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController (LoanDeductionPrediction.API).
+2026-09-03 10:23:52.989 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.SubmitApplication (LoanDeductionPrediction.API) in 115.4808ms
+2026-09-03 10:23:52.993 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.SubmitApplication (LoanDeductionPrediction.API)'
+2026-09-03 10:23:53.000 +05:30 [ERR] Unhandled exception occurred.
+System.InvalidCastException: Unable to cast object of type 'System.Int32' to type 'System.String'.
+   at System.ComponentModel.DataAnnotations.StringLengthAttribute.IsValid(Object value)
+   at System.ComponentModel.DataAnnotations.ValidationAttribute.IsValid(Object value, ValidationContext validationContext)
+   at System.ComponentModel.DataAnnotations.ValidationAttribute.GetValidationResult(Object value, ValidationContext validationContext)
+   at Microsoft.AspNetCore.Mvc.DataAnnotations.DataAnnotationsModelValidator.Validate(ModelValidationContext validationContext)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.ValidateNode()
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.VisitImplementation(ModelMetadata& metadata, String& key, Object model)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.Visit(ModelMetadata metadata, String key, Object model)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.VisitChildren(IValidationStrategy strategy)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.VisitComplexType(IValidationStrategy defaultStrategy)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.VisitImplementation(ModelMetadata& metadata, String& key, Object model)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.Visit(ModelMetadata metadata, String key, Object model)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ObjectModelValidator.Validate(ActionContext actionContext, ValidationStateDictionary validationState, String prefix, Object model, ModelMetadata metadata, Object container)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.EnforceBindRequiredAndValidate(ObjectModelValidator baseObjectValidator, ActionContext actionContext, ParameterDescriptor parameter, ModelMetadata metadata, ModelBindingContext modelBindingContext, ModelBindingResult modelBindingResult, Object container)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value, Object container)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at LoanDeductionPrediction.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API\Middleware\GlobalExceptionMiddleware.cs:line 23
+2026-09-03 10:23:53.109 +05:30 [ERR] HTTP POST /api/BorrowerLoanApplication responded 500 in 1624.4618 ms
+2026-09-03 10:23:53.124 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/BorrowerLoanApplication - 500 null application/json 1881.7901ms
+2026-09-03 10:58:16.506 +05:30 [INF] Application is shutting down...
+2026-09-03 10:59:16.840 +05:30 [WRN] No store type was specified for the decimal property 'CollateralValue' on entity type 'BorrowerLoanApplication'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-09-03 10:59:56.675 +05:30 [WRN] No store type was specified for the decimal property 'CollateralValue' on entity type 'BorrowerLoanApplication'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-09-03 11:00:23.721 +05:30 [WRN] No store type was specified for the decimal property 'CollateralValue' on entity type 'BorrowerLoanApplication'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-09-03 11:00:24.377 +05:30 [INF] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-09-03 11:00:24.414 +05:30 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2026-09-03 11:00:24.483 +05:30 [INF] Executed DbCommand (50ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2026-09-03 11:00:24.593 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2026-09-03 11:00:24.608 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-09-03 11:00:24.631 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-09-03 11:00:24.676 +05:30 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-09-03 11:00:24.703 +05:30 [INF] Applying migration '20260903052957_AddCreditScoreToBorrowerLoanApplication'.
+2026-09-03 11:00:24.767 +05:30 [INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [BorrowerLoanApplications] ADD [CreditScore] int NULL;
+2026-09-03 11:00:24.808 +05:30 [INF] Executed DbCommand (37ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20260903052957_AddCreditScoreToBorrowerLoanApplication', N'10.0.11');
+2026-09-03 11:00:30.410 +05:30 [INF] Executed DbCommand (5,589ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2026-09-03 11:11:42.705 +05:30 [INF] User profile is available. Using 'C:\Users\thang\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-09-03 11:11:42.792 +05:30 [INF] Payment Behavior Background Service is disabled via configuration. Skipping hourly overdue EMI processing.
+2026-09-03 11:11:42.862 +05:30 [INF] Now listening on: http://localhost:5082
+2026-09-03 11:11:42.865 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-03 11:11:42.866 +05:30 [INF] Hosting environment: Development
+2026-09-03 11:11:42.867 +05:30 [INF] Content root path: C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API
+2026-09-03 11:12:40.047 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.html - null null
+2026-09-03 11:12:40.377 +05:30 [INF] HTTP GET /swagger/index.html responded 304 in 259.8878 ms
+2026-09-03 11:12:40.398 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.html - 304 null null 354.6264ms
+2026-09-03 11:12:40.426 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-bundle.js - null null
+2026-09-03 11:12:40.426 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-standalone-preset.js - null null
+2026-09-03 11:12:40.426 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.css - null null
+2026-09-03 11:12:40.430 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.js - null null
+2026-09-03 11:12:40.459 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui.css - null null
+2026-09-03 11:12:40.544 +05:30 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 67.3983 ms
+2026-09-03 11:12:40.645 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-standalone-preset.js - 304 null null 220.137ms
+2026-09-03 11:12:40.555 +05:30 [INF] HTTP GET /swagger/index.css responded 304 in 0.3657 ms
+2026-09-03 11:12:40.577 +05:30 [INF] HTTP GET /swagger/index.js responded 304 in 2.5079 ms
+2026-09-03 11:12:40.628 +05:30 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 19.7202 ms
+2026-09-03 11:12:40.546 +05:30 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 86.7292 ms
+2026-09-03 11:12:40.720 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.css - 304 null null 297.635ms
+2026-09-03 11:12:40.726 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.js - 304 null null 295.8927ms
+2026-09-03 11:12:40.735 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui.css - 304 null null 276.1664ms
+2026-09-03 11:12:40.770 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-bundle.js - 304 null null 333.9933ms
+2026-09-03 11:12:41.111 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/v1/swagger.json - null null
+2026-09-03 11:12:41.439 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 317.8817 ms
+2026-09-03 11:12:41.444 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 333.0002ms
+2026-09-03 11:13:54.612 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/Auth/login - application/json 61
+2026-09-03 11:13:54.651 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-09-03 11:13:54.670 +05:30 [INF] CORS policy execution successful.
+2026-09-03 11:13:54.752 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-09-03 11:13:54.803 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoanDeductionPrediction.Models.DTOs.LoginRequest) on controller LoanDeductionPrediction.API.Controllers.AuthController (LoanDeductionPrediction.API).
+2026-09-03 11:13:55.433 +05:30 [WRN] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2026-09-03 11:13:57.348 +05:30 [WRN] No store type was specified for the decimal property 'CollateralValue' on entity type 'BorrowerLoanApplication'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-09-03 11:13:58.827 +05:30 [INF] Executed DbCommand (120ms) [Parameters=[@email='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @email
+2026-09-03 11:14:00.593 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime2), @p4='?' (Size = 500), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([CreatedAt], [ExpiresAt], [IsRevoked], [RevokedAt], [Token], [UserId])
+OUTPUT INSERTED.[RefreshTokenId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2026-09-03 11:14:00.666 +05:30 [INF] Executing OkObjectResult, writing value of type 'LoanDeductionPrediction.Models.DTOs.LoginResponse'.
+2026-09-03 11:14:00.704 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API) in 5887.8973ms
+2026-09-03 11:14:00.710 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-09-03 11:14:00.721 +05:30 [INF] HTTP POST /api/Auth/login responded 200 in 6074.2148 ms
+2026-09-03 11:14:00.742 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/Auth/login - 200 null application/json; charset=utf-8 6130.2428ms
+2026-09-03 11:16:54.481 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/BorrowerLoanApplication - application/json 200
+2026-09-03 11:16:54.521 +05:30 [INF] CORS policy execution successful.
+2026-09-03 11:16:54.666 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.SubmitApplication (LoanDeductionPrediction.API)'
+2026-09-03 11:16:54.683 +05:30 [INF] Route matched with {action = "SubmitApplication", controller = "BorrowerLoanApplication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SubmitApplication(LoanDeductionPrediction.Models.DTOs.CreateBorrowerLoanApplicationRequest) on controller LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController (LoanDeductionPrediction.API).
+2026-09-03 11:16:54.839 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[@userId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[UserId] = @userId
+2026-09-03 11:16:55.103 +05:30 [INF] Executed DbCommand (38ms) [Parameters=[@normalizedEmail='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[ApplicationId], [b].[BorrowerId], [b].[CollateralDetails], [b].[CollateralValue], [b].[CreatedAt], [b].[CreditScore], [b].[DateOfBirth], [b].[Email], [b].[FullName], [b].[InterestRate], [b].[LoanType], [b].[MonthlySalary], [b].[PasswordHash], [b].[Remarks], [b].[RequestedAmount], [b].[ReviewedAt], [b].[ReviewedByLoanOfficerId], [b].[Status], [b].[TenureMonths], [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [BorrowerLoanApplications] AS [b]
+LEFT JOIN [Users] AS [u] ON [b].[ReviewedByLoanOfficerId] = [u].[UserId]
+WHERE LOWER([b].[Email]) = @normalizedEmail
+ORDER BY [b].[CreatedAt] DESC
+2026-09-03 11:16:55.249 +05:30 [INF] Executing ConflictObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-09-03 11:16:55.262 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.SubmitApplication (LoanDeductionPrediction.API) in 574.081ms
+2026-09-03 11:16:55.264 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.SubmitApplication (LoanDeductionPrediction.API)'
+2026-09-03 11:16:55.267 +05:30 [INF] HTTP POST /api/BorrowerLoanApplication responded 409 in 747.9233 ms
+2026-09-03 11:16:55.270 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/BorrowerLoanApplication - 409 null application/json; charset=utf-8 789.0969ms
+2026-09-03 11:17:13.033 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/Auth/login - application/json 62
+2026-09-03 11:17:13.067 +05:30 [INF] CORS policy execution successful.
+2026-09-03 11:17:13.099 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-09-03 11:17:13.112 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoanDeductionPrediction.Models.DTOs.LoginRequest) on controller LoanDeductionPrediction.API.Controllers.AuthController (LoanDeductionPrediction.API).
+2026-09-03 11:17:13.403 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@email='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @email
+2026-09-03 11:17:14.005 +05:30 [INF] Executed DbCommand (34ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime2), @p4='?' (Size = 500), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([CreatedAt], [ExpiresAt], [IsRevoked], [RevokedAt], [Token], [UserId])
+OUTPUT INSERTED.[RefreshTokenId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2026-09-03 11:17:14.014 +05:30 [INF] Executing OkObjectResult, writing value of type 'LoanDeductionPrediction.Models.DTOs.LoginResponse'.
+2026-09-03 11:17:14.017 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API) in 876.6265ms
+2026-09-03 11:17:14.023 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-09-03 11:17:14.030 +05:30 [INF] HTTP POST /api/Auth/login responded 200 in 963.7607 ms
+2026-09-03 11:17:14.035 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/Auth/login - 200 null application/json; charset=utf-8 1002.4201ms
+2026-09-03 11:18:41.334 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/api/BorrowerLoanApplication/pending - null null
+2026-09-03 11:18:41.384 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.GetPendingApplications (LoanDeductionPrediction.API)'
+2026-09-03 11:18:41.408 +05:30 [INF] Route matched with {action = "GetPendingApplications", controller = "BorrowerLoanApplication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPendingApplications() on controller LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController (LoanDeductionPrediction.API).
+2026-09-03 11:18:41.476 +05:30 [INF] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[ApplicationId], [b].[BorrowerId], [b].[CollateralDetails], [b].[CollateralValue], [b].[CreatedAt], [b].[CreditScore], [b].[DateOfBirth], [b].[Email], [b].[FullName], [b].[InterestRate], [b].[LoanType], [b].[MonthlySalary], [b].[PasswordHash], [b].[Remarks], [b].[RequestedAmount], [b].[ReviewedAt], [b].[ReviewedByLoanOfficerId], [b].[Status], [b].[TenureMonths]
+FROM [BorrowerLoanApplications] AS [b]
+WHERE [b].[Status] = N'PENDING'
+ORDER BY [b].[CreatedAt] DESC
+2026-09-03 11:18:41.510 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[LoanDeductionPrediction.Models.DTOs.BorrowerLoanApplicationDto, LoanDeductionPrediction.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-09-03 11:18:41.541 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.GetPendingApplications (LoanDeductionPrediction.API) in 129.639ms
+2026-09-03 11:18:41.544 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.GetPendingApplications (LoanDeductionPrediction.API)'
+2026-09-03 11:18:41.546 +05:30 [INF] HTTP GET /api/BorrowerLoanApplication/pending responded 200 in 168.7994 ms
+2026-09-03 11:18:41.550 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/api/BorrowerLoanApplication/pending - 200 null application/json; charset=utf-8 215.9432ms
+2026-09-03 11:19:17.062 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/BorrowerLoanApplication/13/accept - application/json 47
+2026-09-03 11:19:17.088 +05:30 [INF] CORS policy execution successful.
+2026-09-03 11:19:17.112 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.AcceptApplication (LoanDeductionPrediction.API)'
+2026-09-03 11:19:17.136 +05:30 [INF] Route matched with {action = "AcceptApplication", controller = "BorrowerLoanApplication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AcceptApplication(Int32, LoanDeductionPrediction.Models.DTOs.ApproveBorrowerLoanApplicationRequest) on controller LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController (LoanDeductionPrediction.API).
+2026-09-03 11:19:17.193 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@userId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[UserId] = @userId
+2026-09-03 11:19:17.267 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@applicationId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[ApplicationId], [b].[BorrowerId], [b].[CollateralDetails], [b].[CollateralValue], [b].[CreatedAt], [b].[CreditScore], [b].[DateOfBirth], [b].[Email], [b].[FullName], [b].[InterestRate], [b].[LoanType], [b].[MonthlySalary], [b].[PasswordHash], [b].[Remarks], [b].[RequestedAmount], [b].[ReviewedAt], [b].[ReviewedByLoanOfficerId], [b].[Status], [b].[TenureMonths], [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [BorrowerLoanApplications] AS [b]
+LEFT JOIN [Users] AS [u] ON [b].[ReviewedByLoanOfficerId] = [u].[UserId]
+WHERE [b].[ApplicationId] = @applicationId
+2026-09-03 11:19:17.280 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@userId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[UserId] = @userId
+2026-09-03 11:19:17.364 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@userId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[UserId] = @userId
+2026-09-03 11:19:17.380 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@userId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[UserId] = @userId
+2026-09-03 11:19:17.625 +05:30 [WRN] Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+2026-09-03 11:19:27.232 +05:30 [INF] Executed DbCommand (9,601ms) [Parameters=[@p18='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (Size = 500), @p2='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Int32), @p5='?' (DbType = Date), @p6='?' (Size = 150), @p7='?' (Size = 100), @p8='?' (Precision = 5) (Scale = 2) (DbType = Decimal), @p9='?' (Size = 50), @p10='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p11='?' (Size = 255), @p12='?' (Size = 500), @p13='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p14='?' (DbType = DateTime2), @p15='?' (DbType = Int32), @p16='?' (Size = 30), @p17='?' (DbType = Int32), @p19='?' (DbType = Int32), @p20='?' (DbType = DateTime2), @p21='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p22='?' (DbType = Date), @p23='?' (Precision = 5) (Scale = 2) (DbType = Decimal), @p24='?' (DbType = Int32), @p25='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p26='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p27='?' (DbType = Date), @p28='?' (Size = 30), @p29='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [BorrowerLoanApplications] SET [BorrowerId] = @p0, [CollateralDetails] = @p1, [CollateralValue] = @p2, [CreatedAt] = @p3, [CreditScore] = @p4, [DateOfBirth] = @p5, [Email] = @p6, [FullName] = @p7, [InterestRate] = @p8, [LoanType] = @p9, [MonthlySalary] = @p10, [PasswordHash] = @p11, [Remarks] = @p12, [RequestedAmount] = @p13, [ReviewedAt] = @p14, [ReviewedByLoanOfficerId] = @p15, [Status] = @p16, [TenureMonths] = @p17
+OUTPUT 1
+WHERE [ApplicationId] = @p18;
+INSERT INTO [LoanAccounts] ([BorrowerId], [CreatedAt], [EMIAmount], [EndDate], [InterestRate], [LoanOfficerId], [OutstandingAmount], [PrincipalAmount], [StartDate], [Status], [TenureMonths])
+OUTPUT INSERTED.[LoanId]
+VALUES (@p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27, @p28, @p29);
+2026-09-03 11:19:27.399 +05:30 [INF] Executed DbCommand (95ms) [Parameters=[@loanId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LoanId], [l].[BorrowerId], [l].[CreatedAt], [l].[EMIAmount], [l].[EndDate], [l].[InterestRate], [l].[LoanOfficerId], [l].[OutstandingAmount], [l].[PrincipalAmount], [l].[StartDate], [l].[Status], [l].[TenureMonths]
+FROM [LoanAccounts] AS [l]
+WHERE [l].[LoanId] = @loanId AND [l].[Status] <> N'DELETED'
+2026-09-03 11:19:27.492 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@loanId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [RepaymentSchedules] AS [r]
+        WHERE [r].[LoanId] = @loanId) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-03 11:19:27.597 +05:30 [WRN] Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+2026-09-03 11:19:27.967 +05:30 [INF] Executed DbCommand (368ms) [Parameters=[@p0='?' (DbType = Date), @p1='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p2='?' (DbType = Int32), @p3='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p4='?' (DbType = Int32), @p5='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p6='?' (DbType = Date), @p7='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p8='?' (Size = 30), @p9='?' (DbType = Date), @p10='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p11='?' (DbType = Int32), @p12='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p13='?' (DbType = Int32), @p14='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p15='?' (DbType = Date), @p16='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p17='?' (Size = 30), @p18='?' (DbType = Date), @p19='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p20='?' (DbType = Int32), @p21='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p22='?' (DbType = Int32), @p23='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p24='?' (DbType = Date), @p25='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p26='?' (Size = 30), @p27='?' (DbType = Date), @p28='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p29='?' (DbType = Int32), @p30='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p31='?' (DbType = Int32), @p32='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p33='?' (DbType = Date), @p34='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p35='?' (Size = 30), @p36='?' (DbType = Date), @p37='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p38='?' (DbType = Int32), @p39='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p40='?' (DbType = Int32), @p41='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p42='?' (DbType = Date), @p43='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p44='?' (Size = 30), @p45='?' (DbType = Date), @p46='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p47='?' (DbType = Int32), @p48='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p49='?' (DbType = Int32), @p50='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p51='?' (DbType = Date), @p52='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p53='?' (Size = 30), @p54='?' (DbType = Date), @p55='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p56='?' (DbType = Int32), @p57='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p58='?' (DbType = Int32), @p59='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p60='?' (DbType = Date), @p61='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p62='?' (Size = 30), @p63='?' (DbType = Date), @p64='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p65='?' (DbType = Int32), @p66='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p67='?' (DbType = Int32), @p68='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p69='?' (DbType = Date), @p70='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p71='?' (Size = 30), @p72='?' (DbType = Date), @p73='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p74='?' (DbType = Int32), @p75='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p76='?' (DbType = Int32), @p77='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p78='?' (DbType = Date), @p79='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p80='?' (Size = 30), @p81='?' (DbType = Date), @p82='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p83='?' (DbType = Int32), @p84='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p85='?' (DbType = Int32), @p86='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p87='?' (DbType = Date), @p88='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p89='?' (Size = 30), @p90='?' (DbType = Date), @p91='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p92='?' (DbType = Int32), @p93='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p94='?' (DbType = Int32), @p95='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p96='?' (DbType = Date), @p97='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p98='?' (Size = 30), @p99='?' (DbType = Date), @p100='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p101='?' (DbType = Int32), @p102='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p103='?' (DbType = Int32), @p104='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p105='?' (DbType = Date), @p106='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p107='?' (Size = 30)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+MERGE [RepaymentSchedules] USING (
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, 0),
+(@p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, 1),
+(@p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, 2),
+(@p27, @p28, @p29, @p30, @p31, @p32, @p33, @p34, @p35, 3),
+(@p36, @p37, @p38, @p39, @p40, @p41, @p42, @p43, @p44, 4),
+(@p45, @p46, @p47, @p48, @p49, @p50, @p51, @p52, @p53, 5),
+(@p54, @p55, @p56, @p57, @p58, @p59, @p60, @p61, @p62, 6),
+(@p63, @p64, @p65, @p66, @p67, @p68, @p69, @p70, @p71, 7),
+(@p72, @p73, @p74, @p75, @p76, @p77, @p78, @p79, @p80, 8),
+(@p81, @p82, @p83, @p84, @p85, @p86, @p87, @p88, @p89, 9),
+(@p90, @p91, @p92, @p93, @p94, @p95, @p96, @p97, @p98, 10),
+(@p99, @p100, @p101, @p102, @p103, @p104, @p105, @p106, @p107, 11)) AS i ([DueDate], [EMIAmount], [InstallmentNumber], [InterestAmount], [LoanId], [PaidAmount], [PaidDate], [PrincipalAmount], [Status], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([DueDate], [EMIAmount], [InstallmentNumber], [InterestAmount], [LoanId], [PaidAmount], [PaidDate], [PrincipalAmount], [Status])
+VALUES (i.[DueDate], i.[EMIAmount], i.[InstallmentNumber], i.[InterestAmount], i.[LoanId], i.[PaidAmount], i.[PaidDate], i.[PrincipalAmount], i.[Status])
+OUTPUT INSERTED.[ScheduleId], i._Position;
+2026-09-03 11:19:28.033 +05:30 [INF] Executing OkObjectResult, writing value of type 'LoanDeductionPrediction.Models.DTOs.AcceptBorrowerLoanApplicationResponse'.
+2026-09-03 11:19:28.048 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.AcceptApplication (LoanDeductionPrediction.API) in 10903.0456ms
+2026-09-03 11:19:28.054 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.AcceptApplication (LoanDeductionPrediction.API)'
+2026-09-03 11:19:28.056 +05:30 [INF] HTTP POST /api/BorrowerLoanApplication/13/accept responded 200 in 10967.9263 ms
+2026-09-03 11:19:28.059 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/BorrowerLoanApplication/13/accept - 200 null application/json; charset=utf-8 10997.6439ms
+2026-09-03 11:19:45.316 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/Auth/login - application/json 61
+2026-09-03 11:19:45.372 +05:30 [INF] CORS policy execution successful.
+2026-09-03 11:19:45.380 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-09-03 11:19:45.411 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoanDeductionPrediction.Models.DTOs.LoginRequest) on controller LoanDeductionPrediction.API.Controllers.AuthController (LoanDeductionPrediction.API).
+2026-09-03 11:19:45.467 +05:30 [INF] Executed DbCommand (18ms) [Parameters=[@email='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @email
+2026-09-03 11:19:45.866 +05:30 [INF] Executed DbCommand (43ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime2), @p4='?' (Size = 500), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([CreatedAt], [ExpiresAt], [IsRevoked], [RevokedAt], [Token], [UserId])
+OUTPUT INSERTED.[RefreshTokenId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2026-09-03 11:19:45.880 +05:30 [INF] Executing OkObjectResult, writing value of type 'LoanDeductionPrediction.Models.DTOs.LoginResponse'.
+2026-09-03 11:19:45.888 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API) in 449.5565ms
+2026-09-03 11:19:45.892 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-09-03 11:19:45.895 +05:30 [INF] HTTP POST /api/Auth/login responded 200 in 522.3453 ms
+2026-09-03 11:19:45.899 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/Auth/login - 200 null application/json; charset=utf-8 582.7645ms
+2026-09-03 11:20:31.231 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/BorrowerLoanApplication - application/json 204
+2026-09-03 11:20:31.283 +05:30 [INF] CORS policy execution successful.
+2026-09-03 11:20:31.288 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.SubmitApplication (LoanDeductionPrediction.API)'
+2026-09-03 11:20:31.291 +05:30 [INF] Route matched with {action = "SubmitApplication", controller = "BorrowerLoanApplication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SubmitApplication(LoanDeductionPrediction.Models.DTOs.CreateBorrowerLoanApplicationRequest) on controller LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController (LoanDeductionPrediction.API).
+2026-09-03 11:20:31.339 +05:30 [INF] Executed DbCommand (41ms) [Parameters=[@userId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[UserId] = @userId
+2026-09-03 11:20:31.355 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@normalizedEmail='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[ApplicationId], [b].[BorrowerId], [b].[CollateralDetails], [b].[CollateralValue], [b].[CreatedAt], [b].[CreditScore], [b].[DateOfBirth], [b].[Email], [b].[FullName], [b].[InterestRate], [b].[LoanType], [b].[MonthlySalary], [b].[PasswordHash], [b].[Remarks], [b].[RequestedAmount], [b].[ReviewedAt], [b].[ReviewedByLoanOfficerId], [b].[Status], [b].[TenureMonths], [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [BorrowerLoanApplications] AS [b]
+LEFT JOIN [Users] AS [u] ON [b].[ReviewedByLoanOfficerId] = [u].[UserId]
+WHERE LOWER([b].[Email]) = @normalizedEmail
+ORDER BY [b].[CreatedAt] DESC
+2026-09-03 11:20:31.379 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 500), @p2='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Int32), @p5='?' (DbType = Date), @p6='?' (Size = 150), @p7='?' (Size = 100), @p8='?' (Precision = 5) (Scale = 2) (DbType = Decimal), @p9='?' (Size = 50), @p10='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p11='?' (Size = 255), @p12='?' (Size = 500), @p13='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p14='?' (DbType = DateTime2), @p15='?' (DbType = Int32), @p16='?' (Size = 30), @p17='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [BorrowerLoanApplications] ([BorrowerId], [CollateralDetails], [CollateralValue], [CreatedAt], [CreditScore], [DateOfBirth], [Email], [FullName], [InterestRate], [LoanType], [MonthlySalary], [PasswordHash], [Remarks], [RequestedAmount], [ReviewedAt], [ReviewedByLoanOfficerId], [Status], [TenureMonths])
+OUTPUT INSERTED.[ApplicationId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17);
+2026-09-03 11:20:31.391 +05:30 [INF] Executing OkObjectResult, writing value of type 'LoanDeductionPrediction.Models.DTOs.BorrowerLoanApplicationDto'.
+2026-09-03 11:20:31.393 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.SubmitApplication (LoanDeductionPrediction.API) in 99.041ms
+2026-09-03 11:20:31.398 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.SubmitApplication (LoanDeductionPrediction.API)'
+2026-09-03 11:20:31.405 +05:30 [INF] HTTP POST /api/BorrowerLoanApplication responded 200 in 121.4334 ms
+2026-09-03 11:20:31.409 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/BorrowerLoanApplication - 200 null application/json; charset=utf-8 177.1165ms
+2026-09-03 11:21:17.224 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/BorrowerLoanApplication - application/json 204
+2026-09-03 11:21:17.265 +05:30 [INF] CORS policy execution successful.
+2026-09-03 11:21:17.269 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.SubmitApplication (LoanDeductionPrediction.API)'
+2026-09-03 11:21:17.271 +05:30 [INF] Route matched with {action = "SubmitApplication", controller = "BorrowerLoanApplication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SubmitApplication(LoanDeductionPrediction.Models.DTOs.CreateBorrowerLoanApplicationRequest) on controller LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController (LoanDeductionPrediction.API).
+2026-09-03 11:21:17.294 +05:30 [INF] Executed DbCommand (17ms) [Parameters=[@userId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[UserId] = @userId
+2026-09-03 11:21:17.308 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@normalizedEmail='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[ApplicationId], [b].[BorrowerId], [b].[CollateralDetails], [b].[CollateralValue], [b].[CreatedAt], [b].[CreditScore], [b].[DateOfBirth], [b].[Email], [b].[FullName], [b].[InterestRate], [b].[LoanType], [b].[MonthlySalary], [b].[PasswordHash], [b].[Remarks], [b].[RequestedAmount], [b].[ReviewedAt], [b].[ReviewedByLoanOfficerId], [b].[Status], [b].[TenureMonths], [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [BorrowerLoanApplications] AS [b]
+LEFT JOIN [Users] AS [u] ON [b].[ReviewedByLoanOfficerId] = [u].[UserId]
+WHERE LOWER([b].[Email]) = @normalizedEmail
+ORDER BY [b].[CreatedAt] DESC
+2026-09-03 11:21:17.313 +05:30 [INF] Executing ConflictObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-09-03 11:21:17.317 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.SubmitApplication (LoanDeductionPrediction.API) in 41.8796ms
+2026-09-03 11:21:17.319 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.SubmitApplication (LoanDeductionPrediction.API)'
+2026-09-03 11:21:17.321 +05:30 [INF] HTTP POST /api/BorrowerLoanApplication responded 409 in 55.9971 ms
+2026-09-03 11:21:17.325 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/BorrowerLoanApplication - 409 null application/json; charset=utf-8 101.2731ms
+2026-09-03 11:21:32.711 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/api/BorrowerLoanApplication/my - null null
+2026-09-03 11:21:32.762 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.GetMyApplications (LoanDeductionPrediction.API)'
+2026-09-03 11:21:32.777 +05:30 [INF] Route matched with {action = "GetMyApplications", controller = "BorrowerLoanApplication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyApplications() on controller LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController (LoanDeductionPrediction.API).
+2026-09-03 11:21:32.792 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@userId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[UserId] = @userId
+2026-09-03 11:21:32.805 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@normalizedEmail='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[ApplicationId], [b].[BorrowerId], [b].[CollateralDetails], [b].[CollateralValue], [b].[CreatedAt], [b].[CreditScore], [b].[DateOfBirth], [b].[Email], [b].[FullName], [b].[InterestRate], [b].[LoanType], [b].[MonthlySalary], [b].[PasswordHash], [b].[Remarks], [b].[RequestedAmount], [b].[ReviewedAt], [b].[ReviewedByLoanOfficerId], [b].[Status], [b].[TenureMonths], [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [BorrowerLoanApplications] AS [b]
+LEFT JOIN [Users] AS [u] ON [b].[ReviewedByLoanOfficerId] = [u].[UserId]
+WHERE LOWER([b].[Email]) = @normalizedEmail
+ORDER BY [b].[CreatedAt] DESC
+2026-09-03 11:21:32.811 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[LoanDeductionPrediction.Models.DTOs.BorrowerLoanApplicationDto, LoanDeductionPrediction.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-09-03 11:21:32.814 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.GetMyApplications (LoanDeductionPrediction.API) in 32.2634ms
+2026-09-03 11:21:32.818 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.GetMyApplications (LoanDeductionPrediction.API)'
+2026-09-03 11:21:32.819 +05:30 [INF] HTTP GET /api/BorrowerLoanApplication/my responded 200 in 58.2654 ms
+2026-09-03 11:21:32.822 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/api/BorrowerLoanApplication/my - 200 null application/json; charset=utf-8 111.2607ms
+2026-09-03 11:24:55.958 +05:30 [INF] Application is shutting down...

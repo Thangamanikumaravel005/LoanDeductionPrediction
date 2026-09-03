@@ -2,41 +2,44 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LoanDeductionPrediction.Models.DTOs
 {
-    public class CreateBorrowerLoanApplicationRequest
-    {
-        [Required(ErrorMessage = "Date of birth is required.")]
-        public DateOnly DateOfBirth { get; set; }
+   public class CreateBorrowerLoanApplicationRequest
+{
+    [Required(ErrorMessage = "Date of birth is required.")]
+    public DateOnly DateOfBirth { get; set; }
 
-        [Range(
-            0,
-            double.MaxValue,
-            ErrorMessage = "Monthly salary cannot be negative.")]
-        public decimal? MonthlySalary { get; set; }
+    [Range(
+        0,
+        double.MaxValue,
+        ErrorMessage = "Monthly salary cannot be negative.")]
+    public decimal? MonthlySalary { get; set; }
 
-        [StringLength(
-            500,
-            ErrorMessage = "Collateral details cannot exceed 500 characters.")]
-        public string? CollateralDetails { get; set; }
+    [StringLength(
+        500,
+        ErrorMessage = "Collateral details cannot exceed 500 characters.")]
+    public string? CollateralDetails { get; set; }
 
-        public decimal? CollateralValue { get; set; }
+    public decimal? CollateralValue { get; set; }
 
-        [Required(ErrorMessage = "Loan type is required.")]
-        [StringLength(
-            50,
-            ErrorMessage = "Loan type cannot exceed 50 characters.")]
-        public string LoanType { get; set; } = string.Empty;
+    [Range(
+        300,
+        850,
+        ErrorMessage = "Credit score must be between 300 and 850.")]
+    public int? CreditScore { get; set; }
 
-        [Required(ErrorMessage = "Requested amount is required.")]
-        [Range(
-            typeof(decimal),
-            "0.01",
-            "999999999999999999",
-            ErrorMessage = "Requested amount must be greater than zero.")]
-        public decimal RequestedAmount { get; set; }
+    [Required(ErrorMessage = "Loan type is required.")]
+    [StringLength(
+        50,
+        ErrorMessage = "Loan type cannot exceed 50 characters.")]
+    public string LoanType { get; set; } = string.Empty;
 
-        public string? Remarks { get; set; }
-    }
-
+    [Required(ErrorMessage = "Requested amount is required.")]
+    [Range(
+        typeof(decimal),
+        "0.01",
+        "999999999999999999",
+        ErrorMessage = "Requested amount must be greater than zero.")]
+    public decimal RequestedAmount { get; set; }
+}
 
     public class BorrowerLoanApplicationDto
     {
@@ -49,6 +52,10 @@ namespace LoanDeductionPrediction.Models.DTOs
         public string Email { get; set; } = string.Empty;
 
         public decimal? MonthlySalary { get; set; }
+
+        public decimal? CollateralValue { get; set; }
+
+        public int? CreditScore { get; set; }
 
         public string? CollateralDetails { get; set; }
 

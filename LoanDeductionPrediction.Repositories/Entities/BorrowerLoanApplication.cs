@@ -24,6 +24,8 @@ public virtual User Borrower { get; set; } = null!;
 
     public decimal? CollateralValue { get; set; }
 
+    public int? CreditScore { get; set; }
+
     public string LoanType { get; set; } = null!;
 
     public decimal RequestedAmount { get; set; }
