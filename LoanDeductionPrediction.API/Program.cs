@@ -311,12 +311,6 @@ builder.Services.AddSwaggerGen(options =>
 
 var app = builder.Build();
 
-
-// DATABASE MIGRATION
-// dotnet ef database update
-// SERILOG REQUEST LOGGING
-
-
 app.UseSerilogRequestLogging();
 
 
@@ -345,39 +339,15 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-
-// HTTPS
-
-
 app.UseHttpsRedirection();
-
-
-// CORS
-
 
 app.UseCors(
     "AllowFrontend");
 
-
-// AUTHENTICATION
-
-
 app.UseAuthentication();
-
-
-// AUTHORIZATION
-
 
 app.UseAuthorization();
 
-
-// CONTROLLERS
-
-
 app.MapControllers();
-
-
-// RUN APPLICATION
-
 
 app.Run();

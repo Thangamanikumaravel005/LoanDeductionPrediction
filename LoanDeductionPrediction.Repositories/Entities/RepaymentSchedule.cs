@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace LoanDeductionPrediction.Repositories.Entities;
+﻿namespace LoanDeductionPrediction.Repositories.Entities;
 
 public partial class RepaymentSchedule
 {

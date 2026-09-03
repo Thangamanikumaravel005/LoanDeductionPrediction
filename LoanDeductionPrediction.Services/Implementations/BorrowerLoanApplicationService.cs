@@ -189,12 +189,6 @@ namespace LoanDeductionPrediction.Services.Implementations
                             .Trim()
                             .ToLowerInvariant(),
 
-                    // Password is NOT created here.
-                    // Borrower already has an account.
-                    //
-                    // If PasswordHash is still required by your
-                    // existing database/entity, we temporarily
-                    // copy the existing user's hash.
                     PasswordHash =
                         borrower.PasswordHash,
 

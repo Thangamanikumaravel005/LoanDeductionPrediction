@@ -11,10 +11,10 @@ namespace LoanDeductionPrediction.Repositories.Entities
         {
         }
 
-        // ============================================================
+       
         // DbSets (It represents a collection of database entities allowed to be queried from the 
         // database and manipulated in memory)
-        // ============================================================
+       
 
         public virtual DbSet<User> Users { get; set; }
 
@@ -36,9 +36,9 @@ namespace LoanDeductionPrediction.Repositories.Entities
         public virtual DbSet<LoanHistory> LoanHistories { get; set; }
 
 
-        // ============================================================
+       
         // Model Configuration
-        // ============================================================
+       
 
         protected override void OnModelCreating(
             ModelBuilder modelBuilder)
@@ -46,9 +46,9 @@ namespace LoanDeductionPrediction.Repositories.Entities
             base.OnModelCreating(modelBuilder);
 
 
-            // ========================================================
+            
             // LOAN HISTORY
-            // ========================================================
+            
 
             modelBuilder.Entity<LoanHistory>(entity =>
             {
@@ -73,9 +73,9 @@ namespace LoanDeductionPrediction.Repositories.Entities
             });
 
 
-            // ========================================================
+            
             // PAYMENT
-            // ========================================================
+            
 
             modelBuilder.Entity<Payment>(entity =>
             {
@@ -134,9 +134,9 @@ namespace LoanDeductionPrediction.Repositories.Entities
             });
 
 
-            // ========================================================
+            
             // USER
-            // ========================================================
+            
 
             modelBuilder.Entity<User>(entity =>
             {
@@ -172,9 +172,9 @@ namespace LoanDeductionPrediction.Repositories.Entities
             });
 
 
-            // ========================================================
+            
             // LOAN ACCOUNT
-            // ========================================================
+            
 
             modelBuilder.Entity<LoanAccount>(entity =>
             {
@@ -242,9 +242,9 @@ namespace LoanDeductionPrediction.Repositories.Entities
             });
 
 
-            // ========================================================
+            
             // REPAYMENT SCHEDULE
-            // ========================================================
+            
 
             modelBuilder.Entity<RepaymentSchedule>(entity =>
             {
@@ -296,9 +296,9 @@ namespace LoanDeductionPrediction.Repositories.Entities
             });
 
 
-            // ========================================================
+            
             // PAYMENT BEHAVIOR LOG
-            // ========================================================
+            
 
             modelBuilder.Entity<PaymentBehaviorLog>(entity =>
             {
@@ -353,9 +353,9 @@ namespace LoanDeductionPrediction.Repositories.Entities
             });
 
 
-            // ========================================================
+            
             // RISK PREDICTION
-            // ========================================================
+            
 
             modelBuilder.Entity<RiskPrediction>(entity =>
             {
@@ -393,9 +393,9 @@ namespace LoanDeductionPrediction.Repositories.Entities
             });
 
 
-            // ========================================================
+            
             // REFRESH TOKEN
-            // ========================================================
+            
 
             modelBuilder.Entity<RefreshToken>(entity =>
             {
@@ -443,9 +443,9 @@ namespace LoanDeductionPrediction.Repositories.Entities
             });
 
 
-            // ========================================================
+            
             // BORROWER LOAN APPLICATION
-            // ========================================================
+            
 
             modelBuilder.Entity<BorrowerLoanApplication>(entity =>
             {

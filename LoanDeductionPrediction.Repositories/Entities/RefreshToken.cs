@@ -1,5 +1,3 @@
-using System;
-
 namespace LoanDeductionPrediction.Repositories.Entities
 {
     public partial class RefreshToken

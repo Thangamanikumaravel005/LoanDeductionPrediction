@@ -70,12 +70,8 @@ namespace LoanDeductionPrediction.API.Controllers
 
             return Ok(dashboard);
         }
-
-
         
         // BORROWER DASHBOARD
-        
-
         // GET: api/Dashboard/borrower
 
         [HttpGet("borrower")]

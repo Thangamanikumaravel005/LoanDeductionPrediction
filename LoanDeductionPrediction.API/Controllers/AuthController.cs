@@ -50,7 +50,7 @@ namespace LoanDeductionPrediction.API.Controllers
                     message = "Email and password are required."
                 });
             }
-
+            
             var email = request.Email.Trim();
 
             var user = await _userService.AuthenticateAsync(
