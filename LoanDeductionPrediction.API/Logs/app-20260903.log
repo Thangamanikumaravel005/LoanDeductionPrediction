@@ -8256,3 +8256,388 @@ VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
 2026-09-03 15:47:19.316 +05:30 [INF] HTTP POST /api/Payment/pay/249 responded 200 in 458.3141 ms
 2026-09-03 15:47:19.321 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/Payment/pay/249 - 200 null application/json; charset=utf-8 468.2554ms
 2026-09-03 15:49:52.818 +05:30 [INF] Application is shutting down...
+2026-09-03 18:32:57.068 +05:30 [INF] User profile is available. Using 'C:\Users\thang\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-09-03 18:32:57.185 +05:30 [INF] Now listening on: http://localhost:5082
+2026-09-03 18:32:57.188 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-03 18:32:57.189 +05:30 [INF] Hosting environment: Development
+2026-09-03 18:32:57.191 +05:30 [INF] Content root path: C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API
+2026-09-03 18:34:23.821 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.html - null null
+2026-09-03 18:34:24.040 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.html - null null
+2026-09-03 18:34:24.044 +05:30 [ERR] Unhandled exception occurred.
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.IO.StreamReader.ReadBufferAsync(CancellationToken cancellationToken)
+   at System.IO.StreamReader.ReadToEndAsyncInternal(CancellationToken cancellationToken)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.RespondWithFile(HttpContext context, String fileName)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at LoanDeductionPrediction.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API\Middleware\GlobalExceptionMiddleware.cs:line 23
+2026-09-03 18:34:24.312 +05:30 [ERR] HTTP GET /swagger/index.html responded 500 in 386.8501 ms
+2026-09-03 18:34:24.321 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.html - 500 null application/json 503.4349ms
+2026-09-03 18:34:24.349 +05:30 [INF] HTTP GET /swagger/index.html responded 200 in 244.7683 ms
+2026-09-03 18:34:24.362 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.html - 200 null text/html;charset=utf-8 323.5525ms
+2026-09-03 18:34:24.405 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui.css - null null
+2026-09-03 18:34:24.407 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-bundle.js - null null
+2026-09-03 18:34:24.411 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-standalone-preset.js - null null
+2026-09-03 18:34:24.411 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.css - null null
+2026-09-03 18:34:24.420 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.js - null null
+2026-09-03 18:34:24.522 +05:30 [INF] HTTP GET /swagger/index.css responded 304 in 0.8845 ms
+2026-09-03 18:34:24.522 +05:30 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 91.0027 ms
+2026-09-03 18:34:24.522 +05:30 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 49.3025 ms
+2026-09-03 18:34:24.522 +05:30 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 81.8785 ms
+2026-09-03 18:34:24.540 +05:30 [INF] HTTP GET /swagger/index.js responded 304 in 1.3364 ms
+2026-09-03 18:34:24.547 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.css - 304 null null 135.855ms
+2026-09-03 18:34:24.552 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui.css - 304 null null 147.2531ms
+2026-09-03 18:34:24.556 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-standalone-preset.js - 304 null null 145.0247ms
+2026-09-03 18:34:24.571 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-bundle.js - 304 null null 163.5492ms
+2026-09-03 18:34:24.590 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.js - 304 null null 167.9461ms
+2026-09-03 18:34:24.771 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/favicon-32x32.png - null null
+2026-09-03 18:34:24.790 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/v1/swagger.json - null null
+2026-09-03 18:34:24.799 +05:30 [INF] HTTP GET /swagger/favicon-32x32.png responded 304 in 0.3411 ms
+2026-09-03 18:34:25.099 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/favicon-32x32.png - 304 null null 328.6093ms
+2026-09-03 18:34:25.520 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 516.0210 ms
+2026-09-03 18:34:25.524 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 734.452ms
+2026-09-03 18:43:01.892 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/Auth/login - application/json 62
+2026-09-03 18:43:01.959 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-09-03 18:43:01.971 +05:30 [INF] CORS policy execution successful.
+2026-09-03 18:43:02.075 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-09-03 18:43:02.185 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoanDeductionPrediction.Models.DTOs.LoginRequest) on controller LoanDeductionPrediction.API.Controllers.AuthController (LoanDeductionPrediction.API).
+2026-09-03 18:43:03.077 +05:30 [WRN] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2026-09-03 18:43:04.867 +05:30 [WRN] No store type was specified for the decimal property 'CollateralValue' on entity type 'BorrowerLoanApplication'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-09-03 18:43:06.624 +05:30 [INF] Executed DbCommand (267ms) [Parameters=[@email='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @email
+2026-09-03 18:43:07.943 +05:30 [INF] Executed DbCommand (42ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime2), @p4='?' (Size = 500), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([CreatedAt], [ExpiresAt], [IsRevoked], [RevokedAt], [Token], [UserId])
+OUTPUT INSERTED.[RefreshTokenId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2026-09-03 18:43:08.015 +05:30 [INF] Executing OkObjectResult, writing value of type 'LoanDeductionPrediction.Models.DTOs.LoginResponse'.
+2026-09-03 18:43:08.037 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API) in 5835.2271ms
+2026-09-03 18:43:08.041 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-09-03 18:43:08.049 +05:30 [INF] HTTP POST /api/Auth/login responded 200 in 6100.4331 ms
+2026-09-03 18:43:08.076 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/Auth/login - 200 null application/json; charset=utf-8 6184.2768ms
+2026-09-03 18:46:30.633 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/Auth/login - application/json 62
+2026-09-03 18:46:30.642 +05:30 [INF] CORS policy execution successful.
+2026-09-03 18:46:30.646 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-09-03 18:46:30.647 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoanDeductionPrediction.Models.DTOs.LoginRequest) on controller LoanDeductionPrediction.API.Controllers.AuthController (LoanDeductionPrediction.API).
+2026-09-03 18:46:30.730 +05:30 [INF] Executed DbCommand (18ms) [Parameters=[@email='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @email
+2026-09-03 18:46:31.152 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime2), @p4='?' (Size = 500), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([CreatedAt], [ExpiresAt], [IsRevoked], [RevokedAt], [Token], [UserId])
+OUTPUT INSERTED.[RefreshTokenId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2026-09-03 18:46:31.161 +05:30 [INF] Executing OkObjectResult, writing value of type 'LoanDeductionPrediction.Models.DTOs.LoginResponse'.
+2026-09-03 18:46:31.167 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API) in 515.0791ms
+2026-09-03 18:46:31.173 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-09-03 18:46:31.178 +05:30 [INF] HTTP POST /api/Auth/login responded 200 in 537.8047 ms
+2026-09-03 18:46:31.183 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/Auth/login - 200 null application/json; charset=utf-8 550.8157ms
+2026-09-03 18:47:32.732 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/User - application/json 108
+2026-09-03 18:47:32.752 +05:30 [INF] CORS policy execution successful.
+2026-09-03 18:47:32.887 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.UserController.CreateUser (LoanDeductionPrediction.API)'
+2026-09-03 18:47:32.915 +05:30 [INF] Route matched with {action = "CreateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateUser(LoanDeductionPrediction.API.Controllers.CreateUserRequest) on controller LoanDeductionPrediction.API.Controllers.UserController (LoanDeductionPrediction.API).
+2026-09-03 18:47:33.172 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@email='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @email
+2026-09-03 18:47:33.446 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Size = 150), @p2='?' (Size = 100), @p3='?' (DbType = Boolean), @p4='?' (Size = 255), @p5='?' (Size = 30)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([CreatedAt], [Email], [FullName], [IsActive], [PasswordHash], [Role])
+OUTPUT INSERTED.[UserId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2026-09-03 18:47:33.467 +05:30 [INF] Executing CreatedAtActionResult, writing value of type '<>f__AnonymousType14`2[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType13`6[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], LoanDeductionPrediction.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-09-03 18:47:33.523 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.UserController.CreateUser (LoanDeductionPrediction.API) in 585.1751ms
+2026-09-03 18:47:33.526 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.UserController.CreateUser (LoanDeductionPrediction.API)'
+2026-09-03 18:47:33.529 +05:30 [INF] HTTP POST /api/User responded 201 in 779.7760 ms
+2026-09-03 18:47:33.537 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/User - 201 null application/json; charset=utf-8 805.5169ms
+2026-09-03 18:48:55.650 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/Auth/login - application/json 62
+2026-09-03 18:48:55.654 +05:30 [INF] CORS policy execution successful.
+2026-09-03 18:48:55.692 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-09-03 18:48:55.702 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoanDeductionPrediction.Models.DTOs.LoginRequest) on controller LoanDeductionPrediction.API.Controllers.AuthController (LoanDeductionPrediction.API).
+2026-09-03 18:48:55.737 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@email='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @email
+2026-09-03 18:48:56.012 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime2), @p4='?' (Size = 500), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([CreatedAt], [ExpiresAt], [IsRevoked], [RevokedAt], [Token], [UserId])
+OUTPUT INSERTED.[RefreshTokenId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2026-09-03 18:48:56.034 +05:30 [INF] Executing OkObjectResult, writing value of type 'LoanDeductionPrediction.Models.DTOs.LoginResponse'.
+2026-09-03 18:48:56.045 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API) in 332.0615ms
+2026-09-03 18:48:56.054 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-09-03 18:48:56.060 +05:30 [INF] HTTP POST /api/Auth/login responded 200 in 406.0994 ms
+2026-09-03 18:48:56.071 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/Auth/login - 200 null application/json; charset=utf-8 420.2997ms
+2026-09-03 18:50:55.110 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/BorrowerLoanApplication - application/json 204
+2026-09-03 18:50:55.160 +05:30 [INF] CORS policy execution successful.
+2026-09-03 18:50:55.168 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.SubmitApplication (LoanDeductionPrediction.API)'
+2026-09-03 18:50:55.198 +05:30 [INF] Route matched with {action = "SubmitApplication", controller = "BorrowerLoanApplication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SubmitApplication(LoanDeductionPrediction.Models.DTOs.CreateBorrowerLoanApplicationRequest) on controller LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController (LoanDeductionPrediction.API).
+2026-09-03 18:50:55.327 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[@userId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[UserId] = @userId
+2026-09-03 18:50:55.707 +05:30 [INF] Executed DbCommand (42ms) [Parameters=[@normalizedEmail='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[ApplicationId], [b].[BorrowerId], [b].[CollateralDetails], [b].[CollateralValue], [b].[CreatedAt], [b].[CreditScore], [b].[DateOfBirth], [b].[Email], [b].[FullName], [b].[InterestRate], [b].[LoanType], [b].[MonthlySalary], [b].[PasswordHash], [b].[Remarks], [b].[RequestedAmount], [b].[ReviewedAt], [b].[ReviewedByLoanOfficerId], [b].[Status], [b].[TenureMonths], [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [BorrowerLoanApplications] AS [b]
+LEFT JOIN [Users] AS [u] ON [b].[ReviewedByLoanOfficerId] = [u].[UserId]
+WHERE LOWER([b].[Email]) = @normalizedEmail
+ORDER BY [b].[CreatedAt] DESC
+2026-09-03 18:50:55.940 +05:30 [INF] Executed DbCommand (29ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 500), @p2='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Int32), @p5='?' (DbType = Date), @p6='?' (Size = 150), @p7='?' (Size = 100), @p8='?' (Precision = 5) (Scale = 2) (DbType = Decimal), @p9='?' (Size = 50), @p10='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p11='?' (Size = 255), @p12='?' (Size = 500), @p13='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p14='?' (DbType = DateTime2), @p15='?' (DbType = Int32), @p16='?' (Size = 30), @p17='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [BorrowerLoanApplications] ([BorrowerId], [CollateralDetails], [CollateralValue], [CreatedAt], [CreditScore], [DateOfBirth], [Email], [FullName], [InterestRate], [LoanType], [MonthlySalary], [PasswordHash], [Remarks], [RequestedAmount], [ReviewedAt], [ReviewedByLoanOfficerId], [Status], [TenureMonths])
+OUTPUT INSERTED.[ApplicationId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17);
+2026-09-03 18:50:55.978 +05:30 [INF] Executing OkObjectResult, writing value of type 'LoanDeductionPrediction.Models.DTOs.BorrowerLoanApplicationDto'.
+2026-09-03 18:50:56.009 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.SubmitApplication (LoanDeductionPrediction.API) in 804.4323ms
+2026-09-03 18:50:56.012 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.SubmitApplication (LoanDeductionPrediction.API)'
+2026-09-03 18:50:56.013 +05:30 [INF] HTTP POST /api/BorrowerLoanApplication responded 200 in 853.7425 ms
+2026-09-03 18:50:56.017 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/BorrowerLoanApplication - 200 null application/json; charset=utf-8 906.8098ms
+2026-09-03 18:51:27.482 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/Auth/login - application/json 62
+2026-09-03 18:51:27.492 +05:30 [INF] CORS policy execution successful.
+2026-09-03 18:51:27.499 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-09-03 18:51:27.511 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoanDeductionPrediction.Models.DTOs.LoginRequest) on controller LoanDeductionPrediction.API.Controllers.AuthController (LoanDeductionPrediction.API).
+2026-09-03 18:51:27.537 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@email='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @email
+2026-09-03 18:51:27.774 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime2), @p4='?' (Size = 500), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([CreatedAt], [ExpiresAt], [IsRevoked], [RevokedAt], [Token], [UserId])
+OUTPUT INSERTED.[RefreshTokenId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2026-09-03 18:51:27.788 +05:30 [INF] Executing OkObjectResult, writing value of type 'LoanDeductionPrediction.Models.DTOs.LoginResponse'.
+2026-09-03 18:51:27.793 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API) in 270.0318ms
+2026-09-03 18:51:27.796 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-09-03 18:51:27.804 +05:30 [INF] HTTP POST /api/Auth/login responded 200 in 311.7828 ms
+2026-09-03 18:51:27.814 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/Auth/login - 200 null application/json; charset=utf-8 332.1274ms
+2026-09-03 18:51:50.468 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/api/BorrowerLoanApplication/pending - null null
+2026-09-03 18:51:50.488 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.GetPendingApplications (LoanDeductionPrediction.API)'
+2026-09-03 18:51:50.510 +05:30 [INF] Route matched with {action = "GetPendingApplications", controller = "BorrowerLoanApplication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPendingApplications() on controller LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController (LoanDeductionPrediction.API).
+2026-09-03 18:51:50.571 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[ApplicationId], [b].[BorrowerId], [b].[CollateralDetails], [b].[CollateralValue], [b].[CreatedAt], [b].[CreditScore], [b].[DateOfBirth], [b].[Email], [b].[FullName], [b].[InterestRate], [b].[LoanType], [b].[MonthlySalary], [b].[PasswordHash], [b].[Remarks], [b].[RequestedAmount], [b].[ReviewedAt], [b].[ReviewedByLoanOfficerId], [b].[Status], [b].[TenureMonths]
+FROM [BorrowerLoanApplications] AS [b]
+WHERE [b].[Status] = N'PENDING'
+ORDER BY [b].[CreatedAt] DESC
+2026-09-03 18:51:50.608 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[LoanDeductionPrediction.Models.DTOs.BorrowerLoanApplicationDto, LoanDeductionPrediction.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-09-03 18:51:50.617 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.GetPendingApplications (LoanDeductionPrediction.API) in 101.8564ms
+2026-09-03 18:51:50.626 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.GetPendingApplications (LoanDeductionPrediction.API)'
+2026-09-03 18:51:50.633 +05:30 [INF] HTTP GET /api/BorrowerLoanApplication/pending responded 200 in 150.1747 ms
+2026-09-03 18:51:50.642 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/api/BorrowerLoanApplication/pending - 200 null application/json; charset=utf-8 174.511ms
+2026-09-03 18:52:26.490 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/BorrowerLoanApplication/19/accept - application/json 47
+2026-09-03 18:52:26.505 +05:30 [INF] CORS policy execution successful.
+2026-09-03 18:52:26.523 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.AcceptApplication (LoanDeductionPrediction.API)'
+2026-09-03 18:52:26.566 +05:30 [INF] Route matched with {action = "AcceptApplication", controller = "BorrowerLoanApplication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AcceptApplication(Int32, LoanDeductionPrediction.Models.DTOs.ApproveBorrowerLoanApplicationRequest) on controller LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController (LoanDeductionPrediction.API).
+2026-09-03 18:52:26.607 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@userId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[UserId] = @userId
+2026-09-03 18:52:26.683 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@applicationId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[ApplicationId], [b].[BorrowerId], [b].[CollateralDetails], [b].[CollateralValue], [b].[CreatedAt], [b].[CreditScore], [b].[DateOfBirth], [b].[Email], [b].[FullName], [b].[InterestRate], [b].[LoanType], [b].[MonthlySalary], [b].[PasswordHash], [b].[Remarks], [b].[RequestedAmount], [b].[ReviewedAt], [b].[ReviewedByLoanOfficerId], [b].[Status], [b].[TenureMonths], [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [BorrowerLoanApplications] AS [b]
+LEFT JOIN [Users] AS [u] ON [b].[ReviewedByLoanOfficerId] = [u].[UserId]
+WHERE [b].[ApplicationId] = @applicationId
+2026-09-03 18:52:26.704 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@userId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[UserId] = @userId
+2026-09-03 18:52:26.753 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@userId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[UserId] = @userId
+2026-09-03 18:52:26.771 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@userId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[UserId] = @userId
+2026-09-03 18:52:26.896 +05:30 [WRN] Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+2026-09-03 18:52:26.933 +05:30 [INF] Executed DbCommand (30ms) [Parameters=[@p18='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (Size = 500), @p2='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Int32), @p5='?' (DbType = Date), @p6='?' (Size = 150), @p7='?' (Size = 100), @p8='?' (Precision = 5) (Scale = 2) (DbType = Decimal), @p9='?' (Size = 50), @p10='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p11='?' (Size = 255), @p12='?' (Size = 500), @p13='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p14='?' (DbType = DateTime2), @p15='?' (DbType = Int32), @p16='?' (Size = 30), @p17='?' (DbType = Int32), @p19='?' (DbType = Int32), @p20='?' (DbType = DateTime2), @p21='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p22='?' (DbType = Date), @p23='?' (Precision = 5) (Scale = 2) (DbType = Decimal), @p24='?' (DbType = Int32), @p25='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p26='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p27='?' (DbType = Date), @p28='?' (Size = 30), @p29='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [BorrowerLoanApplications] SET [BorrowerId] = @p0, [CollateralDetails] = @p1, [CollateralValue] = @p2, [CreatedAt] = @p3, [CreditScore] = @p4, [DateOfBirth] = @p5, [Email] = @p6, [FullName] = @p7, [InterestRate] = @p8, [LoanType] = @p9, [MonthlySalary] = @p10, [PasswordHash] = @p11, [Remarks] = @p12, [RequestedAmount] = @p13, [ReviewedAt] = @p14, [ReviewedByLoanOfficerId] = @p15, [Status] = @p16, [TenureMonths] = @p17
+OUTPUT 1
+WHERE [ApplicationId] = @p18;
+INSERT INTO [LoanAccounts] ([BorrowerId], [CreatedAt], [EMIAmount], [EndDate], [InterestRate], [LoanOfficerId], [OutstandingAmount], [PrincipalAmount], [StartDate], [Status], [TenureMonths])
+OUTPUT INSERTED.[LoanId]
+VALUES (@p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27, @p28, @p29);
+2026-09-03 18:52:27.002 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@loanId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LoanId], [l].[BorrowerId], [l].[CreatedAt], [l].[EMIAmount], [l].[EndDate], [l].[InterestRate], [l].[LoanOfficerId], [l].[OutstandingAmount], [l].[PrincipalAmount], [l].[StartDate], [l].[Status], [l].[TenureMonths]
+FROM [LoanAccounts] AS [l]
+WHERE [l].[LoanId] = @loanId AND [l].[Status] <> N'DELETED'
+2026-09-03 18:52:27.079 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@loanId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [RepaymentSchedules] AS [r]
+        WHERE [r].[LoanId] = @loanId) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-03 18:52:27.191 +05:30 [WRN] Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+2026-09-03 18:52:27.255 +05:30 [INF] Executed DbCommand (59ms) [Parameters=[@p0='?' (DbType = Date), @p1='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p2='?' (DbType = Int32), @p3='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p4='?' (DbType = Int32), @p5='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p6='?' (DbType = Date), @p7='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p8='?' (Size = 30), @p9='?' (DbType = Date), @p10='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p11='?' (DbType = Int32), @p12='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p13='?' (DbType = Int32), @p14='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p15='?' (DbType = Date), @p16='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p17='?' (Size = 30), @p18='?' (DbType = Date), @p19='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p20='?' (DbType = Int32), @p21='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p22='?' (DbType = Int32), @p23='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p24='?' (DbType = Date), @p25='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p26='?' (Size = 30), @p27='?' (DbType = Date), @p28='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p29='?' (DbType = Int32), @p30='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p31='?' (DbType = Int32), @p32='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p33='?' (DbType = Date), @p34='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p35='?' (Size = 30), @p36='?' (DbType = Date), @p37='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p38='?' (DbType = Int32), @p39='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p40='?' (DbType = Int32), @p41='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p42='?' (DbType = Date), @p43='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p44='?' (Size = 30), @p45='?' (DbType = Date), @p46='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p47='?' (DbType = Int32), @p48='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p49='?' (DbType = Int32), @p50='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p51='?' (DbType = Date), @p52='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p53='?' (Size = 30), @p54='?' (DbType = Date), @p55='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p56='?' (DbType = Int32), @p57='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p58='?' (DbType = Int32), @p59='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p60='?' (DbType = Date), @p61='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p62='?' (Size = 30), @p63='?' (DbType = Date), @p64='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p65='?' (DbType = Int32), @p66='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p67='?' (DbType = Int32), @p68='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p69='?' (DbType = Date), @p70='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p71='?' (Size = 30), @p72='?' (DbType = Date), @p73='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p74='?' (DbType = Int32), @p75='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p76='?' (DbType = Int32), @p77='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p78='?' (DbType = Date), @p79='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p80='?' (Size = 30), @p81='?' (DbType = Date), @p82='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p83='?' (DbType = Int32), @p84='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p85='?' (DbType = Int32), @p86='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p87='?' (DbType = Date), @p88='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p89='?' (Size = 30), @p90='?' (DbType = Date), @p91='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p92='?' (DbType = Int32), @p93='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p94='?' (DbType = Int32), @p95='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p96='?' (DbType = Date), @p97='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p98='?' (Size = 30), @p99='?' (DbType = Date), @p100='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p101='?' (DbType = Int32), @p102='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p103='?' (DbType = Int32), @p104='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p105='?' (DbType = Date), @p106='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p107='?' (Size = 30)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+MERGE [RepaymentSchedules] USING (
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, 0),
+(@p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, 1),
+(@p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, 2),
+(@p27, @p28, @p29, @p30, @p31, @p32, @p33, @p34, @p35, 3),
+(@p36, @p37, @p38, @p39, @p40, @p41, @p42, @p43, @p44, 4),
+(@p45, @p46, @p47, @p48, @p49, @p50, @p51, @p52, @p53, 5),
+(@p54, @p55, @p56, @p57, @p58, @p59, @p60, @p61, @p62, 6),
+(@p63, @p64, @p65, @p66, @p67, @p68, @p69, @p70, @p71, 7),
+(@p72, @p73, @p74, @p75, @p76, @p77, @p78, @p79, @p80, 8),
+(@p81, @p82, @p83, @p84, @p85, @p86, @p87, @p88, @p89, 9),
+(@p90, @p91, @p92, @p93, @p94, @p95, @p96, @p97, @p98, 10),
+(@p99, @p100, @p101, @p102, @p103, @p104, @p105, @p106, @p107, 11)) AS i ([DueDate], [EMIAmount], [InstallmentNumber], [InterestAmount], [LoanId], [PaidAmount], [PaidDate], [PrincipalAmount], [Status], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([DueDate], [EMIAmount], [InstallmentNumber], [InterestAmount], [LoanId], [PaidAmount], [PaidDate], [PrincipalAmount], [Status])
+VALUES (i.[DueDate], i.[EMIAmount], i.[InstallmentNumber], i.[InterestAmount], i.[LoanId], i.[PaidAmount], i.[PaidDate], i.[PrincipalAmount], i.[Status])
+OUTPUT INSERTED.[ScheduleId], i._Position;
+2026-09-03 18:52:27.296 +05:30 [INF] Executing OkObjectResult, writing value of type 'LoanDeductionPrediction.Models.DTOs.AcceptBorrowerLoanApplicationResponse'.
+2026-09-03 18:52:27.313 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.AcceptApplication (LoanDeductionPrediction.API) in 734.5015ms
+2026-09-03 18:52:27.325 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.BorrowerLoanApplicationController.AcceptApplication (LoanDeductionPrediction.API)'
+2026-09-03 18:52:27.330 +05:30 [INF] HTTP POST /api/BorrowerLoanApplication/19/accept responded 200 in 825.9787 ms
+2026-09-03 18:52:27.344 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/BorrowerLoanApplication/19/accept - 200 null application/json; charset=utf-8 853.419ms
+2026-09-03 18:53:20.928 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/Auth/login - application/json 62
+2026-09-03 18:53:20.933 +05:30 [INF] CORS policy execution successful.
+2026-09-03 18:53:20.935 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-09-03 18:53:20.937 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoanDeductionPrediction.Models.DTOs.LoginRequest) on controller LoanDeductionPrediction.API.Controllers.AuthController (LoanDeductionPrediction.API).
+2026-09-03 18:53:20.980 +05:30 [INF] Executed DbCommand (27ms) [Parameters=[@email='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @email
+2026-09-03 18:53:21.276 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime2), @p4='?' (Size = 500), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([CreatedAt], [ExpiresAt], [IsRevoked], [RevokedAt], [Token], [UserId])
+OUTPUT INSERTED.[RefreshTokenId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2026-09-03 18:53:21.281 +05:30 [INF] Executing OkObjectResult, writing value of type 'LoanDeductionPrediction.Models.DTOs.LoginResponse'.
+2026-09-03 18:53:21.285 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API) in 335.3713ms
+2026-09-03 18:53:21.289 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.AuthController.Login (LoanDeductionPrediction.API)'
+2026-09-03 18:53:21.291 +05:30 [INF] HTTP POST /api/Auth/login responded 200 in 358.4689 ms
+2026-09-03 18:53:21.296 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/Auth/login - 200 null application/json; charset=utf-8 368.0913ms
+2026-09-03 18:53:32.353 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/api/BorrowerLoanApplication/my - null null
+2026-09-03 18:53:32.361 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Borrower)
+2026-09-03 18:53:32.371 +05:30 [INF] AuthenticationScheme: Bearer was forbidden.
+2026-09-03 18:53:32.372 +05:30 [INF] HTTP GET /api/BorrowerLoanApplication/my responded 403 in 14.7025 ms
+2026-09-03 18:53:32.381 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/api/BorrowerLoanApplication/my - 403 0 null 27.9581ms
+2026-09-03 18:53:52.617 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/api/BorrowerLoanApplication/my - null null
+2026-09-03 18:53:52.633 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Borrower)
+2026-09-03 18:53:52.638 +05:30 [INF] AuthenticationScheme: Bearer was forbidden.
+2026-09-03 18:53:52.641 +05:30 [INF] HTTP GET /api/BorrowerLoanApplication/my responded 403 in 9.1432 ms
+2026-09-03 18:53:52.649 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/api/BorrowerLoanApplication/my - 403 0 null 32.7806ms
+2026-09-03 18:54:03.827 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/api/BorrowerLoanApplication/my - null null
+2026-09-03 18:54:03.836 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Borrower)
+2026-09-03 18:54:03.844 +05:30 [INF] AuthenticationScheme: Bearer was forbidden.
+2026-09-03 18:54:03.849 +05:30 [INF] HTTP GET /api/BorrowerLoanApplication/my responded 403 in 13.6406 ms
+2026-09-03 18:54:03.861 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/api/BorrowerLoanApplication/my - 403 0 null 34.0713ms
+2026-09-03 18:55:31.874 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/api/RepaymentSchedule/loan/18 - null null
+2026-09-03 18:55:31.942 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.RepaymentScheduleController.GetLoanSchedule (LoanDeductionPrediction.API)'
+2026-09-03 18:55:31.965 +05:30 [INF] Route matched with {action = "GetLoanSchedule", controller = "RepaymentSchedule"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetLoanSchedule(Int32) on controller LoanDeductionPrediction.API.Controllers.RepaymentScheduleController (LoanDeductionPrediction.API).
+2026-09-03 18:55:32.001 +05:30 [INF] Executed DbCommand (21ms) [Parameters=[@loanId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LoanId], [l].[BorrowerId], [l].[CreatedAt], [l].[EMIAmount], [l].[EndDate], [l].[InterestRate], [l].[LoanOfficerId], [l].[OutstandingAmount], [l].[PrincipalAmount], [l].[StartDate], [l].[Status], [l].[TenureMonths]
+FROM [LoanAccounts] AS [l]
+WHERE [l].[LoanId] = @loanId AND [l].[Status] <> N'DELETED'
+2026-09-03 18:55:32.053 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@loanId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ScheduleId], [r].[DueDate], [r].[EMIAmount], [r].[InstallmentNumber], [r].[InterestAmount], [r].[LoanId], [r].[PaidAmount], [r].[PaidDate], [r].[PrincipalAmount], [r].[Status]
+FROM [RepaymentSchedules] AS [r]
+WHERE [r].[LoanId] = @loanId
+ORDER BY [r].[InstallmentNumber]
+2026-09-03 18:55:32.059 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[LoanDeductionPrediction.Models.DTOs.RepaymentScheduleDto, LoanDeductionPrediction.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-09-03 18:55:32.100 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.RepaymentScheduleController.GetLoanSchedule (LoanDeductionPrediction.API) in 127.5902ms
+2026-09-03 18:55:32.108 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.RepaymentScheduleController.GetLoanSchedule (LoanDeductionPrediction.API)'
+2026-09-03 18:55:32.112 +05:30 [INF] HTTP GET /api/RepaymentSchedule/loan/18 responded 200 in 172.3701 ms
+2026-09-03 18:55:32.119 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/api/RepaymentSchedule/loan/18 - 200 null application/json; charset=utf-8 244.9045ms
+2026-09-03 18:59:37.987 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/api/Payment/loan/14 - null null
+2026-09-03 18:59:37.995 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.PaymentController.GetByLoan (LoanDeductionPrediction.API)'
+2026-09-03 18:59:38.026 +05:30 [INF] Route matched with {action = "GetByLoan", controller = "Payment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetByLoan(Int32) on controller LoanDeductionPrediction.API.Controllers.PaymentController (LoanDeductionPrediction.API).
+2026-09-03 18:59:38.136 +05:30 [INF] Executed DbCommand (26ms) [Parameters=[@loanId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PaymentId], [p].[Amount], [p].[BorrowerId], [p].[CreatedAt], [p].[LoanId], [p].[PaymentDate], [p].[PaymentStatus], [p].[ScheduleId]
+FROM [Payments] AS [p]
+WHERE [p].[LoanId] = @loanId
+ORDER BY [p].[PaymentDate] DESC, [p].[PaymentId] DESC
+2026-09-03 18:59:38.149 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType6`3[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[<>f__AnonymousType5`8[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateOnly, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], LoanDeductionPrediction.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-09-03 18:59:38.189 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.PaymentController.GetByLoan (LoanDeductionPrediction.API) in 152.5293ms
+2026-09-03 18:59:38.201 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.PaymentController.GetByLoan (LoanDeductionPrediction.API)'
+2026-09-03 18:59:38.208 +05:30 [INF] HTTP GET /api/Payment/loan/14 responded 200 in 213.8681 ms
+2026-09-03 18:59:38.218 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/api/Payment/loan/14 - 200 null application/json; charset=utf-8 230.8749ms
+2026-09-03 18:59:53.518 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/api/Payment/loan/20 - null null
+2026-09-03 18:59:53.528 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.PaymentController.GetByLoan (LoanDeductionPrediction.API)'
+2026-09-03 18:59:53.539 +05:30 [INF] Route matched with {action = "GetByLoan", controller = "Payment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetByLoan(Int32) on controller LoanDeductionPrediction.API.Controllers.PaymentController (LoanDeductionPrediction.API).
+2026-09-03 18:59:53.571 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@loanId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PaymentId], [p].[Amount], [p].[BorrowerId], [p].[CreatedAt], [p].[LoanId], [p].[PaymentDate], [p].[PaymentStatus], [p].[ScheduleId]
+FROM [Payments] AS [p]
+WHERE [p].[LoanId] = @loanId
+ORDER BY [p].[PaymentDate] DESC, [p].[PaymentId] DESC
+2026-09-03 18:59:53.590 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType6`3[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[<>f__AnonymousType5`8[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateOnly, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], LoanDeductionPrediction.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-09-03 18:59:53.603 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.PaymentController.GetByLoan (LoanDeductionPrediction.API) in 48.1288ms
+2026-09-03 18:59:53.612 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.PaymentController.GetByLoan (LoanDeductionPrediction.API)'
+2026-09-03 18:59:53.633 +05:30 [INF] HTTP GET /api/Payment/loan/20 responded 200 in 106.0770 ms
+2026-09-03 18:59:53.664 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/api/Payment/loan/20 - 200 null application/json; charset=utf-8 146.3317ms
+2026-09-03 19:00:26.810 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/api/Loan/25 - null null
+2026-09-03 19:00:26.827 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.LoanController.GetById (LoanDeductionPrediction.API)'
+2026-09-03 19:00:26.881 +05:30 [INF] Route matched with {action = "GetById", controller = "Loan"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller LoanDeductionPrediction.API.Controllers.LoanController (LoanDeductionPrediction.API).
+2026-09-03 19:00:26.897 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@loanId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LoanId], [l].[BorrowerId], [l].[CreatedAt], [l].[EMIAmount], [l].[EndDate], [l].[InterestRate], [l].[LoanOfficerId], [l].[OutstandingAmount], [l].[PrincipalAmount], [l].[StartDate], [l].[Status], [l].[TenureMonths]
+FROM [LoanAccounts] AS [l]
+WHERE [l].[LoanId] = @loanId AND [l].[Status] <> N'DELETED'
+2026-09-03 19:00:26.904 +05:30 [INF] Executing NotFoundObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-09-03 19:00:26.913 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.LoanController.GetById (LoanDeductionPrediction.API) in 28.9597ms
+2026-09-03 19:00:26.918 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.LoanController.GetById (LoanDeductionPrediction.API)'
+2026-09-03 19:00:26.920 +05:30 [INF] HTTP GET /api/Loan/25 responded 404 in 93.5301 ms
+2026-09-03 19:00:26.933 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/api/Loan/25 - 404 null application/json; charset=utf-8 122.7375ms
+2026-09-03 19:06:59.627 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/api/Loan/25 - null null
+2026-09-03 19:06:59.688 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.LoanController.GetById (LoanDeductionPrediction.API)'
+2026-09-03 19:06:59.913 +05:30 [INF] Route matched with {action = "GetById", controller = "Loan"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller LoanDeductionPrediction.API.Controllers.LoanController (LoanDeductionPrediction.API).
+2026-09-03 19:07:00.081 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[@loanId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LoanId], [l].[BorrowerId], [l].[CreatedAt], [l].[EMIAmount], [l].[EndDate], [l].[InterestRate], [l].[LoanOfficerId], [l].[OutstandingAmount], [l].[PrincipalAmount], [l].[StartDate], [l].[Status], [l].[TenureMonths]
+FROM [LoanAccounts] AS [l]
+WHERE [l].[LoanId] = @loanId AND [l].[Status] <> N'DELETED'
+2026-09-03 19:07:00.085 +05:30 [INF] Executing NotFoundObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-09-03 19:07:00.088 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.LoanController.GetById (LoanDeductionPrediction.API) in 96.2658ms
+2026-09-03 19:07:00.091 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.LoanController.GetById (LoanDeductionPrediction.API)'
+2026-09-03 19:07:00.093 +05:30 [INF] HTTP GET /api/Loan/25 responded 404 in 409.2987 ms
+2026-09-03 19:07:00.098 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/api/Loan/25 - 404 null application/json; charset=utf-8 471.136ms
+2026-09-03 19:07:37.669 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/api/Loan - null null
+2026-09-03 19:07:37.675 +05:30 [INF] Executing endpoint 'LoanDeductionPrediction.API.Controllers.LoanController.GetAll (LoanDeductionPrediction.API)'
+2026-09-03 19:07:37.702 +05:30 [INF] Route matched with {action = "GetAll", controller = "Loan"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller LoanDeductionPrediction.API.Controllers.LoanController (LoanDeductionPrediction.API).
+2026-09-03 19:07:37.765 +05:30 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [l].[LoanId], [l].[BorrowerId], [l].[CreatedAt], [l].[EMIAmount], [l].[EndDate], [l].[InterestRate], [l].[LoanOfficerId], [l].[OutstandingAmount], [l].[PrincipalAmount], [l].[StartDate], [l].[Status], [l].[TenureMonths]
+FROM [LoanAccounts] AS [l]
+WHERE [l].[Status] <> N'DELETED'
+ORDER BY [l].[LoanId] DESC
+2026-09-03 19:07:37.804 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[LoanDeductionPrediction.Models.DTOs.LoanDto, LoanDeductionPrediction.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-09-03 19:07:37.830 +05:30 [INF] Executed action LoanDeductionPrediction.API.Controllers.LoanController.GetAll (LoanDeductionPrediction.API) in 117.6638ms
+2026-09-03 19:07:37.832 +05:30 [INF] Executed endpoint 'LoanDeductionPrediction.API.Controllers.LoanController.GetAll (LoanDeductionPrediction.API)'
+2026-09-03 19:07:37.836 +05:30 [INF] HTTP GET /api/Loan responded 200 in 161.9343 ms
+2026-09-03 19:07:37.866 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/api/Loan - 200 null application/json; charset=utf-8 196.914ms
+2026-09-03 19:08:02.008 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/api/Loan - null null
+2026-09-03 19:08:02.107 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|LoanOfficer)
+2026-09-03 19:08:02.123 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2026-09-03 19:08:02.135 +05:30 [INF] HTTP GET /api/Loan responded 401 in 30.2627 ms
+2026-09-03 19:08:02.161 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/api/Loan - 401 0 null 152.5548ms
+2026-09-03 19:08:06.382 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5082/api/Loan - null null
+2026-09-03 19:08:06.416 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|LoanOfficer)
+2026-09-03 19:08:06.447 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2026-09-03 19:08:06.487 +05:30 [INF] HTTP GET /api/Loan responded 401 in 71.5303 ms
+2026-09-03 19:08:06.510 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5082/api/Loan - 401 0 null 128.1665ms
+2026-09-03 19:08:42.820 +05:30 [INF] Application is shutting down...
+2026-09-03 19:09:04.518 +05:30 [INF] User profile is available. Using 'C:\Users\thang\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-09-03 19:09:04.830 +05:30 [INF] Now listening on: http://localhost:5082
+2026-09-03 19:09:04.844 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-03 19:09:04.846 +05:30 [INF] Hosting environment: Development
+2026-09-03 19:09:04.847 +05:30 [INF] Content root path: C:\Users\thang\OneDrive\Documents\React Projects\LoanDeductionPrediction\LoanDeductionPrediction.API
